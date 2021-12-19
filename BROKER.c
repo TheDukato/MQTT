@@ -12,126 +12,67 @@
 #include        <stdlib.h>
 #include        <string.h>
 #include        <unistd.h>
-#include 	<sys/wait.h>
+
 
 #define MAXLINE 1024
 
-#define SA struct sockaddr
+//#define SA struct sockaddr
 
-#define LISTENQ 2
-
-
-void
-sig_chld(int signo)
-{
-	pid_t	pid;
-	int		stat;
-
-	while ((pid = waitpid(-1, &stat, WNOHANG)) > 0)
-		printf("child %d terminated\n", pid);
-	return;
-}
-
-ssize_t						/* Write "n" bytes to a descriptor. */
-writen(int fd, const void* vptr, size_t n)
-{
-	size_t		nleft;
-	ssize_t		nwritten;
-	const char* ptr;
-
-	ptr = vptr;
-	nleft = n;
-	while (nleft > 0) {
-		if ((nwritten = write(fd, ptr, nleft)) <= 0) {
-			if (nwritten < 0 && errno == EINTR)
-				nwritten = 0;		/* and call write() again */
-			else
-				return(-1);			/* error */
-		}
-
-		nleft -= nwritten;
-		ptr += nwritten;
-	}
-	return(n);
-}
-/* end writen */
-
-void
-Writen(int fd, void* ptr, size_t nbytes)
-{
-	if (writen(fd, ptr, nbytes) != nbytes)
-		perror("writen error");
-}
-
-void
-hand_conn(int sockfd)
-{
-	ssize_t		n;
-	char		buf[MAXLINE];
-
-again:
-	while ((n = read(sockfd, buf, MAXLINE)) > 0)
-		Writen(sockfd, buf, n);
-	Fputs(buf[0], stdout);
-	if (n < 0 && errno == EINTR)
-		goto again;
-	else if (n < 0)
-		perror("str_echo: read error");
-}
-
+#define LISTENQ 4
 
 int
 main(int argc, char** argv)
 {
-	int					listenfd, connfd;
-	pid_t				childpid;
-	socklen_t			clilen;
-	struct sockaddr_in6	cliaddr, servaddr;
-	void				sig_chld(int); 
-	//	signal(SIGCHLD, sig_chld);
-	//	signal(SIGCHLD, SIG_IGN);
+	int				listenfd, connfd;
+	socklen_t			len;
+	char				buff[MAXLINE], str[INET6_ADDRSTRLEN + 1];
+	time_t				ticks;
+	struct sockaddr_in6	servaddr, cliaddr;
 
 	if ((listenfd = socket(AF_INET6, SOCK_STREAM, 0)) < 0) {
 		fprintf(stderr, "socket error : %s\n", strerror(errno));
 		return 1;
 	}
-	int optval = 1;
-	if (setsockopt(listenfd, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval)) < 0) {
-		fprintf(stderr, "SO_REUSEADDR setsockopt error : %s\n", strerror(errno));
-	}
 
 	bzero(&servaddr, sizeof(servaddr));
 	servaddr.sin6_family = AF_INET6;
-	servaddr.sin6_addr = in6addr_any;
-	servaddr.sin6_port = htons(7);	/* echo server */
+	if (argc == 1)
+		servaddr.sin6_addr = in6addr_any;
+	else {
+		if (inet_pton(AF_INET6, argv[1], &servaddr.sin6_addr) != 1) {
+			printf("ERROR: Address format error\n");
+			return -1;
+		}
+	}
+	servaddr.sin6_port = htons(13);	/* daytime server */
 
 	if (bind(listenfd, (struct sockaddr*)&servaddr, sizeof(servaddr)) < 0) {
 		fprintf(stderr, "bind error : %s\n", strerror(errno));
 		return 1;
 	}
 
+
 	if (listen(listenfd, LISTENQ) < 0) {
 		fprintf(stderr, "listen error : %s\n", strerror(errno));
 		return 1;
 	}
 
-
-
+	fprintf(stderr, "Waiting for clients ... \n");
 	for (; ; ) {
-		clilen = sizeof(cliaddr);
-		if ((connfd = accept(listenfd, (SA*)&cliaddr, &clilen)) < 0) {
-			if (errno == EINTR)
-				continue;		/* back to for() */
-			else
-				perror("accept error");
-			exit(1);
+		len = sizeof(cliaddr);
+		if ((connfd = accept(listenfd, (struct sockaddr*)&cliaddr, &len)) < 0) {
+			fprintf(stderr, "accept error : %s\n", strerror(errno));
+			continue;
 		}
 
-		if ((childpid = fork()) == 0) {	/* child process */
-			close(listenfd);	/* close listening socket */
-			hand_conn(connfd);	/* process the request */
-			exit(0);
-		}
-		close(connfd);			/* parent closes connected socket */
+		bzero(str, sizeof(str));
+		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, str, sizeof(str));
+		printf("Connection from %s\n", str);
+
+		ticks = time(NULL);
+		snprintf(buff, sizeof(buff), "%.24s\r\n", ctime(&ticks));
+		if (write(connfd, buff, strlen(buff)) < 0)
+			fprintf(stderr, "write error : %s\n", strerror(errno));
+		close(connfd);
 	}
 }
