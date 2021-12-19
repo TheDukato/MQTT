@@ -35,9 +35,13 @@ time_conn(int sockfd)
 }
 void
 rcv_msg(int sockfd, socklen_t salen) {
+	int					n;
 	char				line[MAXLINE + 1];
 	socklen_t			len;
 	struct sockaddr* safrom;
+	struct sockaddr_in6* cliaddr;
+	struct sockaddr_in* cliaddrv4;
+	char			addr_str[INET6_ADDRSTRLEN + 1];
 	safrom = malloc(salen);
 	for (; ; ) {
 		len = salen;
@@ -105,7 +109,7 @@ main(int argc, char** argv)
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
 			time_conn(connfd);	/* process the request */
-			rcv_msg(connfd);
+			rcv_msg(connfd, sizeof(servaddr));
 			exit(0);
 		}
 		close(connfd);			/* parent closes connected socket */
