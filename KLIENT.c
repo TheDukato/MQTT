@@ -143,9 +143,9 @@ str_cli(FILE* fp, int sockfd)
 
 	while (Fgets(sendline, MAXLINE, fp) != NULL) {
 
-		Writen(sockfd, sendline, strlen(sendline));
+		Writen(sockfd, sendline, strlen(sendline));//Wysyla sendline
 
-		if (Readline(sockfd, recvline, MAXLINE) == 0) {
+		if (Readline(sockfd, recvline, MAXLINE) == 0) {//odbiera
 			perror("str_cli: server terminated prematurely");
 			exit(0);
 		}
