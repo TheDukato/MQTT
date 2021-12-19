@@ -14,6 +14,7 @@
 #include        <unistd.h>
 
 
+
 #define MAXLINE 1024
 
 //#define SA struct sockaddr
@@ -82,6 +83,7 @@ main(int argc, char** argv)
 			hand_conn(connfd);	/* process the request */
 			exit(0);
 		}
+		sleep(2);
 		close(connfd);			/* parent closes connected socket */
 
 
