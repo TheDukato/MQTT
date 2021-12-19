@@ -64,7 +64,7 @@ Writen(int fd, void* ptr, size_t nbytes)
 }
 
 void
-str_echo(int sockfd)
+hand_conn(int sockfd)
 {
 	ssize_t		n;
 	char		buf[MAXLINE];
@@ -87,23 +87,7 @@ main(int argc, char** argv)
 	pid_t				childpid;
 	socklen_t			clilen;
 	struct sockaddr_in6	cliaddr, servaddr;
-	void				sig_chld(int);
-	//#define SIGCHLD_
-#ifdef SIGCHLD_
-	struct sigaction new_action, old_action;
-
-	/* Set up the structure to specify the new action. */
-	new_action.sa_handler = sig_chld;
-	//  new_action.sa_handler = SIG_IGN;
-	sigemptyset(&new_action.sa_mask);
-	new_action.sa_flags = 0;
-
-	if (sigaction(SIGCHLD, &new_action, &old_action) < 0) {
-		fprintf(stderr, "sigaction error : %s\n", strerror(errno));
-		return 1;
-	}
-
-#endif 
+	void				sig_chld(int); 
 	//	signal(SIGCHLD, sig_chld);
 	//	signal(SIGCHLD, SIG_IGN);
 
@@ -145,7 +129,7 @@ main(int argc, char** argv)
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
-			str_echo(connfd);	/* process the request */
+			hand_conn(connfd);	/* process the request */
 			exit(0);
 		}
 		close(connfd);			/* parent closes connected socket */
