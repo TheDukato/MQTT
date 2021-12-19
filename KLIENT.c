@@ -15,7 +15,7 @@
 void
 hand_conn(int sockfd)
 {
-	for (;;) {
+	//for (;;) {
 		char lineTS[50];
 		char line[MAXLINE];
 
@@ -25,8 +25,8 @@ hand_conn(int sockfd)
 		//if (sendto(sendfd, line, strlen(line), 0, sadest, salen) < 0)
 		//	fprintf(stderr, "sendto() error : %s\n", strerror(errno));
 		if (write(sockfd, line, MAXLINE) < 0)
-			sleep(SENDRATE);
-	}
+	//		sleep(SENDRATE);
+	//}
 }
 
 int
