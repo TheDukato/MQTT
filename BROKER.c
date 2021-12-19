@@ -46,7 +46,7 @@ hand_conn(int sockfd)
 		snprintf(line, sizeof(line), "PID=%d, Msg:%s", getpid(), lineTS);
 		//if (sendto(sendfd, line, strlen(line), 0, sadest, salen) < 0)
 		//	fprintf(stderr, "sendto() error : %s\n", strerror(errno));
-		if (write(socket, line, MAXLINE) < 0)
+		if (write(sockfd, line, MAXLINE) < 0)
 			sleep(SENDRATE);
 	}
 }
