@@ -20,6 +20,26 @@
 
 #define LISTENQ 4
 
+void
+sig_chld(int signo)
+{
+	pid_t	pid;
+	int		stat;
+
+	while ((pid = waitpid(-1, &stat, WNOHANG)) > 0)
+		printf("child %d terminated\n", pid);
+	return;
+}
+
+str_echo(int sockfd)
+{
+	ticks = time(NULL);
+	snprintf(buff, sizeof(buff), "%.24s\r\n", ctime(&ticks));
+	if (write(connfd, buff, strlen(buff)) < 0)
+		fprintf(stderr, "write error : %s\n", strerror(errno));
+	close(connfd);
+}
+
 int
 main(int argc, char** argv)
 {
@@ -33,7 +53,6 @@ main(int argc, char** argv)
 		fprintf(stderr, "socket error : %s\n", strerror(errno));
 		return 1;
 	}
-
 	bzero(&servaddr, sizeof(servaddr));
 	servaddr.sin6_family = AF_INET6;
 	if (argc == 1)
@@ -45,18 +64,14 @@ main(int argc, char** argv)
 		}
 	}
 	servaddr.sin6_port = htons(13);	/* daytime server */
-
 	if (bind(listenfd, (struct sockaddr*)&servaddr, sizeof(servaddr)) < 0) {
 		fprintf(stderr, "bind error : %s\n", strerror(errno));
 		return 1;
 	}
-
-
 	if (listen(listenfd, LISTENQ) < 0) {
 		fprintf(stderr, "listen error : %s\n", strerror(errno));
 		return 1;
 	}
-
 	fprintf(stderr, "Waiting for clients ... \n");
 	for (; ; ) {
 		len = sizeof(cliaddr);
@@ -69,10 +84,14 @@ main(int argc, char** argv)
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, str, sizeof(str));
 		printf("Connection from %s\n", str);
 
-		ticks = time(NULL);
-		snprintf(buff, sizeof(buff), "%.24s\r\n", ctime(&ticks));
-		if (write(connfd, buff, strlen(buff)) < 0)
-			fprintf(stderr, "write error : %s\n", strerror(errno));
-		close(connfd);
+		if ((childpid = fork()) == 0) {	/* child process */
+			close(listenfd);	/* close listening socket */
+			hand_conn(connfd);	/* process the request */
+			exit(0);
+		}
+		close(connfd);			/* parent closes connected socket */
+
+
+
 	}
 }
