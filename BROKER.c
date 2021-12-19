@@ -31,6 +31,7 @@ sig_chld(int signo)
 		printf("child %d terminated\n", pid);
 	return;
 }
+
 ssize_t						/* Write "n" bytes to a descriptor. */
 writen(int fd, const void* vptr, size_t n)
 {
@@ -54,6 +55,7 @@ writen(int fd, const void* vptr, size_t n)
 	return(n);
 }
 /* end writen */
+
 void
 Writen(int fd, void* ptr, size_t nbytes)
 {
@@ -62,7 +64,7 @@ Writen(int fd, void* ptr, size_t nbytes)
 }
 
 void
-handle_request(int sockfd)
+str_echo(int sockfd)
 {
 	ssize_t		n;
 	char		buf[MAXLINE];
@@ -70,13 +72,12 @@ handle_request(int sockfd)
 again:
 	while ((n = read(sockfd, buf, MAXLINE)) > 0)
 		Writen(sockfd, buf, n);
-	printf("%c", buf);
+
 	if (n < 0 && errno == EINTR)
 		goto again;
 	else if (n < 0)
 		perror("str_echo: read error");
 }
-
 
 
 int
@@ -87,8 +88,25 @@ main(int argc, char** argv)
 	socklen_t			clilen;
 	struct sockaddr_in6	cliaddr, servaddr;
 	void				sig_chld(int);
+	//#define SIGCHLD_
+#ifdef SIGCHLD_
+	struct sigaction new_action, old_action;
+
+	/* Set up the structure to specify the new action. */
+	new_action.sa_handler = sig_chld;
+	//  new_action.sa_handler = SIG_IGN;
+	sigemptyset(&new_action.sa_mask);
+	new_action.sa_flags = 0;
+
+	if (sigaction(SIGCHLD, &new_action, &old_action) < 0) {
+		fprintf(stderr, "sigaction error : %s\n", strerror(errno));
+		return 1;
+	}
+
+#endif 
 	//	signal(SIGCHLD, sig_chld);
 	//	signal(SIGCHLD, SIG_IGN);
+
 	if ((listenfd = socket(AF_INET6, SOCK_STREAM, 0)) < 0) {
 		fprintf(stderr, "socket error : %s\n", strerror(errno));
 		return 1;
@@ -97,18 +115,22 @@ main(int argc, char** argv)
 	if (setsockopt(listenfd, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval)) < 0) {
 		fprintf(stderr, "SO_REUSEADDR setsockopt error : %s\n", strerror(errno));
 	}
+
 	bzero(&servaddr, sizeof(servaddr));
 	servaddr.sin6_family = AF_INET6;
 	servaddr.sin6_addr = in6addr_any;
 	servaddr.sin6_port = htons(7);	/* echo server */
+
 	if (bind(listenfd, (struct sockaddr*)&servaddr, sizeof(servaddr)) < 0) {
 		fprintf(stderr, "bind error : %s\n", strerror(errno));
 		return 1;
 	}
+
 	if (listen(listenfd, LISTENQ) < 0) {
 		fprintf(stderr, "listen error : %s\n", strerror(errno));
 		return 1;
 	}
+
 
 
 	for (; ; ) {
@@ -120,9 +142,10 @@ main(int argc, char** argv)
 				perror("accept error");
 			exit(1);
 		}
+
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
-			handle_request(connfd);	/* process the request */
+			str_echo(connfd);	/* process the request */
 			exit(0);
 		}
 		close(connfd);			/* parent closes connected socket */
