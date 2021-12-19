@@ -38,14 +38,7 @@ void
 rcv_msg(int sockfd) {
 	int					n;
 	char				line[MAXLINE + 1];
-	socklen_t			len;
-	struct sockaddr* safrom;
-	struct sockaddr_in6* cliaddr;
-	struct sockaddr_in* cliaddrv4;
-	char			addr_str[INET6_ADDRSTRLEN + 1];
-	//safrom = malloc(salen);
 	//for (; ; ) {
-		//len = salen;
 		if ((n = read(sockfd, line, MAXLINE)) < 0)
 			perror("read() error");
 		line[n] = 0;	/* null terminate */
