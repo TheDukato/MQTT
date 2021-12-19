@@ -13,15 +13,18 @@
 
 #define	SENDRATE	5		/* send one datagram every five seconds */
 void
-hand_conn(int sockfd)
+send_msg(int sockfd)
 {
 	//for (;;) {
 		char lineTS[50];
+		char topic[10];
 		char line[MAXLINE];
 
+		printf("Enter topic:");
+		scanf("%s", topic);
 		printf("Enter msg:");
 		scanf("%s", lineTS);
-		snprintf(line, sizeof(line), "PID=%d, Msg:%s", getpid(), lineTS);
+		snprintf(line, sizeof(line), "Topic=%s, PID=%d, Msg:%s",topic, getpid(), lineTS);
 		//if (sendto(sendfd, line, strlen(line), 0, sadest, salen) < 0)
 		//	fprintf(stderr, "sendto() error : %s\n", strerror(errno));
 		if (write(sockfd, line, MAXLINE) < 0);
@@ -61,7 +64,7 @@ main(int argc, char** argv)
 		return 1;
 	}
 	//////////////////////////////////////////////////////////
-	hand_conn(sockfd);
+	send_msg(sockfd);
 	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
 		recvline[n] = 0;	/* null terminate */
 		if (fputs(recvline, stdout) == EOF) {
