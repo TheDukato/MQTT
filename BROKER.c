@@ -33,6 +33,31 @@ time_conn(int sockfd)
 		fprintf(stderr, "write error : %s\n", strerror(errno));
 	//close(connfd);
 }
+void
+rcv_msg(int sockfd, socklen_t salen) {
+	char				line[MAXLINE + 1];
+	socklen_t			len;
+	struct sockaddr* safrom;
+	safrom = malloc(salen);
+	for (; ; ) {
+		len = salen;
+		if ((n = read(sockfd, line, MAXLINE)) < 0)
+			perror("read() error");
+		line[n] = 0;	/* null terminate */
+
+		if (safrom->sa_family == AF_INET6) {
+			cliaddr = (struct sockaddr_in6*)safrom;
+			inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr->sin6_addr, addr_str, sizeof(addr_str));
+		}
+		else {
+			cliaddrv4 = (struct sockaddr_in*)safrom;
+			inet_ntop(AF_INET, (struct sockaddr*)&cliaddrv4->sin_addr, addr_str, sizeof(addr_str));
+		}
+
+		printf("Datagram from %s : %s (%d bytes)\n", addr_str, line, n);
+		fflush(stdout);
+	}
+}
 int
 main(int argc, char** argv)
 {
@@ -80,6 +105,7 @@ main(int argc, char** argv)
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
 			time_conn(connfd);	/* process the request */
+			rcv_msg(connfd);
 			exit(0);
 		}
 		close(connfd);			/* parent closes connected socket */
