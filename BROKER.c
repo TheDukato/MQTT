@@ -20,7 +20,7 @@
 
 #define LISTENQ 4
 
-
+void
 hand_conn(int sockfd)
 {
 	time_t				ticks;
