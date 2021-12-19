@@ -41,11 +41,13 @@ rcv_msg(int sockfd) {
 }
 void
 rcv_time(int sockfd) {
+	int n;
+	char				recvline[MAXLINE + 1];
+
 	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
 		recvline[n] = 0;	/* null terminate */
 		if (fputs(recvline, stdout) == EOF) {
 			fprintf(stderr, "fputs error : %s\n", strerror(errno));
-			return 1;
 		}
 	}
 }
@@ -54,7 +56,6 @@ main(int argc, char** argv)
 {
 	int					sockfd, n;
 	struct sockaddr_in6	servaddr;
-	char				recvline[MAXLINE + 1];
 	int err;
 
 	if (argc != 2) {
