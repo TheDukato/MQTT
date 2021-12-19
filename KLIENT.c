@@ -27,6 +27,7 @@ send_msg(int sockfd)
 		if (write(sockfd, line, MAXLINE) < 0);
 	//}
 }
+void
 rcv_msg(int sockfd) {
 	int					n;
 	char				line[MAXLINE + 1];
