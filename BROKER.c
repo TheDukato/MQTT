@@ -45,7 +45,7 @@ rcv_msg(int sockfd) {
 	char			addr_str[INET6_ADDRSTRLEN + 1];
 	//safrom = malloc(salen);
 	//for (; ; ) {
-		len = salen;
+		//len = salen;
 		if ((n = read(sockfd, line, MAXLINE)) < 0)
 			perror("read() error");
 		line[n] = 0;	/* null terminate */
