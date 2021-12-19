@@ -72,7 +72,7 @@ hand_conn(int sockfd)
 again:
 	while ((n = read(sockfd, buf, MAXLINE)) > 0)
 		Writen(sockfd, buf, n);
-
+	printf("%c", buf);
 	if (n < 0 && errno == EINTR)
 		goto again;
 	else if (n < 0)
