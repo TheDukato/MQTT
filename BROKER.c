@@ -43,14 +43,14 @@ rcv_msg(int sockfd, socklen_t salen) {
 	struct sockaddr_in* cliaddrv4;
 	char			addr_str[INET6_ADDRSTRLEN + 1];
 	safrom = malloc(salen);
-	for (; ; ) {
+	//for (; ; ) {
 		len = salen;
 		if ((n = read(sockfd, line, MAXLINE)) < 0)
 			perror("read() error");
 		line[n] = 0;	/* null terminate */
 		printf("%s (%d bytes)\n", line, n);
 		fflush(stdout);
-	}
+	//}
 }
 int
 main(int argc, char** argv)
