@@ -72,7 +72,7 @@ main(int argc, char** argv)
 	}
 	//////////////////////////////////////////////////////////
 	send_msg(sockfd);
-	rcv_msg(sockfd)
+	rcv_msg(sockfd);
 	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
 		recvline[n] = 0;	/* null terminate */
 		if (fputs(recvline, stdout) == EOF) {
