@@ -23,9 +23,12 @@
 
 hand_conn(int sockfd)
 {
+	time_t				ticks;
+	char				buff[MAXLINE];
+
 	ticks = time(NULL);
 	snprintf(buff, sizeof(buff), "%.24s\r\n", ctime(&ticks));
-	if (write(connfd, buff, strlen(buff)) < 0)
+	if (write(sockfd, buff, strlen(buff)) < 0)
 		fprintf(stderr, "write error : %s\n", strerror(errno));
 	close(connfd);
 }
@@ -36,8 +39,8 @@ main(int argc, char** argv)
 	int				listenfd, connfd;
 	socklen_t			len;
 	char				buff[MAXLINE], str[INET6_ADDRSTRLEN + 1];
-	time_t				ticks;
 	struct sockaddr_in6	servaddr, cliaddr;
+	pid_t				childpid;
 
 	if ((listenfd = socket(AF_INET6, SOCK_STREAM, 0)) < 0) {
 		fprintf(stderr, "socket error : %s\n", strerror(errno));
