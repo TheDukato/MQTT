@@ -42,7 +42,7 @@ main(int argc, char** argv)
 		fprintf(stderr, "connect error : %s \n", strerror(errno));
 		return 1;
 	}
-
+	//////////////////////////////////////////////////////////
 	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
 		recvline[n] = 0;	/* null terminate */
 		if (fputs(recvline, stdout) == EOF) {
@@ -50,7 +50,7 @@ main(int argc, char** argv)
 			return 1;
 		}
 	}
-
+	/////////////////////////////////////////////////////////////
 	if (n < 0)
 		fprintf(stderr, "read error : %s\n", strerror(errno));
 

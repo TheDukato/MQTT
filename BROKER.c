@@ -22,7 +22,7 @@
 #define LISTENQ 4
 
 void
-hand_conn(int sockfd)
+time_conn(int sockfd)
 {
 	time_t				ticks;
 	char				buff[MAXLINE];
@@ -32,6 +32,23 @@ hand_conn(int sockfd)
 	if (write(sockfd, buff, strlen(buff)) < 0)
 		fprintf(stderr, "write error : %s\n", strerror(errno));
 	//close(connfd);
+}
+#define	SENDRATE	5		/* send one datagram every five seconds */
+void
+hand_conn(int sockfd)
+{
+	for (;;) {
+		char lineTS[50];
+		char line[MAXLINE];
+
+		printf("Enter msg:");
+		scanf("%s", lineTS);
+		snprintf(line, sizeof(line), "PID=%d, Msg:%s", getpid(), lineTS);
+		//if (sendto(sendfd, line, strlen(line), 0, sadest, salen) < 0)
+		//	fprintf(stderr, "sendto() error : %s\n", strerror(errno));
+		if (write(socket, line, MAXLINE) < 0)
+			sleep(SENDRATE);
+	}
 }
 
 int
@@ -73,7 +90,7 @@ main(int argc, char** argv)
 			fprintf(stderr, "accept error : %s\n", strerror(errno));
 			continue;
 		}
-
+		////////////////////////////
 		bzero(str, sizeof(str));
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, str, sizeof(str));
 		printf("Connection from %s\n", str);
@@ -81,12 +98,10 @@ main(int argc, char** argv)
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
 			hand_conn(connfd);	/* process the request */
+			time_conn(connfd);
 			exit(0);
 		}
-		sleep(2);
 		close(connfd);			/* parent closes connected socket */
-
-
-
+		/////////////////////////////
 	}
 }
