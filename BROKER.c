@@ -33,24 +33,6 @@ time_conn(int sockfd)
 		fprintf(stderr, "write error : %s\n", strerror(errno));
 	//close(connfd);
 }
-#define	SENDRATE	5		/* send one datagram every five seconds */
-void
-hand_conn(int sockfd)
-{
-	for (;;) {
-		char lineTS[50];
-		char line[MAXLINE];
-
-		printf("Enter msg:");
-		scanf("%s", lineTS);
-		snprintf(line, sizeof(line), "PID=%d, Msg:%s", getpid(), lineTS);
-		//if (sendto(sendfd, line, strlen(line), 0, sadest, salen) < 0)
-		//	fprintf(stderr, "sendto() error : %s\n", strerror(errno));
-		if (write(sockfd, line, MAXLINE) < 0)
-			sleep(SENDRATE);
-	}
-}
-
 int
 main(int argc, char** argv)
 {
@@ -97,8 +79,7 @@ main(int argc, char** argv)
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
-			hand_conn(connfd);	/* process the request */
-			time_conn(connfd);
+			time_conn(connfd);	/* process the request */
 			exit(0);
 		}
 		close(connfd);			/* parent closes connected socket */

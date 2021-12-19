@@ -11,6 +11,24 @@
 #define MAXLINE 1023
 #define SA      struct sockaddr
 
+#define	SENDRATE	5		/* send one datagram every five seconds */
+void
+hand_conn(int sockfd)
+{
+	for (;;) {
+		char lineTS[50];
+		char line[MAXLINE];
+
+		printf("Enter msg:");
+		scanf("%s", lineTS);
+		snprintf(line, sizeof(line), "PID=%d, Msg:%s", getpid(), lineTS);
+		//if (sendto(sendfd, line, strlen(line), 0, sadest, salen) < 0)
+		//	fprintf(stderr, "sendto() error : %s\n", strerror(errno));
+		if (write(sockfd, line, MAXLINE) < 0)
+			sleep(SENDRATE);
+	}
+}
+
 int
 main(int argc, char** argv)
 {
@@ -43,6 +61,7 @@ main(int argc, char** argv)
 		return 1;
 	}
 	//////////////////////////////////////////////////////////
+	hand_conn(sockfd);
 	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
 		recvline[n] = 0;	/* null terminate */
 		if (fputs(recvline, stdout) == EOF) {
