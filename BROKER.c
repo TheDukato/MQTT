@@ -48,11 +48,7 @@ rcv_msg(int sockfd, socklen_t salen) {
 		if ((n = read(sockfd, line, MAXLINE)) < 0)
 			perror("read() error");
 		line[n] = 0;	/* null terminate */
-		if (safrom->sa_family == AF_INET6) {
-			cliaddr = (struct sockaddr_in6*)safrom;
-			inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr->sin6_addr, addr_str, sizeof(addr_str));
-		}
-		printf("Datagram from %s : %s (%d bytes)\n", addr_str, line, n);
+		printf("%s (%d bytes)\n", line, n);
 		fflush(stdout);
 	}
 }
