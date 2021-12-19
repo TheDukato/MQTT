@@ -30,7 +30,7 @@ hand_conn(int sockfd)
 	snprintf(buff, sizeof(buff), "%.24s\r\n", ctime(&ticks));
 	if (write(sockfd, buff, strlen(buff)) < 0)
 		fprintf(stderr, "write error : %s\n", strerror(errno));
-	close(connfd);
+	//close(connfd);
 }
 
 int
