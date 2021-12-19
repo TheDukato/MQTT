@@ -39,7 +39,16 @@ rcv_msg(int sockfd) {
 	fflush(stdout);
 	//}
 }
-
+void
+rcv_time(int sockfd) {
+	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
+		recvline[n] = 0;	/* null terminate */
+		if (fputs(recvline, stdout) == EOF) {
+			fprintf(stderr, "fputs error : %s\n", strerror(errno));
+			return 1;
+		}
+	}
+}
 int
 main(int argc, char** argv)
 {
@@ -74,13 +83,8 @@ main(int argc, char** argv)
 	//////////////////////////////////////////////////////////
 	send_msg(sockfd);
 	rcv_msg(sockfd);
-	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
-		recvline[n] = 0;	/* null terminate */
-		if (fputs(recvline, stdout) == EOF) {
-			fprintf(stderr, "fputs error : %s\n", strerror(errno));
-			return 1;
-		}
-	}
+	rcv_time(sockfd);
+
 	/////////////////////////////////////////////////////////////
 	if (n < 0)
 		fprintf(stderr, "read error : %s\n", strerror(errno));
