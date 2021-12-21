@@ -46,7 +46,7 @@ rcv_msg(int sockfd) {
 		fflush(stdout);
 	//}
 }
-char*
+char
 rcv_fun(int sockfd) {
 	int					n;
 	char				line[4];
@@ -55,7 +55,7 @@ rcv_fun(int sockfd) {
 	line[n] = 0;	/* null terminate */
 	//printf("%s (%d bytes)\n", line, n);
 	fflush(stdout);
-	return line;
+	return *line;
 }
 int
 main(int argc, char** argv)
@@ -103,8 +103,8 @@ main(int argc, char** argv)
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
-			char fun[4];
-			fun* = rcv_fun(connfd);
+			string fun;
+			fun = rcv_fun(connfd);
 			printf("Connection from %s as %s\n", str);
 
 			send_time(connfd);	/* process the request */
