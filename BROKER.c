@@ -104,7 +104,7 @@ main(int argc, char** argv)
 			close(listenfd);	/* close listening socket */
 
 			printf("Connection from %s\n", str);
-			printf("Function: %s", rcv_fun(connfd);
+			printf("Function: %s", rcv_fun(connfd));
 
 			send_time(connfd);	/* process the request */
 			rcv_msg(connfd);//, sizeof(servaddr)
