@@ -47,19 +47,20 @@ void
 rcv_msg(int sockfd) {
 	int					n;
 	char				line[MAXLINE + 1];
-	/*for (; ; ) {
+	//for (; ; ) {
 	if ((n = read(sockfd, line, MAXLINE)) < 0)
 		perror("read() error");
-	line[n] = 0;	/* null terminate *//*
+	line[n] = 0;	/* null terminate */
 	printf("%s (%d bytes)\n", line, n);
 	fflush(stdout);
-	}*/
+	//}
+	/*
 	while ((n = read(sockfd, line, MAXLINE)) > 0) {
-		line[n] = 0;	/* null terminate */
+		line[n] = 0;	/* null terminate *//*
 		if (fputs(line, stdout) == EOF) {
 			fprintf(stderr, "fputs error : %s\n", strerror(errno));
 		}
-	}
+	}*/
 }
 int
 main(int argc, char** argv)
