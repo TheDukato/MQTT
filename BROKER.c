@@ -53,7 +53,7 @@ rcv_fun(int sockfd) {
 	if ((n = read(sockfd, line, MAXLINE)) < 0)
 		perror("read() error");
 	line[n] = 0;	/* null terminate */
-	//printf("%s (%d bytes)\n", line, n);
+	printf("%s\n", line);
 	fflush(stdout);
 	return *line;
 }
