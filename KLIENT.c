@@ -54,7 +54,7 @@ rcv_msg(int sockfd) {
 	printf("%s (%d bytes)\n", line, n);
 	fflush(stdout);
 	}*/
-	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
+	while ((n = read(sockfd, line, MAXLINE)) > 0) {
 		recvline[n] = 0;	/* null terminate */
 		if (fputs(recvline, stdout) == EOF) {
 			fprintf(stderr, "fputs error : %s\n", strerror(errno));
