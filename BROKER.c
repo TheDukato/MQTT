@@ -99,7 +99,7 @@ main(int argc, char** argv)
 		////////////////////////////
 		bzero(str, sizeof(str));
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, str, sizeof(str));
-		printf("Connection from %s as %s\n", str);
+		printf("Connection from %s\n", str);
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
