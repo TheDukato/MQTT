@@ -61,18 +61,6 @@ rcv_msg(int sockfd) {
 		}
 	}
 }
-void
-rcv_time(int sockfd) {
-	int n;
-	char				recvline[MAXLINE + 1];
-
-	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
-		recvline[n] = 0;	/* null terminate */
-		if (fputs(recvline, stdout) == EOF) {
-			fprintf(stderr, "fputs error : %s\n", strerror(errno));
-		}
-	}
-}
 int
 main(int argc, char** argv)
 {
@@ -114,8 +102,7 @@ main(int argc, char** argv)
 		break;
 	case 2 :
 		send_sub(sockfd);
-		//rcv_msg(sockfd);
-		rcv_time(sockfd);
+		rcv_msg(sockfd);
 		break;
 	default :
 		break;
