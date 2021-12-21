@@ -22,7 +22,7 @@
 #define LISTENQ 4
 
 void
-time_conn(int sockfd)
+send_time(int sockfd)
 {
 	time_t				ticks;
 	char				buff[MAXLINE];
@@ -92,7 +92,7 @@ main(int argc, char** argv)
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
-			time_conn(connfd);	/* process the request */
+			send_time(connfd);	/* process the request */
 			rcv_msg(connfd);//, sizeof(servaddr)
 			exit(0);
 		}
