@@ -82,10 +82,21 @@ main(int argc, char** argv)
 		return 1;
 	}
 	//////////////////////////////////////////////////////////
-	send_msg(sockfd);
-	rcv_msg(sockfd);
-	rcv_time(sockfd);
+	int choose1;
+	printf("Who am i?\n1.Subscriber\n2.Publisher\nChoose number: ");
+	scanf("%d", choose1);
+	switch (choose1) {
+	case 1:
+		send_msg(sockfd);
+		break;
+	case 2:
+		rcv_msg(sockfd);
+		rcv_time(sockfd);
+		break;
+	default:
+		break;
 
+	}
 	/////////////////////////////////////////////////////////////
 	if (n < 0)
 		fprintf(stderr, "read error : %s\n", strerror(errno));
