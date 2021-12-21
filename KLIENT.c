@@ -31,13 +31,13 @@ void
 rcv_msg(int sockfd) {
 	int					n;
 	char				line[MAXLINE + 1];
-	//for (; ; ) {
+	for (; ; ) {
 	if ((n = read(sockfd, line, MAXLINE)) < 0)
 		perror("read() error");
 	line[n] = 0;	/* null terminate */
 	printf("%s (%d bytes)\n", line, n);
 	fflush(stdout);
-	//}
+	}
 }
 void
 rcv_time(int sockfd) {
