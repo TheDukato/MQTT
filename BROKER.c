@@ -103,9 +103,9 @@ main(int argc, char** argv)
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
-			//char fun[4];
-			//fun = ;
-			printf("Function: %s\n", rcv_fun(connfd));
+
+			//printf("Function: %s\n", rcv_fun(connfd));
+			printf("Function: ");
 
 			send_time(connfd);	/* process the request */
 			rcv_msg(connfd);//, sizeof(servaddr)
