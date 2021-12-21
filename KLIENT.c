@@ -17,7 +17,7 @@ send_sub(int sockfd)
 	char line[4];
 	snprintf(line, sizeof(line), "sub");
 	if (write(sockfd, line, MAXLINE) < 0);
-	prinft("Sending function as Subscriber\n");
+	printf("Sending function as Subscriber\n");
 }
 void
 send_pub(int sockfd)
@@ -25,7 +25,7 @@ send_pub(int sockfd)
 	char line[4];
 	snprintf(line, sizeof(line), "pub");
 	if (write(sockfd, line, MAXLINE) < 0);
-	prinft("Sending function as Publisher\n");
+	printf("Sending function as Publisher\n");
 }
 void
 send_msg(int sockfd)
