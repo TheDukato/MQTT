@@ -14,12 +14,14 @@
 void
 send_sub(int sockfd)
 {
+	char line[4];
 	snprintf(line, sizeof(line), "sub");
 	if (write(sockfd, line, MAXLINE) < 0);
 }
 void
 send_pub(int sockfd)
 {
+	char line[4];
 	snprintf(line, sizeof(line), "pub");
 	if (write(sockfd, line, MAXLINE) < 0);
 
