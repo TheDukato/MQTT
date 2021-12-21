@@ -83,7 +83,7 @@ main(int argc, char** argv)
 	}
 	//////////////////////////////////////////////////////////
 	int choose1;
-	printf("Who am i?\n1.Subscriber\n2.Publisher\nChoose number: ");
+	printf("Who am i?\n1.Publisher\n2.Subscriber\nChoose number: ");
 	scanf("%d", &choose1);
 	switch (choose1) {
 	case 1 :
