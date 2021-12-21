@@ -99,13 +99,12 @@ main(int argc, char** argv)
 		////////////////////////////
 		bzero(str, sizeof(str));
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, str, sizeof(str));
-		printf("Connection from %s\n", str);
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
 
-			//printf("Function: %s\n", rcv_fun(connfd));
-			printf("Function: ");
+			printf("Connection from %s\n", str);
+			printf("Function: %s", rcv_fun(connfd);
 
 			send_time(connfd);	/* process the request */
 			rcv_msg(connfd);//, sizeof(servaddr)
