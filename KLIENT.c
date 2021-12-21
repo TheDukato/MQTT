@@ -84,16 +84,16 @@ main(int argc, char** argv)
 	//////////////////////////////////////////////////////////
 	int choose1;
 	printf("Who am i?\n1.Subscriber\n2.Publisher\nChoose number: ");
-	scanf("%d", choose1);
+	scanf("%d", &choose1);
 	switch (choose1) {
-	case 1:
+	case 1 :
 		send_msg(sockfd);
 		break;
-	case 2:
+	case 2 :
 		rcv_msg(sockfd);
 		rcv_time(sockfd);
 		break;
-	default:
+	default :
 		break;
 
 	}
