@@ -103,7 +103,7 @@ main(int argc, char** argv)
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
-			string fun;
+			char fun[];
 			fun = rcv_fun(connfd);
 			printf("Connection from %s as %s\n", str);
 
