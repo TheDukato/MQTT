@@ -114,8 +114,8 @@ main(int argc, char** argv)
 		break;
 	case 2 :
 		send_sub(sockfd);
-		rcv_msg(sockfd);
-		//rcv_time(sockfd);
+		//rcv_msg(sockfd);
+		rcv_time(sockfd);
 		break;
 	default :
 		break;
