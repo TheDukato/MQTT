@@ -46,6 +46,17 @@ rcv_msg(int sockfd) {
 		fflush(stdout);
 	//}
 }
+char
+rcv_fun(int sockfd) {
+	int					n;
+	char				line[4];
+	if ((n = read(sockfd, line, MAXLINE)) < 0)
+		perror("read() error");
+	line[n] = 0;	/* null terminate */
+	//printf("%s (%d bytes)\n", line, n);
+	fflush(stdout);
+	return line;
+}
 int
 main(int argc, char** argv)
 {
@@ -88,10 +99,14 @@ main(int argc, char** argv)
 		////////////////////////////
 		bzero(str, sizeof(str));
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, str, sizeof(str));
-		printf("Connection from %s\n", str);
+
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
+			char fun[4];
+			fun = rcv_fun(connfd);
+			printf("Connection from %s as %s\n", str);
+
 			send_time(connfd);	/* process the request */
 			rcv_msg(connfd);//, sizeof(servaddr)
 			exit(0);

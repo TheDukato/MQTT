@@ -12,6 +12,19 @@
 #define SA      struct sockaddr
 
 void
+send_sub(int sockfd)
+{
+	snprintf(line, sizeof(line), "sub");
+	if (write(sockfd, line, MAXLINE) < 0);
+}
+void
+send_pub(int sockfd)
+{
+	snprintf(line, sizeof(line), "pub");
+	if (write(sockfd, line, MAXLINE) < 0);
+
+}
+void
 send_msg(int sockfd)
 {
 	//for (;;) {
@@ -87,9 +100,11 @@ main(int argc, char** argv)
 	scanf("%d", &choose1);
 	switch (choose1) {
 	case 1 :
+		send_pub(sockfd);
 		send_msg(sockfd);
 		break;
 	case 2 :
+		send_sub(sockfd);
 		rcv_msg(sockfd);
 		//rcv_time(sockfd);
 		break;
