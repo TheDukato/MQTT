@@ -108,7 +108,7 @@ main(int argc, char** argv)
 			rcv_fun(connfd);
 
 			send_time(connfd);	/* process the request */
-			rcv_msg(connfd);
+			//rcv_msg(connfd);
 			exit(0);
 		}
 		close(connfd);			/* parent closes connected socket */
