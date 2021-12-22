@@ -56,13 +56,16 @@ rcv_msg(int sockfd) {
 	//fflush(stdout);
 	//}
 	
-	//oczekiwanie na przyjêcie danych  
+	//oczekiwanie na przyjêcie danych 
+	printf("Zaczynam czekac\n");
 	for (;;) {
 		if ((n = read(sockfd, line, MAXLINE)) == 0) {
+			pritnf("Koniec czekania\n");
 			break;
 		}
 	}
 	//odbior
+	printf("Odbieram...\n");
 	while ((n = read(sockfd, line, MAXLINE)) > 0) {
 		line[n] = 0;	// null terminate 
 		if (fputs(line, stdout) == EOF) {
