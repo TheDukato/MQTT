@@ -128,7 +128,7 @@ main(int argc, char** argv)
 
 
 	int choose1;
-	printf("Who am i?\n1.Publisher\n2.Subscriber\nChoose number: ");
+	printf("Who am i?\n1.Publisher\n2.Subscriber\n3.Rcv\nChoose number: ");
 	scanf("%d", &choose1);
 	switch (choose1) {
 	case 1 :
@@ -136,8 +136,11 @@ main(int argc, char** argv)
 		send_msg(sockfd);
 		break;
 	case 2 :
-		//send_sub(sockfd);
-		rcv_msg(sockfd);
+		send_sub(sockfd);
+		//rcv_msg(sockfd);
+		break;
+	case 3 :
+
 		break;
 	default :
 		break;

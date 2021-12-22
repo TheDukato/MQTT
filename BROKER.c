@@ -104,7 +104,7 @@ main(int argc, char** argv)
 			close(listenfd);	/* close listening socket */
 			//Poczatek polaczenia
 			printf("Connection from %s as ", str);
-			//rcv_fun(connfd);
+			rcv_fun(connfd);
 			//Jeszcze dodanie zapisu do bazy jesli sub dopasowanie lista Subscribes [IP] [TOPIC] 
 			//
 			//
