@@ -97,6 +97,9 @@ main(int argc, char** argv)
 			continue;
 		}
 		////////////////////////////
+		int					n;
+		char				line[4];
+
 		bzero(str, sizeof(str));
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, str, sizeof(str));
 
@@ -104,7 +107,17 @@ main(int argc, char** argv)
 			close(listenfd);	/* close listening socket */
 			//Poczatek polaczenia
 			printf("Connection from %s as ", str);
-			rcv_fun(connfd);
+			//Czytanie funkcji podlaczonego adresu
+			if ((n = read(sockfd, line, MAXLINE)) < 0)
+				perror("read() error");
+			line[n] = 0;	/* null terminate */
+			printf("%s\n", line);
+			fflush(stdout);
+			//
+			//rcv_fun(connfd);
+			// 
+			// 
+			// 
 			//Jeszcze dodanie zapisu do bazy jesli sub dopasowanie lista Subscribes [IP] [TOPIC] 
 			//
 			//
