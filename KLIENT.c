@@ -106,14 +106,7 @@ main(int argc, char** argv)
 		return 1;
 	}
 	//////////////////////////////////////////////////////////
-	char				recvline[MAXLINE + 1];
-	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
-		recvline[n] = 0;	/* null terminate */
-		if (fputs(recvline, stdout) == EOF) {
-			fprintf(stderr, "fputs error : %s\n", strerror(errno));
-			return 1;
-		}
-	}
+
 
 
 
@@ -127,6 +120,14 @@ main(int argc, char** argv)
 		break;
 	case 2 :
 		//send_sub(sockfd);
+		char				recvline[MAXLINE + 1];
+		while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
+			recvline[n] = 0;	/* null terminate */
+			if (fputs(recvline, stdout) == EOF) {
+				fprintf(stderr, "fputs error : %s\n", strerror(errno));
+				return 1;
+			}
+		}
 		rcv_msg(sockfd);
 		break;
 	default :
