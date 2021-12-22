@@ -140,7 +140,7 @@ main(int argc, char** argv)
 		//rcv_msg(sockfd);
 		break;
 	case 3 :
-
+		rcv_msg(sockfd);
 		break;
 	default :
 		break;
