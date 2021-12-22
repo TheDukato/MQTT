@@ -90,8 +90,8 @@ main(int argc, char** argv)
 		break;
 	case 3 :
 		printf("Czekam na dane\n");
-		//for (;;) {
-			while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
+		for (;;) {
+				if ((n = read(sockfd, recvline, MAXLINE)) > 0) {
 				printf("Odbieram...\n");
 				recvline[n] = 0;	/* null terminate */
 				if (fputs(recvline, stdout) == EOF) {
@@ -99,7 +99,7 @@ main(int argc, char** argv)
 				}
 				break;//do usuniecia
 			}
-		//}
+		}
 		break;
 	default :
 		break;
