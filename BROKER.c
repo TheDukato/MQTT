@@ -102,15 +102,15 @@ main(int argc, char** argv)
 			//Poczatek polaczenia
 			printf("Connection from %s as ", pierwszy.IP);
 			//Czytanie funkcji podlaczonego adresu
-			if ((n = read(connfd, line, MAXLINE)) < 0)
+			if ((n = read(connfd, pierwszy.TOPIC, MAXLINE)) < 0)
 				perror("read() error");
-			if (strcmp( line, "sub")==1) {
+			if (strcmp(pierwszy.TOPIC, "sub")==1) {
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
 				//
 			}
-			line[n] = 0;	/* null terminate */
-			printf("%s\n", line);
+			pierwszy.TOPIC[n] = 0;	/* null terminate */
+			printf("%s\n", pierwszy.TOPIC);
  
 
 				send_time(connfd);	/* process the request */
