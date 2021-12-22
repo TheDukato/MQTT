@@ -57,7 +57,9 @@ rcv_msg(int sockfd) {
 	//}
 	
 	//oczekiwanie na przyjêcie danych  
-
+	for (;;) {
+		if ((n = read(sockfd, line, MAXLINE)) == 0)break;
+	}
 	//odbior
 	while ((n = read(sockfd, line, MAXLINE)) > 0) {
 		line[n] = 0;	// null terminate 
@@ -66,12 +68,7 @@ rcv_msg(int sockfd) {
 		}
 		printf("%s (%d bytes)\n", line, n);
 	}
-	if ((n = read(sockfd, line, MAXLINE)) == 0) {
-		printf("Nawet nie czekalem bo 0\n");
-	}
-	if ((n = read(sockfd, line, MAXLINE)) < 0) {
-		printf("Nawet nie czekalem bo < 0\n");
-	}
+
 }
 int
 main(int argc, char** argv)
