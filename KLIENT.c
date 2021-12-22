@@ -136,15 +136,7 @@ main(int argc, char** argv)
 		send_msg(sockfd);
 		break;
 	case 2 :
-		//send_sub(sockfd);
-		
-//		while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
-//			recvline[n] = 0;	/* null terminate */
-//			if (fputs(recvline, stdout) == EOF) {
-//				fprintf(stderr, "fputs error : %s\n", strerror(errno));
-//				return 1;
-//			}
-//		}
+		send_sub(sockfd);
 		rcv_msg(sockfd);
 		break;
 	default :
