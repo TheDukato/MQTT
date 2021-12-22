@@ -112,7 +112,7 @@ main(int argc, char** argv)
 				perror("read() error");
 			line[n] = 0;	/* null terminate */
 			printf("%s\n", line);
-			fflush(stdout);
+			//fflush(stdout);
 			//
 			//rcv_fun(connfd);
 			// 
