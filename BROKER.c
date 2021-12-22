@@ -101,7 +101,7 @@ main(int argc, char** argv)
 		char				line[4];
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
-			char FUN[4];
+			char TOPIC[10];
 		};
 		struct subscribers pierwszy;
 		bzero(pierwszy.IP, sizeof(pierwszy.IP));
@@ -110,7 +110,7 @@ main(int argc, char** argv)
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
 			//Poczatek polaczenia
-			printf("Connection from %s as ", pierwszy.IP);
+			printf("Connection from %s as \n", pierwszy.IP);
 			//Czytanie funkcji podlaczonego adresu
 			//if ((n = read(connfd, line, MAXLINE)) < 0)
 			//	perror("read() error");

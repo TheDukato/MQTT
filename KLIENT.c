@@ -43,55 +43,6 @@ send_msg(int sockfd)
 		if (write(sockfd, line, MAXLINE) < 0);
 	//}
 }
-void
-rcv_msg(int sockfd) {
-	int					n;
-	char				line[MAXLINE + 1];
-	//for (; ; ) {
-	//if ((n = read(sockfd, line, MAXLINE)) < 0)
-	//	perror("read() error");
-	//line[n] = 0;	/* null terminate */
-	//printf("%s (%d bytes)\n", line, n);
-	//printf("%s\n", line, n);
-	//fflush(stdout);
-	//}
-	char				recvline[MAXLINE + 1];
-
-
-
-
-
-
-
-	//oczekiwanie na przyjêcie danych 
-	printf("Zaczynam czekac\n");
-	for (;;) {
-		//if ((n = read(sockfd, line, MAXLINE)) > 0) {
-		//	printf("Koniec czekania\n");
-		//	break;
-		//}
-		while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
-			printf("Odbieram...\n");
-			recvline[n] = 0;	/* null terminate */
-			if (fputs(recvline, stdout) == EOF) {
-				fprintf(stderr, "fputs error : %s\n", strerror(errno));
-			}
-			break;//do usuniecia
-		}
-	}
-	//odbior
-	
-
-	/*
-	while ((n = read(sockfd, line, MAXLINE)) > 0) {
-		line[n] = 0;	// null terminate 
-		if (fputs(line, stdout) == EOF) {
-			fprintf(stderr, "fputs error : %s\n", strerror(errno));
-		}
-		printf("%s (%d bytes)\n", line, n);
-	}
-	*/
-}
 int
 main(int argc, char** argv)
 {
@@ -137,10 +88,19 @@ main(int argc, char** argv)
 		break;
 	case 2 :
 		send_sub(sockfd);
-		//rcv_msg(sockfd);
 		break;
 	case 3 :
-		rcv_msg(sockfd);
+		printf("Czekam na dane\n");
+		for (;;) {
+			while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
+				printf("Odbieram...\n");
+				recvline[n] = 0;	/* null terminate */
+				if (fputs(recvline, stdout) == EOF) {
+					fprintf(stderr, "fputs error : %s\n", strerror(errno));
+				}
+				break;//do usuniecia
+			}
+		}
 		break;
 	default :
 		break;
