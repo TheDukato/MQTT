@@ -60,7 +60,7 @@ rcv_msg(int sockfd) {
 	printf("Zaczynam czekac\n");
 	for (;;) {
 		if ((n = read(sockfd, line, MAXLINE)) == 0) {
-			pritnf("Koniec czekania\n");
+			printf("Koniec czekania\n");
 			break;
 		}
 	}
