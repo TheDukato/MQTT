@@ -15,11 +15,12 @@ void
 send_sub(int sockfd)
 {
 	char topic[30];
+	char fun[4] = "sub";
 	char line[MAXLINE];
 	printf("Enter topic to subscribe: ");
 	scanf("%s", topic);
-	strcat(topic, "sub");
-	snprintf(line, sizeof(line), topic);
+	strcat(sub, topic);
+	snprintf(line, sizeof(line), sub);
 	if (write(sockfd, line, MAXLINE) < 0);
 	//printf("Sending function as Subscriber\n");
 }
