@@ -121,7 +121,7 @@ main(int argc, char** argv)
 				send_time(connfd);	/* process the request */
 				send_time(connfd);
 				send_time(connfd);
-				spleep(5);
+				sleep(5);
 				send_time(connfd);
 
 			exit(0);
