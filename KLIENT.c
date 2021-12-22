@@ -78,14 +78,10 @@ main(int argc, char** argv)
 	char				recvline[MAXLINE + 1];
 	int choose1;
 
-	printf("Who am i?\n1.Publisher\n2.Subscriber\n3.Rcv\nChoose number: ");
+	printf("Who am i?\n1.Rcv\n2.Rcv\n3.Subscriber\n4.Publisher\n5.Rcv\nChoose number: ");
 	scanf("%d", &choose1);
 	switch (choose1) {
-	case 1 :
-		send_pub(sockfd);
-		send_msg(sockfd);
-		break;
-	case 2 :
+	case 3:
 		send_sub(sockfd);
 		printf("\nCzekam na dane\n");
 		for (;;) {
@@ -99,7 +95,11 @@ main(int argc, char** argv)
 			}
 		}
 		break;
-	case 3 :
+	case 4 :
+		send_pub(sockfd);
+		send_msg(sockfd);
+		break;
+	case 5 :
 		printf("Czekam na dane\n");
 		for (;;) {
 				if ((n = read(sockfd, recvline, MAXLINE)) > 0) {
