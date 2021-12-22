@@ -107,7 +107,7 @@ main(int argc, char** argv)
 	}
 	//////////////////////////////////////////////////////////
 
-
+	char				recvline[MAXLINE + 1];
 
 
 	int choose1;
@@ -120,7 +120,7 @@ main(int argc, char** argv)
 		break;
 	case 2 :
 		//send_sub(sockfd);
-		char				recvline[MAXLINE + 1];
+		
 		while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
 			recvline[n] = 0;	/* null terminate */
 			if (fputs(recvline, stdout) == EOF) {
