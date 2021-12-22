@@ -103,14 +103,14 @@ main(int argc, char** argv)
 			char IP[INET6_ADDRSTRLEN + 1];
 			char FUN[4];
 		};
-
-		bzero(subscribers->IP, sizeof(subscribers->IP));
-		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, subscribers->IP, sizeof(subscribers->IP));
+		subscribers pierwszy;
+		bzero(pierwszy->IP, sizeof(pierwszy->IP));
+		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy->IP, sizeof(pierwszy->IP));
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
 			//Poczatek polaczenia
-			printf("Connection from %s as ", subscribers->IP);
+			printf("Connection from %s as ", pierwszy->IP);
 			//Czytanie funkcji podlaczonego adresu
 			if ((n = read(connfd, line, MAXLINE)) < 0)
 				perror("read() error");
