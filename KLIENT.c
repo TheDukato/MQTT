@@ -106,8 +106,17 @@ main(int argc, char** argv)
 		return 1;
 	}
 	//////////////////////////////////////////////////////////
+	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
+		recvline[n] = 0;	/* null terminate */
+		if (fputs(recvline, stdout) == EOF) {
+			fprintf(stderr, "fputs error : %s\n", strerror(errno));
+			return 1;
+		}
+	}
+
+
+
 	int choose1;
-	rcv_msg(sockfd);
 	printf("Who am i?\n1.Publisher\n2.Subscriber\nChoose number: ");
 	scanf("%d", &choose1);
 	switch (choose1) {
