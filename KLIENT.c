@@ -57,13 +57,7 @@ rcv_msg(int sockfd) {
 	//}
 	char				recvline[MAXLINE + 1];
 
-	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
-		recvline[n] = 0;	/* null terminate */
-		if (fputs(recvline, stdout) == EOF) {
-			fprintf(stderr, "fputs error : %s\n", strerror(errno));
-			//return 1;
-		}
-	}
+
 
 
 
@@ -79,6 +73,13 @@ rcv_msg(int sockfd) {
 	}
 	//odbior
 	printf("Odbieram...\n");
+	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
+		recvline[n] = 0;	/* null terminate */
+		if (fputs(recvline, stdout) == EOF) {
+			fprintf(stderr, "fputs error : %s\n", strerror(errno));
+		}
+	}
+	/*
 	while ((n = read(sockfd, line, MAXLINE)) > 0) {
 		line[n] = 0;	// null terminate 
 		if (fputs(line, stdout) == EOF) {
@@ -86,7 +87,7 @@ rcv_msg(int sockfd) {
 		}
 		printf("%s (%d bytes)\n", line, n);
 	}
-
+	*/
 }
 int
 main(int argc, char** argv)
