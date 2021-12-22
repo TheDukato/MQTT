@@ -103,7 +103,7 @@ main(int argc, char** argv)
 			char IP[INET6_ADDRSTRLEN + 1];
 			char FUN[4];
 		};
-		subscribers pierwszy;
+		struct subscribers pierwszy;
 		bzero(pierwszy->IP, sizeof(pierwszy->IP));
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy->IP, sizeof(pierwszy->IP));
 
