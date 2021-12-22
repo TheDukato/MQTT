@@ -58,7 +58,9 @@ rcv_msg(int sockfd) {
 	
 	//oczekiwanie na przyjêcie danych  
 	for (;;) {
-		if ((n = read(sockfd, line, MAXLINE)) == 0)break;
+		if ((n = read(sockfd, line, MAXLINE)) == 0) {
+			break;
+		}
 	}
 	//odbior
 	while ((n = read(sockfd, line, MAXLINE)) > 0) {
