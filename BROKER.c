@@ -102,7 +102,12 @@ main(int argc, char** argv)
 			//Poczatek polaczenia
 			printf("Connection from %s as ", pierwszy.IP);
 			//Czytanie funkcji podlaczonego adresu
-			if ((n = read(connfd, pierwszy.TOPIC, sizeof(pierwszy.TOPIC))) < 0)
+			/*
+			* opis dotyczy dziwnego dzialania ponizszego if'a wpisujemy
+			*		sizeof(pierwszy.TOPIC) to jest inaczej odbieram.... i dwie wiadomosci
+			*		MAXLINE to dwa razy (odbieram.... i wiadomosci)
+			*/
+			if ((n = read(connfd, pierwszy.TOPIC, MAXLINE)) < 0)
 				perror("read() error");
 			if (strcmp(pierwszy.TOPIC, "sub")==1) {
 				printf("Werification completed\n");
