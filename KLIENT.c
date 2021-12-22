@@ -14,6 +14,7 @@
 void
 send_sub(int sockfd)
 {
+	char topic[30];
 	char line[MAXLINE];
 	printf("Enter topic to subscribe: ");
 	scanf("%s", topic);
