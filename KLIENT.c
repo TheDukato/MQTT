@@ -59,7 +59,7 @@ rcv_msg(int sockfd) {
 	//oczekiwanie na przyjêcie danych 
 	printf("Zaczynam czekac\n");
 	for (;;) {
-		if ((n = read(sockfd, line, MAXLINE)) == 0) {
+		if ((n = read(sockfd, line, MAXLINE)) > 0) {
 			printf("Koniec czekania\n");
 			break;
 		}
