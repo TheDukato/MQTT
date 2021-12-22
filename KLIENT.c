@@ -75,10 +75,9 @@ main(int argc, char** argv)
 	}
 	//////////////////////////////////////////////////////////
 
-	//char				recvline[MAXLINE + 1];
-
-
+	char				recvline[MAXLINE + 1];
 	int choose1;
+
 	printf("Who am i?\n1.Publisher\n2.Subscriber\n3.Rcv\nChoose number: ");
 	scanf("%d", &choose1);
 	switch (choose1) {
