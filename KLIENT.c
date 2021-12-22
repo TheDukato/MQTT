@@ -64,6 +64,7 @@ rcv_msg(int sockfd) {
 		if (fputs(line, stdout) == EOF) {
 			fprintf(stderr, "fputs error : %s\n", strerror(errno));
 		}
+		printf("%s (%d bytes)\n", line, n);
 	}
 }
 int
