@@ -111,16 +111,17 @@ main(int argc, char** argv)
 			close(listenfd);	/* close listening socket */
 			//Poczatek polaczenia
 			printf("Connection from %s as ", pierwszy.IP);
-			rcv_msg(connfd);
+			//rcv_msg(connfd);
 			//Czytanie funkcji podlaczonego adresu
 			if ((n = read(connfd, line, MAXLINE)) < 0)
 				perror("read() error");
 			if (line == "sub") {
-				line[n] = 0;	/* null terminate */
-				printf("%s\n", line);
+				printf("Werificatio completed\n");
 				//Zapis adresu do tabeli Subscribers
 				//
 			}
+			line[n] = 0;	/* null terminate */
+			printf("%s\n", line);
 			//
 			// 
 			// 
