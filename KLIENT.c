@@ -75,8 +75,8 @@ rcv_msg(int sockfd) {
 			recvline[n] = 0;	/* null terminate */
 			if (fputs(recvline, stdout) == EOF) {
 				fprintf(stderr, "fputs error : %s\n", strerror(errno));
-				//return 1;
 			}
+			break;//do usuniecia
 		}
 	}
 	//odbior
