@@ -18,7 +18,7 @@ send_sub(int sockfd)
 	char line[MAXLINE];
 	printf("Enter topic to subscribe: ");
 	scanf("%s", topic);
-	snprintf(line, sizeof(line), "sub" + topic);
+	snprintf(line, sizeof(line), strcat("sub", topic));
 	if (write(sockfd, line, MAXLINE) < 0);
 	//printf("Sending function as Subscriber\n");
 }
