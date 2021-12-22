@@ -46,6 +46,7 @@ rcv_msg(int sockfd) {
 		fflush(stdout);
 	//}
 }
+
 int
 main(int argc, char** argv)
 {
@@ -101,20 +102,19 @@ main(int argc, char** argv)
 			//Poczatek polaczenia
 			printf("Connection from %s as ", pierwszy.IP);
 			//Czytanie funkcji podlaczonego adresu
-			if ((n = read(connfd, pierwszy.TOPIC, sizeof(pierwszy.TOPIC))) < 0)
+			if ((n = read(connfd, line, MAXLINE)) < 0)
 				perror("read() error");
-			if (strcmp(pierwszy.TOPIC, "sub")==1) {
+			if (strcmp( line, "sub")==1) {
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
 				//
 			}
-			pierwszy.TOPIC[n] = 0;	/* null terminate */
-			printf("%s\n", pierwszy.TOPIC);
+			line[n] = 0;	/* null terminate */
+			printf("%s\n", line);
+ 
 
-			send_time(connfd);	/* process the request */
-			send_time(connfd);
-			send_time(connfd);
-			send_time(connfd);
+				send_time(connfd);	/* process the request */
+				send_time(connfd);
 
 			exit(0);
 		}
