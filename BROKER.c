@@ -102,9 +102,10 @@ main(int argc, char** argv)
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
-
+			//Poczatek polaczenia
 			printf("Connection from %s as ", str);
 			rcv_fun(connfd);
+			//Jeszcze dodanie zapisu do bazy jesli sub dopasowanie lista Subscribes [IP] [TOPIC] 
 			for (int i = 0; i < 100;i++) {
 				send_time(connfd);	/* process the request */
 			}
