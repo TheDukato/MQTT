@@ -17,7 +17,7 @@ send_sub(int sockfd)
 	char line[4];
 	snprintf(line, sizeof(line), "sub");
 	if (write(sockfd, line, MAXLINE) < 0);
-	printf("Sending function as Subscriber\n");
+	//printf("Sending function as Subscriber\n");
 }
 void
 send_pub(int sockfd)
@@ -87,7 +87,7 @@ main(int argc, char** argv)
 		break;
 	case 2 :
 		send_sub(sockfd);
-		printf("Czekam na dane\n");
+		printf("\nCzekam na dane\n");
 		for (;;) {
 			if ((n = read(sockfd, recvline, MAXLINE)) > 0) {
 				printf("Odbieram...\n");

@@ -98,7 +98,7 @@ main(int argc, char** argv)
 		}
 		////////////////////////////
 		int					n;
-		char				line[4];
+		char				line[3];
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char TOPIC[10];
