@@ -99,22 +99,26 @@ main(int argc, char** argv)
 		////////////////////////////
 		int					n;
 		char				line[4];
+		struct subscribers {
+			char IP[INET6_ADDRSTRLEN + 1];
+			char FUN[4];
+		};
 
-		bzero(str, sizeof(str));
-		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, str, sizeof(str));
+		bzero(subscribers->IP, sizeof(subscribers->IP));
+		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, subscribers->IP, sizeof(subscribers->IP));
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
 			//Poczatek polaczenia
-			printf("Connection from %s as ", str);
+			printf("Connection from %s as ", subscribers->IP);
 			//Czytanie funkcji podlaczonego adresu
 			if ((n = read(connfd, line, MAXLINE)) < 0)
 				perror("read() error");
 			line[n] = 0;	/* null terminate */
 			printf("%s\n", line);
-			//fflush(stdout);
+			//Zapis adresu do tabeli Subscribers
+			
 			//
-			//rcv_fun(connfd);
 			// 
 			// 
 			// 
