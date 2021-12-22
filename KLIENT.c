@@ -106,6 +106,7 @@ main(int argc, char** argv)
 		return 1;
 	}
 	//////////////////////////////////////////////////////////
+	char				recvline[MAXLINE + 1];
 	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
 		recvline[n] = 0;	/* null terminate */
 		if (fputs(recvline, stdout) == EOF) {
