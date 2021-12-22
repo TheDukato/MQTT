@@ -66,6 +66,7 @@ rcv_msg(int sockfd) {
 		}
 		printf("%s (%d bytes)\n", line, n);
 	}
+	printf("Nawet nie czekalem\n");
 }
 int
 main(int argc, char** argv)
