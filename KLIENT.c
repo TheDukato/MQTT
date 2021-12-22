@@ -14,7 +14,7 @@
 void
 send_sub(int sockfd)
 {
-	char line[4];
+	char line[1024];
 	snprintf(line, sizeof(line), "sub");
 	if (write(sockfd, line, MAXLINE) < 0);
 	//printf("Sending function as Subscriber\n");
