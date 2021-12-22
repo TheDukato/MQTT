@@ -136,7 +136,7 @@ main(int argc, char** argv)
 		send_msg(sockfd);
 		break;
 	case 2 :
-		send_sub(sockfd);
+		//send_sub(sockfd);
 		rcv_msg(sockfd);
 		break;
 	default :
