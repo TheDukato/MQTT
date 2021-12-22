@@ -46,17 +46,6 @@ rcv_msg(int sockfd) {
 		fflush(stdout);
 	//}
 }
-char
-rcv_fun(int sockfd) {
-	int					n;
-	char				line[4];
-	if ((n = read(sockfd, line, MAXLINE)) < 0)
-		perror("read() error");
-	line[n] = 0;	/* null terminate */
-	printf("%s\n", line);
-	fflush(stdout);
-	return *line;
-}
 int
 main(int argc, char** argv)
 {
@@ -112,29 +101,19 @@ main(int argc, char** argv)
 			//Poczatek polaczenia
 			printf("Connection from %s as ", pierwszy.IP);
 			//Czytanie funkcji podlaczonego adresu
-			if ((n = read(connfd, line, MAXLINE)) < 0)
+			if ((n = read(connfd, pierwszy.TOPIC, sizeof(pierwszy.TOPIC))) < 0)
 				perror("read() error");
-			if (strcmp( line, "sub")==1) {
+			if (strcmp(pierwszy.TOPIC, "sub")==1) {
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
 				//
 			}
-			line[n] = 0;	/* null terminate */
-			printf("%s\n", line);
-			//
-			// 
-			// 
-			// 
-			//Jeszcze dodanie zapisu do bazy jesli sub dopasowanie lista Subscribes [IP] [TOPIC] 
-			//
-			//
-			//
-			//sleep(2);
-			//for (int i = 0;i < 100;i++) {
-				send_time(connfd);	/* process the request */
-				send_time(connfd);
-			//}
-			//rcv_msg(connfd);
+			pierwszy.TOPIC[n] = 0;	/* null terminate */
+			printf("%s\n", pierwszy.TOPIC);
+
+			send_time(connfd);	/* process the request */
+			send_time(connfd);
+
 			exit(0);
 		}
 		close(connfd);			/* parent closes connected socket */
