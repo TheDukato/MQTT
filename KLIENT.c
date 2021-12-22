@@ -57,13 +57,7 @@ rcv_msg(int sockfd) {
 	//}
 	char				recvline[MAXLINE + 1];
 
-	while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
-		recvline[n] = 0;	/* null terminate */
-		if (fputs(recvline, stdout) == EOF) {
-			fprintf(stderr, "fputs error : %s\n", strerror(errno));
-			//return 1;
-		}
-	}
+
 
 
 
@@ -72,13 +66,21 @@ rcv_msg(int sockfd) {
 	//oczekiwanie na przyjêcie danych 
 	printf("Zaczynam czekac\n");
 	for (;;) {
-		if ((n = read(sockfd, line, MAXLINE)) > 0) {
-			printf("Koniec czekania\n");
-			break;
+		//if ((n = read(sockfd, line, MAXLINE)) > 0) {
+		//	printf("Koniec czekania\n");
+		//	break;
+		//}
+		while ((n = read(sockfd, recvline, MAXLINE)) > 0) {
+			printf("Odbieram...\n");
+			recvline[n] = 0;	/* null terminate */
+			if (fputs(recvline, stdout) == EOF) {
+				fprintf(stderr, "fputs error : %s\n", strerror(errno));
+				//return 1;
+			}
 		}
 	}
 	//odbior
-	printf("Odbieram...\n");
+	
 
 	/*
 	while ((n = read(sockfd, line, MAXLINE)) > 0) {
