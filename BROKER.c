@@ -111,7 +111,7 @@ main(int argc, char** argv)
 			//
 			//sleep(2);
 			//for (int i = 0;i < 100;i++) {
-			send_time(connfd);	/* process the request */
+				send_time(connfd);	/* process the request */
 			//}
 			//rcv_msg(connfd);
 			exit(0);
