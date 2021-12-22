@@ -33,7 +33,7 @@ send_time(int sockfd)
 		fprintf(stderr, "write error : %s\n", strerror(errno));
 	//close(connfd);
 }
-//, socklen_t salen
+
 void
 rcv_msg(int sockfd) {
 	int					n;
@@ -104,11 +104,14 @@ main(int argc, char** argv)
 			close(listenfd);	/* close listening socket */
 			//Poczatek polaczenia
 			printf("Connection from %s as ", str);
-			rcv_fun(connfd);
+//			rcv_fun(connfd);
 			//Jeszcze dodanie zapisu do bazy jesli sub dopasowanie lista Subscribes [IP] [TOPIC] 
-			for (int i = 0; i < 100;i++) {
-				send_time(connfd);	/* process the request */
-			}
+			//
+			//
+			//
+			//for (int i = 0; i < 100;i++) {
+			send_time(connfd);	/* process the request */
+			//}
 			//rcv_msg(connfd);
 			exit(0);
 		}

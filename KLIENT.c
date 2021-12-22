@@ -107,6 +107,7 @@ main(int argc, char** argv)
 	}
 	//////////////////////////////////////////////////////////
 	int choose1;
+	rcv_msg(sockfd);
 	printf("Who am i?\n1.Publisher\n2.Subscriber\nChoose number: ");
 	scanf("%d", &choose1);
 	switch (choose1) {
@@ -115,7 +116,7 @@ main(int argc, char** argv)
 		send_msg(sockfd);
 		break;
 	case 2 :
-		send_sub(sockfd);
+		//send_sub(sockfd);
 		rcv_msg(sockfd);
 		break;
 	default :
