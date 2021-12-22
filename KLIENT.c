@@ -97,6 +97,7 @@ main(int argc, char** argv)
 				}
 				//break;//do usuniecia
 			}
+		}
 		break;
 	case 3 :
 		printf("Czekam na dane\n");
