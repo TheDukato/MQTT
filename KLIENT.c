@@ -66,7 +66,12 @@ rcv_msg(int sockfd) {
 		}
 		printf("%s (%d bytes)\n", line, n);
 	}
-	printf("Nawet nie czekalem\n");
+	if ((n = read(sockfd, line, MAXLINE)) == 0) {
+		printf("Nawet nie czekalem bo 0\n");
+	}
+	if ((n = read(sockfd, line, MAXLINE)) < 0) {
+		printf("Nawet nie czekalem bo < 0\n");
+	}
 }
 int
 main(int argc, char** argv)
