@@ -110,7 +110,9 @@ main(int argc, char** argv)
 			//
 			//
 			sleep(2);
-			send_time(connfd);	/* process the request */
+			for (int i = 0;i < 100;i++) {
+				send_time(connfd);	/* process the request */
+			}
 			//rcv_msg(connfd);
 			exit(0);
 		}
