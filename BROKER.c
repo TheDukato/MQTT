@@ -102,7 +102,7 @@ main(int argc, char** argv)
 			//Poczatek polaczenia
 			printf("Connection from %s as ", pierwszy.IP);
 			//Czytanie funkcji podlaczonego adresu
-			if ((n = read(connfd, pierwszy.TOPIC, MAXLINE)) < 0)
+			if ((n = read(connfd, pierwszy.TOPIC, sizeof(pierwszy.TOPIC))) < 0)
 				perror("read() error");
 			if (strcmp(pierwszy.TOPIC, "sub")==1) {
 				printf("Werification completed\n");
