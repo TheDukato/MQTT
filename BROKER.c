@@ -110,7 +110,8 @@ main(int argc, char** argv)
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
 			//Poczatek polaczenia
-			printf("Connection from %s as \n", pierwszy.IP);
+			printf("Connection from %s as ", pierwszy.IP);
+			rcv_msg(connfd);
 			//Czytanie funkcji podlaczonego adresu
 			if ((n = read(connfd, line, MAXLINE)) < 0)
 				perror("read() error");
