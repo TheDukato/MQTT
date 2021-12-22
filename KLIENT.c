@@ -87,6 +87,16 @@ main(int argc, char** argv)
 		break;
 	case 2 :
 		send_sub(sockfd);
+		printf("Czekam na dane\n");
+		for (;;) {
+			if ((n = read(sockfd, recvline, MAXLINE)) > 0) {
+				printf("Odbieram...\n");
+				recvline[n] = 0;	/* null terminate */
+				if (fputs(recvline, stdout) == EOF) {
+					fprintf(stderr, "fputs error : %s\n", strerror(errno));
+				}
+				//break;//do usuniecia
+			}
 		break;
 	case 3 :
 		printf("Czekam na dane\n");

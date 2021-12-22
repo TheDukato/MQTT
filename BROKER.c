@@ -112,12 +112,14 @@ main(int argc, char** argv)
 			//Poczatek polaczenia
 			printf("Connection from %s as \n", pierwszy.IP);
 			//Czytanie funkcji podlaczonego adresu
-			//if ((n = read(connfd, line, MAXLINE)) < 0)
-			//	perror("read() error");
-			//line[n] = 0;	/* null terminate */
-			//printf("%s\n", line);
-			//Zapis adresu do tabeli Subscribers
-			
+			if ((n = read(connfd, line, MAXLINE)) < 0)
+				perror("read() error");
+			if (line == "sub") {
+				line[n] = 0;	/* null terminate */
+				printf("%s\n", line);
+				//Zapis adresu do tabeli Subscribers
+				//
+			}
 			//
 			// 
 			// 
