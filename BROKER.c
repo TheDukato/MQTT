@@ -108,7 +108,7 @@ main(int argc, char** argv)
 			//Poczatek polaczenia
 			printf("Connection from %s as ", str);
 			//Czytanie funkcji podlaczonego adresu
-			if ((n = read(sockfd, line, MAXLINE)) < 0)
+			if ((n = read(connfd, line, MAXLINE)) < 0)
 				perror("read() error");
 			line[n] = 0;	/* null terminate */
 			printf("%s\n", line);
