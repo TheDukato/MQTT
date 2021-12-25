@@ -89,8 +89,7 @@ main(int argc, char** argv)
 		////////////////////////////
 		int					n;
 		char				line[4];
-		char				keywordSub1;
-		keywordSub1 = 's';
+		char				keywordSub1[4] = "sub";
 		char				keywordSub2;
 		keywordSub2 = 's';
 		struct subscribers {
