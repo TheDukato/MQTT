@@ -109,7 +109,7 @@ main(int argc, char** argv)
 			*/
 			if ((n = read(connfd, pierwszy.TOPIC, MAXLINE)) < 0)
 				perror("read() error");
-			if (strcmp(pierwszy.TOPIC, "sub")==1) {
+			if (strcmp(pierwszy.TOPIC[0], "s")==1) {
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
 				//
