@@ -137,6 +137,19 @@ main(int argc, char** argv)
 					break;
 				}
 			}
+///////			Operating Publisher
+			for (;;) {
+				if ((n = read(sockfd, recvline, MAXLINE)) > 0) {
+					printf("Odbieram...\n");
+					recvline[n] = 0;	/* null terminate */
+					if (fputs(recvline, stdout) == EOF) {
+						fprintf(stderr, "fputs error : %s\n", strerror(errno));
+					}
+					//break;//do usuniecia
+				}
+			}
+
+//////
 			printf("\n");
 			/* process the request */
 
