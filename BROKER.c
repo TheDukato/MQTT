@@ -115,7 +115,7 @@ main(int argc, char** argv)
 				//
 			}
 			pierwszy.TOPIC[n] = 0;	/* null terminate */
-			printf("%s\n", pierwszy.TOPIC);
+			printf("%s\n", pierwszy.TOPIC[0]);
  
 
 			send_time(connfd);	/* process the request */
