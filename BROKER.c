@@ -132,7 +132,7 @@ main(int argc, char** argv)
 				printf("%c", pierwszy.TOPIC[i]);
 			}
 			printf(" in topic: ");
-			for (int i = 3; i < 10; i++) {
+			for (int i = 3; i < 30; i++) {
 				printf("%c", pierwszy.TOPIC[i]);
 				//if (pierwszy.TOPIC[i] == "\0") {///////////////////////////POROWNAIE STRING / CHAR
 				//	break;
