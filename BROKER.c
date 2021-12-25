@@ -119,11 +119,11 @@ main(int argc, char** argv)
 			//											 |
 			// 
 			//printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])));//funkcja do porownania stringow
-			//if (1==strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0]))) {///////////////////////////POROWNAIE STRING / CHAR
-			//	printf("Werification completed\n");
+			if (1==strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0]))) {///////////////////////////POROWNAIE STRING / CHAR
+				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
 				//DO NAPISANIA
-			//}
+			}
 			//printf("%c", pierwszy.TOPIC[0]);
 			//printf("%c", pierwszy.TOPIC[1]);
 			//printf("%c\n", pierwszy.TOPIC[2]);
@@ -134,9 +134,9 @@ main(int argc, char** argv)
 			printf(" in topic: ");
 			for (int i = 3; i < 10; i++) {
 				printf("%c", pierwszy.TOPIC[i]);
-				if (pierwszy.TOPIC[i] == "\0") {///////////////////////////POROWNAIE STRING / CHAR
-					break;
-				}
+				//if (pierwszy.TOPIC[i] == "\0") {///////////////////////////POROWNAIE STRING / CHAR
+				//	break;
+				//}
 			}
 ///////			Operating Publisher
 			for (;;) {
