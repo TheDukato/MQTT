@@ -131,8 +131,8 @@ main(int argc, char** argv)
 				printf("%c\n", pierwszy.TOPIC[i]);
 			}
 			printf(" in topic: ");
-			for (int i = 3; i < MAXLINE; i++) {
-				printf("%c\n", pierwszy.TOPIC[i]);
+			for (int i = 3; i < 20; i++) {
+				printf("%c", pierwszy.TOPIC[i]);
 				if (pierwszy.TOPIC[i] == "\0") {///////////////////////////POROWNAIE STRING / CHAR
 					break;
 				}
