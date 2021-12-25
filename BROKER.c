@@ -90,8 +90,6 @@ main(int argc, char** argv)
 		int					n;
 		char				line[4];
 		char				keywordSub1[4] = "sub";
-		char				keywordSub2;
-		keywordSub2 = 's';
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char TOPIC[4];
@@ -112,17 +110,24 @@ main(int argc, char** argv)
 			*/
 			if ((n = read(connfd, pierwszy.TOPIC, MAXLINE)) < 0)
 				perror("read() error");
-			//printf("%i", strcmp(&(keywordSub2), &(keywordSub1)));
-			printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])));
+			//
+			// 
+			// 
+			//Porownanie typu polaczenia czy sub czy pub |
+			//											 |
+			//											 |
+			// 
+			//printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])));
 			if (1==strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0]))) {
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
-				//
+				//DO NAPISANIA
 			}
+			//printf("%c", pierwszy.TOPIC[0]);
+			//printf("%c", pierwszy.TOPIC[1]);
+			//printf("%c\n", pierwszy.TOPIC[2]);
 			pierwszy.TOPIC[n] = 0;	/* null terminate */
-			printf("%c", pierwszy.TOPIC[0]);
-			printf("%c", pierwszy.TOPIC[1]);
-			printf("%c\n", pierwszy.TOPIC[2]);
+			printf("%s\n", pierwszy.TOPIC);
 
 			send_time(connfd);	/* process the request */
 			send_time(connfd);
