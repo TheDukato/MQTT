@@ -113,12 +113,12 @@ main(int argc, char** argv)
 			char test = pierwszy.TOPIC[0];
 			printf("%c", pierwszy.TOPIC[0]);
 			printf("%c", test);
-			printf("%c", typeof(test));
-			if (*test == "s") {
+			printf("%i", typeof(test));
+			//if (*test == "s") {
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
 				//
-			}
+			//}
 			pierwszy.TOPIC[n] = 0;	/* null terminate */
 			printf("%c", pierwszy.TOPIC[0]);
 			printf("%c", pierwszy.TOPIC[1]);
