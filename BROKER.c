@@ -114,7 +114,7 @@ main(int argc, char** argv)
 				perror("read() error");
 			//printf("%i", strcmp(&(keywordSub2), &(keywordSub1)));
 			//printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1)));
-			if (1==strcmp(&(keywordSub2[1]), &(keywordSub1[1]))) {
+			if (1==strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0]))) {
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
 				//
