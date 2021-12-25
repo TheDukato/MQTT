@@ -111,7 +111,7 @@ main(int argc, char** argv)
 				perror("read() error");
 			//if (*(pierwszy.TOPIC[0]) == "s") {
 			char test = pierwszy.TOPIC[0];
-			if (test == "s") {
+			if (*test == "s") {
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
 				//
