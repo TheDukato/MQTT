@@ -127,8 +127,8 @@ main(int argc, char** argv)
 			//printf("%c", pierwszy.TOPIC[1]);
 			//printf("%c\n", pierwszy.TOPIC[2]);
 			pierwszy.TOPIC[n] = 0;	/* null terminate */
-			for (int i = 0; i < 2; i++) {
-				printf("%c\n", pierwszy.TOPIC[i]);
+			for (int i = 0; i < MAXLINE; i++) {
+				printf("%c", pierwszy.TOPIC[i]);
 			}
 			printf(" in topic: ");
 			for (int i = 3; i < 20; i++) {
