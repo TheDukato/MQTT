@@ -92,7 +92,7 @@ main(int argc, char** argv)
 		char				keywordSub1[4] = "sub";
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
-			char TOPIC[7];
+			char TOPIC[MAXLINE];
 		};
 		struct subscribers pierwszy;
 		bzero(pierwszy.IP, sizeof(pierwszy.IP));
@@ -131,7 +131,7 @@ main(int argc, char** argv)
 				printf("%c", pierwszy.TOPIC[i]);
 			}
 			printf(" in topic: ");
-			for (int i = 3; i < 12; i++) {
+			for (int i = 3; i < 10; i++) {
 				printf("%c", pierwszy.TOPIC[i]);
 				if (pierwszy.TOPIC[i] == "\0") {///////////////////////////POROWNAIE STRING / CHAR
 					break;
