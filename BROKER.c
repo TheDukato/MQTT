@@ -94,6 +94,7 @@ main(int argc, char** argv)
 			char IP[INET6_ADDRSTRLEN + 1];
 			char TOPIC[MAXLINE];
 		};
+		char				MSG[MAXLINE];
 		struct subscribers pierwszy;
 		bzero(pierwszy.IP, sizeof(pierwszy.IP));
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
@@ -139,10 +140,10 @@ main(int argc, char** argv)
 			}
 ///////			Operating Publisher
 			for (;;) {
-				if ((n = read(sockfd, recvline, MAXLINE)) > 0) {
+				if ((n = read(connfd, MSG, MAXLINE)) > 0) {
 					printf("Odbieram...\n");
-					recvline[n] = 0;	/* null terminate */
-					if (fputs(recvline, stdout) == EOF) {
+					MSG[n] = 0;	/* null terminate */
+					if (fputs(MSG, stdout) == EOF) {
 						fprintf(stderr, "fputs error : %s\n", strerror(errno));
 					}
 					//break;//do usuniecia
