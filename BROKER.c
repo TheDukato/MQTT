@@ -91,7 +91,7 @@ main(int argc, char** argv)
 		char				line[4];
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
-			char TOPIC[1024];
+			char TOPIC[4];
 		};
 		struct subscribers pierwszy;
 		bzero(pierwszy.IP, sizeof(pierwszy.IP));
