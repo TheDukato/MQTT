@@ -89,7 +89,7 @@ main(int argc, char** argv)
 		////////////////////////////
 		int					n;
 		char				line[4];
-		char				keywordSub1[4] = "dut";
+		char				keywordSub1[4] = "dub";
 		char				keywordSub2[4] = "sub";
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
