@@ -36,7 +36,7 @@ send_pub(int sockfd)
 	scanf("%s", topic);
 	printf("Enter msg:");
 	scanf("%s", lineTS);
-	snprintf(line, sizeof(line), "Fun=pub, Topic=%s, PID=%d, Msg:%s", topic, getpid(), lineTS);
+	snprintf(line, sizeof(line), "pub%s, PID=%d, Msg:%s", topic, getpid(), lineTS);
 	if (write(sockfd, line, MAXLINE) < 0);
 }
 int
