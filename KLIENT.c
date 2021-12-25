@@ -27,26 +27,17 @@ send_sub(int sockfd)
 void
 send_pub(int sockfd)
 {
-	char line[4];
-	snprintf(line, sizeof(line), "pub");
-	if (write(sockfd, line, MAXLINE) < 0);
+	char lineTS[50];
+	char topic[10];
+	char line[MAXLINE];
 	printf("Sending function as Publisher\n");
-}
-void
-send_msg(int sockfd)
-{
-	//for (;;) {
-		char lineTS[50];
-		char topic[10];
-		char line[MAXLINE];
 
-		printf("Enter topic:");
-		scanf("%s", topic);
-		printf("Enter msg:");
-		scanf("%s", lineTS);
-		snprintf(line, sizeof(line), "Topic=%s, PID=%d, Msg:%s",topic, getpid(), lineTS);
-		if (write(sockfd, line, MAXLINE) < 0);
-	//}
+	printf("Enter topic:");
+	scanf("%s", topic);
+	printf("Enter msg:");
+	scanf("%s", lineTS);
+	snprintf(line, sizeof(line), "Fun=pub, Topic=%s, PID=%d, Msg:%s", topic, getpid(), lineTS);
+	if (write(sockfd, line, MAXLINE) < 0);
 }
 int
 main(int argc, char** argv)
@@ -102,7 +93,6 @@ main(int argc, char** argv)
 		break;
 	case 4 :
 		send_pub(sockfd);
-		send_msg(sockfd);
 		break;
 	case 5 :
 		printf("Czekam na dane\n");
