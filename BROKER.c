@@ -121,7 +121,7 @@ main(int argc, char** argv)
 			// 
 			//printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])));//funkcja do porownania stringow
 			//printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])));
-			printf("%i", strcmp(&(keywordSub2[1]), &(keywordSub1[1])));//
+			printf("%i", strcmp(&(keywordSub2[0]), &(keywordSub1[0])));//
 			if (0==(strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])))) {///////////////////////////POROWNAIE STRING / CHAR
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
