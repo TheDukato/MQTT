@@ -139,16 +139,16 @@ main(int argc, char** argv)
 				//}
 			}
 ///////			Operating Publisher
-			for (;;) {
+			/*for (;;) {
 				if ((n = read(connfd, MSG, MAXLINE)) > 0) {
 					printf("Odbieram...\n");
-					MSG[n] = 0;	/* null terminate */
+					MSG[n] = 0;	
 					if (fputs(MSG, stdout) == EOF) {
 						fprintf(stderr, "fputs error : %s\n", strerror(errno));
 					}
 					//break;//do usuniecia
 				}
-			}
+			}*/
 
 //////
 			printf("\n");
