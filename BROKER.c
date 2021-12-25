@@ -92,7 +92,7 @@ main(int argc, char** argv)
 		char				keywordSub1[4] = "sub";
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
-			char TOPIC[4];
+			char TOPIC[MAXLINE];
 		};
 		struct subscribers pierwszy;
 		bzero(pierwszy.IP, sizeof(pierwszy.IP));
@@ -118,7 +118,7 @@ main(int argc, char** argv)
 			//											 |
 			// 
 			//printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])));
-			if (1==strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0]))) {
+			if (1==strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0]))) {///////////////////////////POROWNAIE STRING / CHAR
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
 				//DO NAPISANIA
@@ -127,7 +127,17 @@ main(int argc, char** argv)
 			//printf("%c", pierwszy.TOPIC[1]);
 			//printf("%c\n", pierwszy.TOPIC[2]);
 			pierwszy.TOPIC[n] = 0;	/* null terminate */
-			printf("%s\n", pierwszy.TOPIC);
+			for (int i = 0; i < 2; i++) {
+				printf("%c\n", pierwszy.TOPIC[i]);
+			}
+			printf(" in topic: ");
+			for (int i = 3; i < MAXLINE; i++) {
+				printf("%c\n", pierwszy.TOPIC[i]);
+				if (pierwszy.TOPIC[i] == "\0") {///////////////////////////POROWNAIE STRING / CHAR
+					break;
+				}
+			}
+			printf("\n%s\n", pierwszy.TOPIC);
 
 			send_time(connfd);	/* process the request */
 			send_time(connfd);
