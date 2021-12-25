@@ -113,7 +113,7 @@ main(int argc, char** argv)
 			*/
 			if ((n = read(connfd, pierwszy.TOPIC, MAXLINE)) < 0)
 				perror("read() error");
-			if (0==strcmp(&(keywordSub2), &(keywordSub1))) {
+			if (1==strcmp(&(keywordSub2), &(keywordSub1))) {
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
 				//
