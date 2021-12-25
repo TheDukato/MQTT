@@ -89,8 +89,10 @@ main(int argc, char** argv)
 		////////////////////////////
 		int					n;
 		char				line[4];
-		char				keywordSub;
-		keywordSub = 's';
+		char				keywordSub1;
+		keywordSub1 = 's';
+		char				keywordSub2;
+		keywordSub2 = 's';
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char TOPIC[4];
@@ -111,7 +113,7 @@ main(int argc, char** argv)
 			*/
 			if ((n = read(connfd, pierwszy.TOPIC, MAXLINE)) < 0)
 				perror("read() error");
-			if (0==strcmp(&(pierwszy.TOPIC[0]), &(keywordSub))) {
+			if (0==strcmp(&(keywordSub2), &(keywordSub1))) {
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
 				//
