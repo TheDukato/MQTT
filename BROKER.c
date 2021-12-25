@@ -137,7 +137,7 @@ main(int argc, char** argv)
 					break;
 				}
 			}
-			//printf("\n%s\n", pierwszy.TOPIC);
+			printf(" ");
 
 			send_time(connfd);	/* process the request */
 			send_time(connfd);
