@@ -137,16 +137,16 @@ main(int argc, char** argv)
 					break;
 				}
 			}
-			printf("\n ");
+			printf("\n");
 			/* process the request */
-			/*
+
 			send_time(connfd);	
 			send_time(connfd);
 			sleep(2);
 			send_time(connfd);
 			sleep(5);
 			send_time(connfd);
-			*/
+
 			exit(0);
 		}
 		close(connfd);			/* parent closes connected socket */
