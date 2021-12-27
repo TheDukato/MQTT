@@ -90,7 +90,7 @@ main(int argc, char** argv)
 		int					n;
 		char				line[4];
 		char				keywordSub1[4] = "sub";
-		char				keywordSub2[4] = "dup";
+		char				keywordSub2[4] = "dub";
 		char				fun[3];
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
@@ -124,27 +124,25 @@ main(int argc, char** argv)
 			//printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])));
 			printf("%i", strcmp(&(keywordSub2[1]), &(keywordSub1[1])));//
 			pierwszy.TOPIC[n] = 0;	/* null terminate */
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < 3; i++) {
 				printf("%c", pierwszy.TOPIC[i]);
 				fun[i] = pierwszy.TOPIC[i];
-			}
-			printf("\n%s\n%s\n%i\n", fun, pierwszy.TOPIC, strcmp(&(fun[0]), &(keywordSub1[0])));
+			}//strcmp(&(fun[0]), &(keywordSub1[0]))
+			printf("\n%s\n%s\n%i\n", fun, pierwszy.TOPIC, strcmp(&(fun[0]), &(pierwszy.TOPIC[0])));
 			if (0==(strcmp(&(fun[0]), &(keywordSub1[0])))) {///////////////////////////POROWNAIE STRING / CHAR
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
 				//DO NAPISANIA
 			}
-			//printf("%c", pierwszy.TOPIC[0]);
-			//printf("%c", pierwszy.TOPIC[1]);
-			//printf("%c\n", pierwszy.TOPIC[2]);
 
+			/*
 			printf(" in topic: ");
 			for (int i = 3; i < 30; i++) {
 				printf("%c", pierwszy.TOPIC[i]);
 				//if (pierwszy.TOPIC[i] == "\0") {///////////////////////////POROWNAIE STRING / CHAR
 				//	break;
 				//}
-			}
+			}*/
 ///////			Operating Publisher
 			/*for (;;) {
 				if ((n = read(connfd, MSG, MAXLINE)) > 0) {
