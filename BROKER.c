@@ -128,6 +128,7 @@ main(int argc, char** argv)
 				printf("%c", pierwszy.TOPIC[i]);
 				fun[i] = pierwszy.TOPIC[i];
 			}
+			printf("\n%s\n%s\n", fun, pierwszy.TOPIC);
 			if (0==(strcmp(&(fun[0]), &(keywordSub1[0])))) {///////////////////////////POROWNAIE STRING / CHAR
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
