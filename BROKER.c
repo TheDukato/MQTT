@@ -89,8 +89,8 @@ main(int argc, char** argv)
 		////////////////////////////
 		int					n;
 		char				line[4];
-		char				keywordSub1[4] = "dub";
-		char				keywordSub2[4] = "sub";
+		char				keywordSub1[4] = "sub";
+		char				keywordSub2[4] = "dup";
 		char				fun[3];
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
