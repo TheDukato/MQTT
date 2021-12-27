@@ -124,8 +124,8 @@ main(int argc, char** argv)
 			//printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])));
 			//printf("%i", strcmp(&(keywordSub2[1]), &(keywordSub1[1])));//
 			pierwszy.TOPIC[n] = 0;	/* null terminate */
-			for (int i = 0; i < 1; i++) {
-				printf("%c", pierwszy.TOPIC[i]);
+			for (int i = 0; i < 2; i++) {
+				//printf("%c", pierwszy.TOPIC[i]);
 				fun[i] = pierwszy.TOPIC[i];
 			}
 			printf("\n%s\n%s\n%i\n%i\n", fun, pierwszy.TOPIC, strcmp(&(fun[0]), &(pierwszy.TOPIC[0])), strcmp(&(fun[0]), &(keywordSub1[0])));
