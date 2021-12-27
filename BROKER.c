@@ -91,6 +91,7 @@ main(int argc, char** argv)
 		char				line[4];
 		char				keywordSub1[4] = "dub";
 		char				keywordSub2[4] = "sub";
+		char				fun[4];
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char TOPIC[MAXLINE];
@@ -122,7 +123,12 @@ main(int argc, char** argv)
 			//printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])));//funkcja do porownania stringow
 			//printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])));
 			printf("%i", strcmp(&(keywordSub2[1]), &(keywordSub1[1])));//
-			if (0==(strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])))) {///////////////////////////POROWNAIE STRING / CHAR
+			pierwszy.TOPIC[n] = 0;	/* null terminate */
+			for (int i = 0; i < 3; i++) {
+				printf("%c", pierwszy.TOPIC[i]);
+				fun[i] = pierwszy.TOPIC[i];
+			}
+			if (0==(strcmp(&(fun[0], &(keywordSub1[0])))) {///////////////////////////POROWNAIE STRING / CHAR
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
 				//DO NAPISANIA
@@ -130,10 +136,7 @@ main(int argc, char** argv)
 			//printf("%c", pierwszy.TOPIC[0]);
 			//printf("%c", pierwszy.TOPIC[1]);
 			//printf("%c\n", pierwszy.TOPIC[2]);
-			pierwszy.TOPIC[n] = 0;	/* null terminate */
-			for (int i = 0; i < 15; i++) {
-				printf("%c", pierwszy.TOPIC[i]);
-			}
+
 			printf(" in topic: ");
 			for (int i = 3; i < 30; i++) {
 				printf("%c", pierwszy.TOPIC[i]);
