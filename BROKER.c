@@ -91,7 +91,7 @@ main(int argc, char** argv)
 		char				line[4];
 		char				keywordSub1[4] = "dub";
 		char				keywordSub2[4] = "sub";
-		char				fun[4];
+		char				fun[3];
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char TOPIC[MAXLINE];
