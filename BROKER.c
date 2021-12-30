@@ -114,27 +114,15 @@ main(int argc, char** argv)
 			if ((n = read(connfd, pierwszy.TOPICMSG, MAXLINE)) < 0)
 				perror("read() error");
 			pierwszy.TOPICMSG[n] = 0;	/* Enter sign of end of line */
-			//
-			// 
-			// 
-			//Porownanie typu polaczenia czy sub czy pub |
-			//											 |
-			//											 |
-			// 
-			//printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])));//funkcja do porownania stringow
-			//printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])));
-			//printf("%i", strcmp(&(keywordSub2[1]), &(keywordSub1[1])));//
-			//printf("\n\n%s\n%s\n%i\n%i\n", fun, pierwszy.TOPIC, strcmp(&(fun[0]), &(pierwszy.TOPIC[0])), strcmp(&(fun[0]), &(keywordSub1[0])));
 
 			//Wybor czy podlaczyl sie publisher czy subscriber
-
 
 			for (int i = 0; i < 3; i++) {
 				fun[i] = pierwszy.TOPICMSG[i];
 			}
-			if (0==(strcmp(&(fun[0]), &(keywordSub[0])))) {///////////////////////////POROWNAIE STRING / CHAR
+			if (0==(strcmp(&(fun[0]), &(keywordSub[0])))) {
 				printf("Subscriber\n");
-				//Zapis adresu do tabeli Subscribers
+				//Zapis adresu do tabeli Subscribers || Odczytanie buffora w formacie (temat;;wiadomoœæ)
 				//DO NAPISANIA
 				printf("\n");
 				send_time(connfd);
@@ -146,7 +134,7 @@ main(int argc, char** argv)
 
 				exit(0);
 			}
-			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {///////////////////////////POROWNAIE STRING / CHAR
+			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {
 				printf("Publisher\n");
 				//Handling publisher
 				for (;;) {
