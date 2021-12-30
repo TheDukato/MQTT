@@ -18,10 +18,11 @@ send_sub(int sockfd)
 	char topic[LENTOPIC];
 	char fun[4] = "sub";
 	char line[MAXLINE];
+	char sign[] = "_";
 	printf("Enter topic to subscribe: ");
 	scanf("%s", topic);
 	for (int i = 0; i < (LENTOPIC - sizeof(topic));i++) {
-		strcat(topic, "_");
+		strcat(topic, sign);
 	}
 	printf("%s\n", topic);
 	strcat(fun, topic);
@@ -34,10 +35,11 @@ send_pub(int sockfd)
 	char lineTS[50];
 	char topic[LENTOPIC];
 	char line[MAXLINE];
+	char sign[] = "_";
 	printf("Enter topic to publish:");
 	scanf("%s", topic);
 	for (int i = 0; i < (LENTOPIC - sizeof(topic));i++) {
-		strcat(topic, "_");
+		strcat(topic, sign);
 	}
 	printf("%s\n", topic);
 	printf("Enter msg:");
