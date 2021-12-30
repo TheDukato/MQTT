@@ -147,13 +147,14 @@ main(int argc, char** argv)
 			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {
 				printf("Publisher\n");
 				//Retrieved topic from message
-				//for (int i = 3; i < (LENTOPIC + 3); i++) {
-					//	printf("%c", pierwszy.MSG[i]);
-				//}	
-				//for (int i = (LENTOPIC + 3); i < MAXLINE; i++) {
-					//	printf("%c", pierwszy.MSG[i]);
-				//}
-				for (;;) {
+				for (int i = 3; i < (LENTOPIC + 3); i++) {
+						printf("%c", pierwszy.MSG[i]);
+				}	
+				for (int i = (LENTOPIC + 3); i < MAXLINE; i++) {
+						printf("%c", pierwszy.MSG[i]);
+				}
+				exit(0);
+				/*for (;;) {
 					if ((n = read(connfd, MSG, MAXLINE)) > 0) {
 						printf("Odbieram...\n");
 						MSG[n] = 0;
@@ -163,7 +164,7 @@ main(int argc, char** argv)
 					//break;//do usuniecia
 					}
 					exit(0);
-				}
+				}*/
 			}
 
 
