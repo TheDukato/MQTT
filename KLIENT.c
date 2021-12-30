@@ -26,6 +26,7 @@ send_sub(int sockfd)
 		strcat(topic, sign);
 		strcat(topic, sign);
 	//}
+		printf("%d\n", (LENTOPIC - sizeof(topic)));
 	printf("%s\n", topic);
 	strcat(fun, topic);
 	snprintf(line, sizeof(line), fun);
