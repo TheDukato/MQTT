@@ -23,7 +23,7 @@ send_sub(int sockfd)
 	for (int i = 0; i < (LENTOPIC - sizeof(topic));i++) {
 		strcat(topic, sign);
 	}
-	scanf("%s", topic);
+	scanf("%s %i", topic, sizeof(topic);
 	printf("%s\n", topic);
 	strcat(fun, topic);
 	snprintf(line, sizeof(line), fun);
