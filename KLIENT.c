@@ -18,7 +18,7 @@ send_sub(int sockfd)
 	char topic[LENTOPIC];
 	char fun[4] = "sub";
 	char line[MAXLINE];
-	char sign[] = ":";
+	char sign[] = "x";
 	printf("Enter topic to subscribe: ");
 	scanf("%s", topic);
 	for (int i = 0; i < (LENTOPIC - sizeof(topic));i++) {
