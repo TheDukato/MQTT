@@ -94,7 +94,7 @@ main(int argc, char** argv)
 		char				fun[4]="";
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
-			char TOPIC[MAXLINE];
+			char TOPICMSG[MAXLINE];
 		};
 		char				MSG[MAXLINE];
 		struct subscribers pierwszy;
@@ -111,9 +111,9 @@ main(int argc, char** argv)
 			*		sizeof(pierwszy.TOPIC) to jest inaczej odbieram.... i dwie wiadomosci
 			*		MAXLINE to dwa razy (odbieram.... i wiadomosci)
 			*/
-			if ((n = read(connfd, pierwszy.TOPIC, MAXLINE)) < 0)
+			if ((n = read(connfd, pierwszy.TOPICMSG, MAXLINE)) < 0)
 				perror("read() error");
-			pierwszy.TOPIC[n] = 0;	/* Enter sign of end of line */
+			pierwszy.TOPICMSG[n] = 0;	/* Enter sign of end of line */
 			//
 			// 
 			// 
@@ -130,7 +130,7 @@ main(int argc, char** argv)
 
 
 			for (int i = 0; i < 3; i++) {
-				fun[i] = pierwszy.TOPIC[i];
+				fun[i] = pierwszy.TOPICMSG[i];
 			}
 			if (0==(strcmp(&(fun[0]), &(keywordSub[0])))) {///////////////////////////POROWNAIE STRING / CHAR
 				printf("Subscriber\n");
