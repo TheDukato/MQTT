@@ -133,13 +133,23 @@ main(int argc, char** argv)
 				fun[i] = pierwszy.TOPIC[i];
 			}
 			if (0==(strcmp(&(fun[0]), &(keywordSub[0])))) {///////////////////////////POROWNAIE STRING / CHAR
-				printf("Werification completed as Subscriber\n");
+				printf("Subscriber\n");
 				//Zapis adresu do tabeli Subscribers
 				//DO NAPISANIA
 			}
 			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {///////////////////////////POROWNAIE STRING / CHAR
-				printf("Werification completed as Publisher\n");
-				//Obsluga publisher
+				printf("Publisher\n");
+				//Handling publisher
+				for (;;) {
+					if ((n = read(connfd, MSG, MAXLINE)) > 0) {
+						printf("Odbieram...\n");
+						MSG[n] = 0;
+						if (fputs(MSG, stdout) == EOF) {
+							fprintf(stderr, "fputs error : %s\n", strerror(errno));
+						}
+					//break;//do usuniecia
+					}
+				}
 			}
 
 			/*
@@ -151,16 +161,7 @@ main(int argc, char** argv)
 				//}
 			}*/
 ///////			Operating Publisher
-			/*for (;;) {
-				if ((n = read(connfd, MSG, MAXLINE)) > 0) {
-					printf("Odbieram...\n");
-					MSG[n] = 0;	
-					if (fputs(MSG, stdout) == EOF) {
-						fprintf(stderr, "fputs error : %s\n", strerror(errno));
-					}
-					//break;//do usuniecia
-				}
-			}*/
+
 
 //////
 			printf("\n");
