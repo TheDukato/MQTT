@@ -26,6 +26,7 @@ send_sub(int sockfd)
 	//}
 	//printf("%s\n", topic);
 	strcat(fun, topic);
+	printf("%s", fun);
 	snprintf(line, sizeof(line), fun);
 	if (write(sockfd, line, MAXLINE) < 0);
 }
