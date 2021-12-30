@@ -125,7 +125,7 @@ main(int argc, char** argv)
 
 
 			if (0==(strcmp(&(fun[0]), &(keywordSub[0])))) {
-				printf("Subscriber\n");
+				printf("Subscriber in topic ");
 
 				//Retrieved topic from message
 				for (int i = 3; i < 19; i++) {
