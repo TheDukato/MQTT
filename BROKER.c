@@ -93,7 +93,7 @@ main(int argc, char** argv)
 		char				keywordSub[4] = "sub";
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
-		topic				topic[LENTOPIC] = "";
+		char				topic[LENTOPIC] = "";
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char MSG[MAXLINE];
