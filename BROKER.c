@@ -125,7 +125,9 @@ main(int argc, char** argv)
 			//Connection from SUBSCRIBER
 			if (0==(strcmp(&(fun[0]), &(keywordSub[0])))) {
 				printf("Subscriber in topic ");
+
 				//Retrieved topic from message
+
 				for (int i = 3; i < (LENTOPIC+3); i++) {
 					printf("%c", pierwszy.MSG[i]);
 				}
@@ -143,15 +145,26 @@ main(int argc, char** argv)
 			}
 			//Connection from PUBLISHER
 			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {
-				printf("Publisher in topic ");
+				printf("Publisher\n");
 				//Retrieved topic from message
 				//for (int i = 3; i < (LENTOPIC + 3); i++) {
-				//	printf("%c", pierwszy.MSG[i]);
+					//	printf("%c", pierwszy.MSG[i]);
 				//}	
 				//for (int i = (LENTOPIC + 3); i < MAXLINE; i++) {
-				//	printf("%c", pierwszy.MSG[i]);
+					//	printf("%c", pierwszy.MSG[i]);
 				//}
+				for (;;) {
+					if ((n = read(connfd, MSG, MAXLINE)) > 0) {
+						printf("Odbieram...\n");
+						MSG[n] = 0;
+						if (fputs(MSG, stdout) == EOF) {
+							fprintf(stderr, "fputs error : %s\n", strerror(errno));
+						}
+					//break;//do usuniecia
+					}
+				}
 			}
+
 
 			/*
 			printf(" in topic: ");
