@@ -122,7 +122,7 @@ main(int argc, char** argv)
 				fun[i] = pierwszy.MSG[i];
 			}
 
-			//SUBSCRIBER
+			//Connection from SUBSCRIBER
 			if (0==(strcmp(&(fun[0]), &(keywordSub[0])))) {
 				printf("Subscriber in topic ");
 
@@ -143,11 +143,10 @@ main(int argc, char** argv)
 
 				exit(0);
 			}
-			//PUBLISHER
+			//Connection from PUBLISHER
 			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {
 				printf("Publisher\n");	
 				for (;;) {
-					printf("Odbieram...\n");
 					if ((n = read(connfd, MSG, MAXLINE)) > 0) {
 						printf("Odbieram...\n");
 						MSG[n] = 0;
