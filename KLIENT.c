@@ -15,7 +15,7 @@
 void
 send_sub(int sockfd)
 {
-	char topic[LENTOPIC];
+	char topic[LENTOPIC]="______________";
 	char fun[4] = "sub";
 	char line[MAXLINE];
 	printf("Enter topic to subscribe: ");
@@ -28,7 +28,7 @@ void
 send_pub(int sockfd)
 {
 	char lineTS[50];
-	char topic[LENTOPIC];
+	char topic[LENTOPIC] = "______________";
 	char line[MAXLINE];
 	printf("Enter topic to publish:");
 	scanf("%s", topic);
