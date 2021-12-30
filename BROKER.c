@@ -110,10 +110,10 @@ main(int argc, char** argv)
 			//Czytanie funkcji podlaczonego adresu
 			/*
 			* opis dotyczy dziwnego dzialania ponizszego if'a wpisujemy
-			*		sizeof(pierwszy.TOPIC) to jest inaczej odbieram.... i dwie wiadomosci
+			*		sizeof(pierwszy.MSG) to jest inaczej odbieram.... i dwie wiadomosci
 			*		MAXLINE to dwa razy (odbieram.... i wiadomosci)
 			*/
-			if ((n = read(connfd, pierwszy.MSG, sizeof(pierwszy.TOPIC))) < 0)
+			if ((n = read(connfd, pierwszy.MSG, sizeof(pierwszy.MSG))) < 0)
 				perror("read() error");
 			pierwszy.MSG[n] = 0;	/* Enter sign of end of line */
 
