@@ -9,12 +9,13 @@
 #include        <unistd.h>
 
 #define MAXLINE 1023
+#define LENTOPIC 15
 #define SA      struct sockaddr
 
 void
 send_sub(int sockfd)
 {
-	char topic[15];
+	char topic[LENTOPIC];
 	char fun[4] = "sub";
 	char line[MAXLINE];
 	printf("Enter topic to subscribe: ");
@@ -27,7 +28,7 @@ void
 send_pub(int sockfd)
 {
 	char lineTS[50];
-	char topic[15];
+	char topic[LENTOPIC];
 	char line[MAXLINE];
 	printf("Enter topic to publish:");
 	scanf("%s", topic);
