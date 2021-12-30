@@ -129,7 +129,7 @@ main(int argc, char** argv)
 
 				//Retrieved topic from message
 
-				printf("%s", pierwszy.MSG[3]);
+				printf("%c", pierwszy.MSG[3]);
 				//printf("in topic %s", topic);
 				//Zapis adresu do tabeli Subscribers || Odczytanie buffora w formacie (temat;;wiadomoœæ)
 				//DO NAPISANIA
