@@ -22,7 +22,6 @@ send_sub(int sockfd)
 	strcat(fun, topic);
 	snprintf(line, sizeof(line), fun);
 	if (write(sockfd, line, MAXLINE) < 0);
-	//printf("Sending function as Subscriber\n");
 }
 void
 send_pub(int sockfd)
@@ -34,7 +33,7 @@ send_pub(int sockfd)
 	scanf("%s", topic);
 	printf("Enter msg:");
 	scanf("%s", lineTS);
-	snprintf(line, sizeof(line), "pub%s, Msg:%s", topic, lineTS);
+	snprintf(line, sizeof(line), "pub%smsg%s", topic, lineTS);
 	if (write(sockfd, line, MAXLINE) < 0);
 }
 int
@@ -76,7 +75,8 @@ main(int argc, char** argv)
 	scanf("%d", &choose1);
 	switch (choose1) {
 	case 3:
-		send_sub(sockfd);
+		send_sub(sockfd);//Sending function(subscrber / publisher and topic)
+		//Waiting for message
 		printf("\nCzekam na dane\n");
 		for (;;) {
 			if ((n = read(sockfd, recvline, MAXLINE)) > 0) {
