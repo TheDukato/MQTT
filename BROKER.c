@@ -122,7 +122,7 @@ main(int argc, char** argv)
 				fun[i] = pierwszy.MSG[i];
 			}
 
-
+			//SUBSCRIBER
 			if (0==(strcmp(&(fun[0]), &(keywordSub[0])))) {
 				printf("Subscriber in topic ");
 
@@ -143,6 +143,7 @@ main(int argc, char** argv)
 
 				exit(0);
 			}
+			//PUBLISHER
 			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {
 				printf("Publisher\n");
 				//printf("in topic %s", topic);
@@ -157,6 +158,7 @@ main(int argc, char** argv)
 					break;//do usuniecia
 					}
 				}
+				printf("%s", MSG);
 			}
 
 			/*
