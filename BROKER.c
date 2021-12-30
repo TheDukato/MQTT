@@ -134,7 +134,7 @@ main(int argc, char** argv)
 				printf("\n");
 				//Zapis adresu do tabeli Subscribers || Odczytanie buffora w formacie (temat;;wiadomoœæ)
 				//DO NAPISANIA
-#define test
+//#define test
 #ifdef test
 				send_time(connfd);
 				send_time(connfd);
