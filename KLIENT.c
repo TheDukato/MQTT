@@ -34,7 +34,7 @@ send_pub(int sockfd)
 	scanf("%s", topic);
 	printf("Enter msg:");
 	scanf("%s", lineTS);
-	snprintf(line, sizeof(line), "pub%smsg%s", topic, lineTS);
+	snprintf(line, sizeof(line), "pub%s%s", topic, lineTS);
 	if (write(sockfd, line, MAXLINE) < 0);
 }
 int
