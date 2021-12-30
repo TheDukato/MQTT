@@ -134,8 +134,6 @@ main(int argc, char** argv)
 				printf("\n");
 				//Zapis adresu do tabeli Subscribers || Odczytanie buffora w formacie (temat;;wiadomoœæ)
 				//DO NAPISANIA
-//#define test
-#ifdef test
 				send_time(connfd);
 				send_time(connfd);
 				sleep(2);
@@ -144,7 +142,6 @@ main(int argc, char** argv)
 				send_time(connfd);
 
 				exit(0);
-#endif // test
 			}
 			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {
 				printf("Publisher\n");
