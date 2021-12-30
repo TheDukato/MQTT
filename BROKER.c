@@ -145,9 +145,7 @@ main(int argc, char** argv)
 			}
 			//PUBLISHER
 			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {
-				printf("Publisher\n");
-				//printf("in topic %s", topic);
-				//Handling publisher
+				printf("Publisher\n");	
 				for (;;) {
 					if ((n = read(connfd, MSG, MAXLINE)) > 0) {
 						printf("Odbieram...\n");
@@ -155,7 +153,7 @@ main(int argc, char** argv)
 						if (fputs(MSG, stdout) == EOF) {
 							fprintf(stderr, "fputs error : %s\n", strerror(errno));
 						}
-					break;//do usuniecia
+					//break;//do usuniecia
 					}
 				}
 			}
