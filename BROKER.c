@@ -154,6 +154,7 @@ main(int argc, char** argv)
 				for (int i = (LENTOPIC + 3); i < MAXLINE; i++) {
 						printf("%c", pierwszy.MSG[i]);
 				}
+				printf("\n");
 				exit(0);
 				/*for (;;) {
 					if ((n = read(connfd, MSG, MAXLINE)) > 0) {
