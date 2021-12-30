@@ -23,6 +23,7 @@ send_sub(int sockfd)
 	for (int i = 0; i < (LENTOPIC - sizeof(topic));i++) {
 		strcat(topic, "_");
 	}
+	printf("%s\n", topic);
 	strcat(fun, topic);
 	snprintf(line, sizeof(line), fun);
 	if (write(sockfd, line, MAXLINE) < 0);
@@ -38,6 +39,7 @@ send_pub(int sockfd)
 	for (int i = 0; i < (LENTOPIC - sizeof(topic));i++) {
 		strcat(topic, "_");
 	}
+	printf("%s\n", topic);
 	printf("Enter msg:");
 	scanf("%s", lineTS);
 	snprintf(line, sizeof(line), "pub%smsg%s", topic, lineTS);
