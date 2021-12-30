@@ -128,7 +128,7 @@ main(int argc, char** argv)
 				//printf("%c", pierwszy.TOPIC[i]);
 				fun[i] = pierwszy.TOPIC[i];
 			}
-			printf("\n%s\n%s\n%i\n%i\n", fun, pierwszy.TOPIC, strcmp(&(fun[0]), &(pierwszy.TOPIC[0])), strcmp(&(fun[0]), &(keywordSub1[0])));
+			printf("\n\n%s\n%s\n%i\n%i\n", fun, pierwszy.TOPIC, strcmp(&(fun[0]), &(pierwszy.TOPIC[0])), strcmp(&(fun[0]), &(keywordSub1[0])));
 			if (0==(strcmp(&(fun[0]), &(keywordSub1[0])))) {///////////////////////////POROWNAIE STRING / CHAR
 				printf("Werification completed\n");
 				//Zapis adresu do tabeli Subscribers
