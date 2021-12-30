@@ -30,9 +30,7 @@ send_pub(int sockfd)
 	char lineTS[50];
 	char topic[10];
 	char line[MAXLINE];
-	printf("Sending function as Publisher\n");
-
-	printf("Enter topic:");
+	printf("Enter topic to publish:");
 	scanf("%s", topic);
 	printf("Enter msg:");
 	scanf("%s", lineTS);
