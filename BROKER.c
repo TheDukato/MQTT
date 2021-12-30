@@ -134,7 +134,6 @@ main(int argc, char** argv)
 					printf("%c", topic[count]);
 					count++;
 				}
-				printf("%i",sizeof())
 				//printf("in topic %s", topic);
 				//Zapis adresu do tabeli Subscribers || Odczytanie buffora w formacie (temat;;wiadomoœæ)
 				//DO NAPISANIA
