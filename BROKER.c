@@ -140,7 +140,7 @@ main(int argc, char** argv)
 			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {///////////////////////////POROWNAIE STRING / CHAR
 				printf("Publisher\n");
 				//Handling publisher
-				for (;;) {
+				/*for (;;) {
 					if ((n = read(connfd, MSG, MAXLINE)) > 0) {
 						printf("Odbieram...\n");
 						MSG[n] = 0;
@@ -149,7 +149,7 @@ main(int argc, char** argv)
 						}
 					//break;//do usuniecia
 					}
-				}
+				}*/
 			}
 
 			/*
@@ -161,7 +161,14 @@ main(int argc, char** argv)
 				//}
 			}*/
 ///////			Operating Publisher
-
+			if ((n = read(connfd, MSG, MAXLINE)) > 0) {
+				printf("Odbieram...\n");
+				MSG[n] = 0;
+				if (fputs(MSG, stdout) == EOF) {
+					fprintf(stderr, "fputs error : %s\n", strerror(errno));
+				}
+				//break;//do usuniecia
+			}
 
 //////
 			printf("\n");
