@@ -14,7 +14,7 @@
 void
 send_sub(int sockfd)
 {
-	char topic[30];
+	char topic[]="";
 	char fun[4] = "sub";
 	char line[MAXLINE];
 	printf("Enter topic to subscribe: ");
@@ -26,8 +26,8 @@ send_sub(int sockfd)
 void
 send_pub(int sockfd)
 {
+	char topic[] = "";
 	char lineTS[50];
-	char topic[10];
 	char line[MAXLINE];
 	printf("Enter topic to publish:");
 	scanf("%s", topic);
