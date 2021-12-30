@@ -21,9 +21,11 @@ send_sub(int sockfd)
 	char sign[] = "x";
 	printf("Enter topic to subscribe: ");
 	scanf("%s", topic);
-	for (int i = 0; i < (LENTOPIC - sizeof(topic));i++) {
+	//for (int i = 0; i < (LENTOPIC - sizeof(topic));i++) {
 		strcat(topic, sign);
-	}
+		strcat(topic, sign);
+		strcat(topic, sign);
+	//}
 	printf("%s\n", topic);
 	strcat(fun, topic);
 	snprintf(line, sizeof(line), fun);
