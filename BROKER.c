@@ -136,6 +136,15 @@ main(int argc, char** argv)
 				printf("Subscriber\n");
 				//Zapis adresu do tabeli Subscribers
 				//DO NAPISANIA
+				printf("\n");
+				send_time(connfd);
+				send_time(connfd);
+				sleep(2);
+				send_time(connfd);
+				sleep(5);
+				send_time(connfd);
+
+				exit(0);
 			}
 			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {///////////////////////////POROWNAIE STRING / CHAR
 				printf("Publisher\n");
@@ -171,17 +180,18 @@ main(int argc, char** argv)
 			}
 
 //////
+//////			Handling Subscriber
+			/*
 			printf("\n");
-			/* process the request */
-
-			send_time(connfd);	
+			send_time(connfd);
 			send_time(connfd);
 			sleep(2);
 			send_time(connfd);
 			sleep(5);
 			send_time(connfd);
 
-			exit(0);
+			exit(0);*/
+//////
 		}
 		close(connfd);			/* parent closes connected socket */
 		/////////////////////////////
