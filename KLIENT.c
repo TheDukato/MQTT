@@ -9,7 +9,7 @@
 #include        <unistd.h>
 
 #define MAXLINE 1023
-#define LENTOPIC 10
+#define LENTOPIC 3
 #define SA      struct sockaddr
 
 void

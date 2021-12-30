@@ -16,7 +16,7 @@
 
 
 #define MAXLINE 1024
-#define LENTOPIC 10
+#define LENTOPIC 3
 
 //#define SA struct sockaddr
 
