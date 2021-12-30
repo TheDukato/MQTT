@@ -148,7 +148,7 @@ main(int argc, char** argv)
 					printf("%c", pierwszy.MSG[i]);
 				}
 				printf("Publisher\n");	
-				for(int i = (LENTOPIC + 3); i < MAXLINE, i++){
+				for (int i = (LENTOPIC + 3); i < MAXLINE; i++) {
 					printf("%c", pierwszy.MSG[i]);
 				}
 			}
