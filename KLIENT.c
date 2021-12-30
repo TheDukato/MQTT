@@ -15,18 +15,17 @@
 void
 send_sub(int sockfd)
 {
-	char topic[LENTOPIC];
+	char topic[LENTOPIC]="______________";
 	char fun[4] = "sub";
 	char line[MAXLINE];
 	char sign[] = "X";
 	printf("Enter topic to subscribe: ");
-	scanf("%s", topic);
 	//for (int i = 0; i < (LENTOPIC - sizeof(topic));i++) {
-		strcat(topic, sign);
-		strcat(topic, sign);
-		strcat(topic, sign);
+	//	strcat(topic, sign);
+	//	strcat(topic, sign);
+	//	strcat(topic, sign);
 	//}
-		printf("%d\n", (LENTOPIC - sizeof(topic)));
+	scanf("%s", topic);
 	printf("%s\n", topic);
 	strcat(fun, topic);
 	snprintf(line, sizeof(line), fun);
