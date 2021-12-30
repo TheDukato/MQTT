@@ -147,11 +147,11 @@ main(int argc, char** argv)
 			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {
 				printf("Publisher in topic ");
 				//Retrieved topic from message
-				for (int i = 3; i < (LENTOPIC + 3); i++) {
+				for (int i = 3; i < (LENTOPIC + 2); i++) {
 						printf("%c", pierwszy.MSG[i]);
 				}	
 				printf("\n\nSending message: ");
-				for (int i = (LENTOPIC + 3); i < MAXLINE; i++) {
+				for (int i = (LENTOPIC + 2); i < MAXLINE; i++) {
 						printf("%c", pierwszy.MSG[i]);
 				}
 				printf("\n");
