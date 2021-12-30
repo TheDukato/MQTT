@@ -145,11 +145,12 @@ main(int argc, char** argv)
 			}
 			//Connection from PUBLISHER
 			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {
-				printf("Publisher\n");
+				printf("Publisher in topic ");
 				//Retrieved topic from message
 				for (int i = 3; i < (LENTOPIC + 3); i++) {
 						printf("%c", pierwszy.MSG[i]);
 				}	
+				printf("\nSending message: ")
 				for (int i = (LENTOPIC + 3); i < MAXLINE; i++) {
 						printf("%c", pierwszy.MSG[i]);
 				}
