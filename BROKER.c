@@ -128,9 +128,13 @@ main(int argc, char** argv)
 				printf("Subscriber in topic ");
 
 				//Retrieved topic from message
+				int count = 0
 				for (int i = 3; i < (LENTOPIC+3); i++) {
-					printf("%c", pierwszy.MSG[i]);
+					topic[count] = pierwszy.MSG[i];
+					printf("%c", topic[count]);
+					count++;
 				}
+				printf("%i",sizeof())
 				//printf("in topic %s", topic);
 				//Zapis adresu do tabeli Subscribers || Odczytanie buffora w formacie (temat;;wiadomoœæ)
 				//DO NAPISANIA
