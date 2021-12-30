@@ -128,7 +128,7 @@ main(int argc, char** argv)
 				printf("Subscriber\n");
 
 				//Retrieved topic from message
-				for (int i = 3; i < n; i++) {
+				for (int i = 3; i < 19; i++) {
 					printf("%c", pierwszy.MSG[i]);
 				}
 				//printf("in topic %s", topic);
