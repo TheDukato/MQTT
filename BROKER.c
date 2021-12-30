@@ -158,8 +158,8 @@ main(int argc, char** argv)
 					break;//do usuniecia
 					}
 				}
-				printf("%s", MSG);
 			}
+			printf("%s", MSG);
 
 			/*
 			printf(" in topic: ");
