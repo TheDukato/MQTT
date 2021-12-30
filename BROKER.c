@@ -150,7 +150,7 @@ main(int argc, char** argv)
 				for (int i = 3; i < (LENTOPIC + 3); i++) {
 						printf("%c", pierwszy.MSG[i]);
 				}	
-				printf("\nSending message: ")
+				printf("\nSending message: ");
 				for (int i = (LENTOPIC + 3); i < MAXLINE; i++) {
 						printf("%c", pierwszy.MSG[i]);
 				}
