@@ -125,13 +125,13 @@ main(int argc, char** argv)
 
 			//Retrieved topic from message
 
-			for (int i = 3; i < 19; i++) {
-				topic[i-3] = pierwszy.MSG[i];
+			for (int j = 3; j < 19; j++) {
+				topic[j-3] = pierwszy.MSG[j];
 			}
 
 			if (0==(strcmp(&(fun[0]), &(keywordSub[0])))) {
 				printf("Subscriber\n");
-				printf("in topic %s", topic);
+				//printf("in topic %s", topic);
 				//Zapis adresu do tabeli Subscribers || Odczytanie buffora w formacie (temat;;wiadomoœæ)
 				//DO NAPISANIA
 				send_time(connfd);
@@ -145,7 +145,7 @@ main(int argc, char** argv)
 			}
 			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {
 				printf("Publisher\n");
-				printf("in topic %s", topic);
+				//printf("in topic %s", topic);
 				//Handling publisher
 				for (;;) {
 					if ((n = read(connfd, MSG, MAXLINE)) > 0) {
