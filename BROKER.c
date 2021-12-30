@@ -125,9 +125,10 @@ main(int argc, char** argv)
 
 			//Retrieved topic from message
 
-			//for (int j = 3; j < 19; j++) {
-			//	topic[j-3] = pierwszy.MSG[j];
-			//}
+			for (int j = 3; j < 19; j++) {
+				//topic[j-3] = pierwszy.MSG[j];
+				printf("%c", pierwszy.MSG[j]);
+			}
 
 			if (0==(strcmp(&(fun[0]), &(keywordSub[0])))) {
 				printf("Subscriber\n");
