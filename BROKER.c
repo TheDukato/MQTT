@@ -93,7 +93,6 @@ main(int argc, char** argv)
 		char				keywordSub[4] = "sub";
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
-		char				topic[LENTOPIC] = "";
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char MSG[MAXLINE];
@@ -128,9 +127,11 @@ main(int argc, char** argv)
 				printf("Subscriber in topic ");
 
 				//Retrieved topic from message
+
 				for (int i = 3; i < (LENTOPIC+3); i++) {
 					printf("%c", pierwszy.MSG[i]);
 				}
+				printf("\n");
 				//printf("in topic %s", topic);
 				//Zapis adresu do tabeli Subscribers || Odczytanie buffora w formacie (temat;;wiadomoœæ)
 				//DO NAPISANIA
