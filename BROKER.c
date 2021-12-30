@@ -123,15 +123,13 @@ main(int argc, char** argv)
 				fun[i] = pierwszy.MSG[i];
 			}
 
-			//Retrieved topic from message
-
-			for (int j = 3; j < 19; j++) {
-				//topic[j-3] = pierwszy.MSG[j];
-				printf("%c", pierwszy.MSG[j]);
-			}
 
 			if (0==(strcmp(&(fun[0]), &(keywordSub[0])))) {
 				printf("Subscriber\n");
+
+				//Retrieved topic from message
+
+				printf("%s", pierwszy.MSG[3]);
 				//printf("in topic %s", topic);
 				//Zapis adresu do tabeli Subscribers || Odczytanie buffora w formacie (temat;;wiadomoœæ)
 				//DO NAPISANIA
