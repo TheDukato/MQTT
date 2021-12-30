@@ -113,7 +113,7 @@ main(int argc, char** argv)
 			*		sizeof(pierwszy.TOPIC) to jest inaczej odbieram.... i dwie wiadomosci
 			*		MAXLINE to dwa razy (odbieram.... i wiadomosci)
 			*/
-			if ((n = read(connfd, pierwszy.MSG, MAXLINE)) < 0)
+			if ((n = read(connfd, pierwszy.MSG, sizeof(pierwszy.TOPIC))) < 0)
 				perror("read() error");
 			pierwszy.MSG[n] = 0;	/* Enter sign of end of line */
 
