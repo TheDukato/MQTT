@@ -126,12 +126,11 @@ main(int argc, char** argv)
 			pierwszy.TOPIC[n] = 0;	/* null terminate */
 
 
-			fun[0] = pierwszy.TOPIC[0];
 
-			/*for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 3; i++) {
 				//printf("%c", pierwszy.TOPIC[i]);
 				fun[i] = pierwszy.TOPIC[i];
-			}*/
+			}
 			printf("\n\n%s\n%s\n%i\n%i\n", fun, pierwszy.TOPIC, strcmp(&(fun[0]), &(pierwszy.TOPIC[0])), strcmp(&(fun[0]), &(keywordSub1[0])));
 			if (0==(strcmp(&(fun[0]), &(keywordSub1[0])))) {///////////////////////////POROWNAIE STRING / CHAR
 				printf("Werification completed\n");
