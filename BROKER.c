@@ -147,6 +147,7 @@ main(int argc, char** argv)
 			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {
 				printf("Publisher\n");	
 				for (;;) {
+					printf("Odbieram...\n");
 					if ((n = read(connfd, MSG, MAXLINE)) > 0) {
 						printf("Odbieram...\n");
 						MSG[n] = 0;
