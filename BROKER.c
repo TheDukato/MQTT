@@ -162,7 +162,7 @@ main(int argc, char** argv)
 						}
 					//break;//do usuniecia
 					}
-					break;
+					exit(0);
 				}
 			}
 
