@@ -16,6 +16,7 @@
 
 
 #define MAXLINE 1024
+#define LENTOPIC 15
 
 //#define SA struct sockaddr
 
@@ -92,9 +93,10 @@ main(int argc, char** argv)
 		char				keywordSub[4] = "sub";
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
+		topic				topic[LENTOPIC] = "";
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
-			char TOPICMSG[MAXLINE];
+			char MSG[MAXLINE];
 		};
 		char				MSG[MAXLINE];
 		struct subscribers pierwszy;
@@ -111,17 +113,25 @@ main(int argc, char** argv)
 			*		sizeof(pierwszy.TOPIC) to jest inaczej odbieram.... i dwie wiadomosci
 			*		MAXLINE to dwa razy (odbieram.... i wiadomosci)
 			*/
-			if ((n = read(connfd, pierwszy.TOPICMSG, MAXLINE)) < 0)
+			if ((n = read(connfd, pierwszy.MSG, MAXLINE)) < 0)
 				perror("read() error");
-			pierwszy.TOPICMSG[n] = 0;	/* Enter sign of end of line */
+			pierwszy.MSG[n] = 0;	/* Enter sign of end of line */
 
-			//Wybor czy podlaczyl sie publisher czy subscriber
+			//Retrieved functionality from message (publisher or subscriber)
 
 			for (int i = 0; i < 3; i++) {
-				fun[i] = pierwszy.TOPICMSG[i];
+				fun[i] = pierwszy.MSG[i];
 			}
+
+			//Retrieved topic from message
+
+			for (int i = 3; i < 19; i++) {
+				topic[i-3] = pierwszy.MSG[i];
+			}
+
 			if (0==(strcmp(&(fun[0]), &(keywordSub[0])))) {
 				printf("Subscriber\n");
+				printf("in topic %s", topic);
 				//Zapis adresu do tabeli Subscribers || Odczytanie buffora w formacie (temat;;wiadomoœæ)
 				//DO NAPISANIA
 				send_time(connfd);
@@ -135,6 +145,7 @@ main(int argc, char** argv)
 			}
 			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {
 				printf("Publisher\n");
+				printf("in topic %s", topic);
 				//Handling publisher
 				for (;;) {
 					if ((n = read(connfd, MSG, MAXLINE)) > 0) {
