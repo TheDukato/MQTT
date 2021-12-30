@@ -89,8 +89,8 @@ main(int argc, char** argv)
 		////////////////////////////
 		int					n;
 		char				line[4]="";
-		char				keywordSub1[4] = "sub";
-		char				keywordSub2[4] = "dub";
+		char				keywordSub[4] = "sub";
+		char				keywordPub[4] = "pub";
 		char				fun[4]="";
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
@@ -113,6 +113,7 @@ main(int argc, char** argv)
 			*/
 			if ((n = read(connfd, pierwszy.TOPIC, MAXLINE)) < 0)
 				perror("read() error");
+			pierwszy.TOPIC[n] = 0;	/* Enter sign of end of line */
 			//
 			// 
 			// 
@@ -123,19 +124,22 @@ main(int argc, char** argv)
 			//printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])));//funkcja do porownania stringow
 			//printf("%i", strcmp(&(pierwszy.TOPIC[0]), &(keywordSub1[0])));
 			//printf("%i", strcmp(&(keywordSub2[1]), &(keywordSub1[1])));//
-			pierwszy.TOPIC[n] = 0;	/* null terminate */
+			//printf("\n\n%s\n%s\n%i\n%i\n", fun, pierwszy.TOPIC, strcmp(&(fun[0]), &(pierwszy.TOPIC[0])), strcmp(&(fun[0]), &(keywordSub1[0])));
 
+			//Wybor czy podlaczyl sie publisher czy subscriber
 
 
 			for (int i = 0; i < 3; i++) {
-				//printf("%c", pierwszy.TOPIC[i]);
 				fun[i] = pierwszy.TOPIC[i];
 			}
-			printf("\n\n%s\n%s\n%i\n%i\n", fun, pierwszy.TOPIC, strcmp(&(fun[0]), &(pierwszy.TOPIC[0])), strcmp(&(fun[0]), &(keywordSub1[0])));
-			if (0==(strcmp(&(fun[0]), &(keywordSub1[0])))) {///////////////////////////POROWNAIE STRING / CHAR
-				printf("Werification completed\n");
+			if (0==(strcmp(&(fun[0]), &(keywordSub[0])))) {///////////////////////////POROWNAIE STRING / CHAR
+				printf("Werification completed as Subscriber\n");
 				//Zapis adresu do tabeli Subscribers
 				//DO NAPISANIA
+			}
+			if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {///////////////////////////POROWNAIE STRING / CHAR
+				printf("Werification completed as Publisher\n");
+				//Obsluga publisher
 			}
 
 			/*
