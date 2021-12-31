@@ -104,9 +104,8 @@ main(int argc, char** argv)
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
-			//Poczatek polaczenia
+			//Beginning of handling connection
 			printf("Connection from %s as ", pierwszy.IP);
-			//Czytanie funkcji podlaczonego adresu
 			/*
 			* opis dotyczy dziwnego dzialania ponizszego if'a wpisujemy
 			*		sizeof(pierwszy.MSG) to jest inaczej odbieram.... i dwie wiadomosci
