@@ -94,6 +94,7 @@ main(int argc, char** argv)
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
 		char*				message2send;
+		char				message[MAXLINE] = "";
 		int					lenmsg = 0;
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
@@ -159,10 +160,12 @@ main(int argc, char** argv)
 					if (pierwszy.MSG[lenmsg] == '0')
 						break;
 					printf("%c", pierwszy.MSG[lenmsg]);
+					message[lenmsg] = pierwszy.MSG[lenmsg];
+
 				}
+				/* 111111111111111
 				//dynamiczna alokacja pamieci na efektywna czesc wiadomosci
 				//i wpisanie jej do message2send
-				/*
 				printf("\nlenmsg: %i", lenmsg);
 				message2send = malloc(lenmsg * sizeof(*message2send));
 				printf("\nLength: %i", sizeof(message2send));
@@ -174,6 +177,12 @@ main(int argc, char** argv)
 				printf("%s", message2send);
 				free (message2send);
 				*/
+				// 222222222222222
+				
+				printf("\n%s", message);
+				
+				
+
 				printf("\n");
 				exit(0);
 			}
