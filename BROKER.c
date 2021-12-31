@@ -93,7 +93,6 @@ main(int argc, char** argv)
 		char				keywordSub[4] = "sub";
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
-		char				signEndLine = '0';
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char MSG[MAXLINE];
@@ -149,27 +148,17 @@ main(int argc, char** argv)
 				//Retrieved topic from message
 				for (int i = 3; i < (LENTOPIC + 2); i++) {
 						printf("%c", pierwszy.MSG[i]);
-				}	
+				}
+
 				printf("\n\nSending message: ");
 				for (int i = (LENTOPIC + 2); i < MAXLINE; i++) {
-						printf("%c", pierwszy.MSG[i]);
-						//if(0==strcmp(&(pierwszy.MSG[i]),&(signEndLine)))
-						if(pierwszy.MSG[i] == '0')
-							break;
+					if (pierwszy.MSG[i] == '0')
+						break;
+					printf("%c", pierwszy.MSG[i]);
+
 				}
 				printf("\n");
 				exit(0);
-				/*for (;;) {
-					if ((n = read(connfd, MSG, MAXLINE)) > 0) {
-						printf("Odbieram...\n");
-						MSG[n] = 0;
-						if (fputs(MSG, stdout) == EOF) {
-							fprintf(stderr, "fputs error : %s\n", strerror(errno));
-						}
-					//break;//do usuniecia
-					}
-					exit(0);
-				}*/
 			}
 
 
