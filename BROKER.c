@@ -179,7 +179,7 @@ main(int argc, char** argv)
 				for (int i = (LENTOPIC + 2); i < lenmsg; i++) {
 					if (pierwszy.MSG[i] == '0')
 						break;
-					message[i]=pierwszy.MSG[i]);
+					message[i]=pierwszy.MSG[i];
 				}
 				printf("\n%s", message);
 				
