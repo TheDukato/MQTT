@@ -181,7 +181,7 @@ main(int argc, char** argv)
 						break;
 					message[i]=pierwszy.MSG[i];
 				}
-				printf("\n%s", message);
+				printf("\nX%sX", message);
 				
 				
 
