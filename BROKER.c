@@ -93,6 +93,7 @@ main(int argc, char** argv)
 		char				keywordSub[4] = "sub";
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
+		char				signEndLine = '0';
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char MSG[MAXLINE];
@@ -152,6 +153,8 @@ main(int argc, char** argv)
 				printf("\n\nSending message: ");
 				for (int i = (LENTOPIC + 2); i < MAXLINE; i++) {
 						printf("%c", pierwszy.MSG[i]);
+						if(strcmp(&(pierwszy.MSG[i]),&(signEndLine))
+							break;
 				}
 				printf("\n");
 				exit(0);
