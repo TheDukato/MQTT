@@ -153,7 +153,7 @@ main(int argc, char** argv)
 				printf("\n\nSending message: ");
 				for (int i = (LENTOPIC + 2); i < MAXLINE; i++) {
 						printf("%c", pierwszy.MSG[i]);
-						if(strcmp(&(pierwszy.MSG[i]),&(signEndLine))
+						if(strcmp(&(pierwszy.MSG[i]),&(signEndLine)))
 							break;
 				}
 				printf("\n");
