@@ -30,9 +30,9 @@ send_pub(int sockfd)
 	char lineTS[50];
 	char topic[LENTOPIC];
 	char line[MAXLINE];
-	printf("Enter topic to publish:");
+	printf("Enter topic to publish with 3 signs:");
 	scanf("%s", topic);
-	printf("Enter msg:");
+	printf("Enter msg on the end enter '0' and press ENTER:");
 	scanf("%s", lineTS);
 	snprintf(line, sizeof(line), "pub%s%s", topic, lineTS);
 	if (write(sockfd, line, MAXLINE) < 0);
