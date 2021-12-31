@@ -93,6 +93,8 @@ main(int argc, char** argv)
 		char				keywordSub[4] = "sub";
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
+		char*				message2send;
+		int					lenmsg = 0;
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char MSG[MAXLINE];
@@ -131,7 +133,8 @@ main(int argc, char** argv)
 					printf("%c", pierwszy.MSG[i]);
 				}
 				printf("\n");
-				//Zapis adresu do tabeli Subscribers || Odczytanie buffora w formacie (temat;;wiadomoœæ)
+				//Zapis adresu do tabeli Subscribers || 
+				//Odczytanie buffora w formacie (temat;;wiadomoœæ)
 				//DO NAPISANIA
 				send_time(connfd);
 				send_time(connfd);
@@ -149,15 +152,25 @@ main(int argc, char** argv)
 				for (int i = 3; i < (LENTOPIC + 2); i++) {
 						printf("%c", pierwszy.MSG[i]);
 				}
-
-				printf("\n\nSending message: ");
+				//Wypisanie odebranej wiadomosci do znaku '0' lub MAXLINE przez co znamy 
+				//dlugosc efektywnej wiadomoœci
+				printf("\nSending message: ");
 				for (int i = (LENTOPIC + 2); i < MAXLINE; i++) {
 					if (pierwszy.MSG[i] == '0')
 						break;
 					printf("%c", pierwszy.MSG[i]);
-
 				}
+				//dynamiczna alokacja pamieci na efektywna czesc wiadomosci
+				//i wpisanie jej do message2send
+				message2send = malloc(i * sizeof(*message2send));
+				for (int i = (LENTOPIC + 2); i < MAXLINE; i++) {
+					if (pierwszy.MSG[i] == '0')
+						break;
+					message2send[i] =pierwszy.MSG[i]
+				}
+				printf("%s", message2send);
 				printf("\n");
+				free (message2send);
 				exit(0);
 			}
 
