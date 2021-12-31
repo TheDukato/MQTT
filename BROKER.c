@@ -162,6 +162,7 @@ main(int argc, char** argv)
 				}
 				//dynamiczna alokacja pamieci na efektywna czesc wiadomosci
 				//i wpisanie jej do message2send
+				/*
 				printf("\nlenmsg: %i", lenmsg);
 				message2send = malloc(lenmsg * sizeof(*message2send));
 				printf("\nLength: %i", sizeof(message2send));
@@ -171,8 +172,9 @@ main(int argc, char** argv)
 					message2send[i] = pierwszy.MSG[i];
 				}
 				printf("%s", message2send);
-				printf("\n");
 				free (message2send);
+				*/
+				printf("\n");
 				exit(0);
 			}
 
