@@ -160,8 +160,6 @@ main(int argc, char** argv)
 					if (pierwszy.MSG[lenmsg] == '0')
 						break;
 					printf("%c", pierwszy.MSG[lenmsg]);
-					message[lenmsg] = pierwszy.MSG[lenmsg];
-
 				}
 				/* 111111111111111
 				//dynamiczna alokacja pamieci na efektywna czesc wiadomosci
@@ -178,7 +176,11 @@ main(int argc, char** argv)
 				free (message2send);
 				*/
 				// 222222222222222
-				
+				for (int i = (LENTOPIC + 2); i < lenmsg; i++) {
+					if (pierwszy.MSG[i] == '0')
+						break;
+					message[i]=pierwszy.MSG[i]);
+				}
 				printf("\n%s", message);
 				
 				
