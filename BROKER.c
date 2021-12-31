@@ -94,7 +94,7 @@ main(int argc, char** argv)
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
 		char*				message2send;
-		char				message[MAXLINE] = "";
+		char				message[MAXLINE];// = "";
 		int					lenmsg = 0;
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
