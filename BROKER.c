@@ -154,6 +154,11 @@ main(int argc, char** argv)
 				sleep(5);
 				send_time(connfd);
 
+				snprintf(buff, sizeof(buff), "MSG:%s", message );
+				if (write(sockfd, buff, strlen(buff)) < 0)
+					fprintf(stderr, "write error : %s\n", strerror(errno));
+				//close(connfd);
+
 				exit(0);
 			}
 			//Connection from PUBLISHER
@@ -180,7 +185,7 @@ main(int argc, char** argv)
 				}
 				//Uzupelnienie bazy o widomosc do tematu
 				printf("\nSending message: X%sX", message);
-				printf("\nWriting data to buffor");
+				
 				/*BUFOROWANIE
 				* 1.Sprawdzenie czy istniej ju¿ taki temat a jesli nie to powiekszyc pamiec
 				* 2.dopisac do bazy
@@ -190,14 +195,14 @@ main(int argc, char** argv)
 					printf("\nReserves memory for new topic");
 					baza = (struct DB*)realloc(baza, (baza->primKey + 1) * sizeof(*baza));
 				}*/
-				
-				
+				/*
+				printf("\nWriting data to buffor");
 				//baza->topic = topic;
 				//baza->storedMessage = message;
 				strcat(baza->topic, topic);
 				strcat(baza->storedMessage, message);
 				printf("\n\nSaved data \nTopic: %s\nMessage: %s", baza->topic, baza->storedMessage);
-				
+				*/
 				printf("\n");
 				exit(0);
 			}
