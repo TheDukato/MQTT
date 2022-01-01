@@ -184,14 +184,14 @@ main(int argc, char** argv)
 				*/
 				if (strcmp(&(baza->topic), &(topic)) != 0) {
 					printf("\nReserves memory for new topic");
-					baza = (struct DB*) realloc(baza,(baza->primKey+1) * sizeof(*baza))
+					baza = (struct DB*)realloc(baza, (baza->primKey + 1) * sizeof(*baza));
 				}
 				printf("\nWriting data to buffor");
 				//baza->topic = topic;
 				//baza->storedMessage = message;
-				strcat(baza->topic, topic);
-				strcat(baza->message, message);
-				printf("\n\nSaved data \nTopic: %s\nMessage: %s", baza->topic, baza->message);
+				strcat(baza->topic[0], topic[0]);
+				strcat(baza->storedMessage, message);
+				printf("\n\nSaved data \nTopic: %s\nMessage: %s", baza->topic, baza->storedMessage);
 				printf("\n");
 				exit(0);
 			}
