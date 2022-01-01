@@ -94,7 +94,7 @@ main(int argc, char** argv)
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
 		char				topic[LENTOPIC] = "";
-		//char*				pointTopic;
+		char*				pointTopic;
 		char				message[MAXLINE];// = "";
 		//char*				pointMessage;
 		int					lenmsg = 0;
@@ -118,9 +118,8 @@ main(int argc, char** argv)
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
 
 		//Zmienne przechowywujace dane dla innych procesów
+		pointTopic = malloc(LENTOPIC);
 //		pointMessage = malloc(MAXLINE);
-//		pointTopic = malloc(LENTOPIC);
-
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
@@ -172,7 +171,7 @@ main(int argc, char** argv)
 					//printf("%c", pierwszy.MSG[i]);
 					topic[i - 3] = pierwszy.MSG[i];
 					//(*pointTopic[i - 3]) = pierwszy.MSG[i];
-//					pointTopic[i - 3] = pierwszy.MSG[i];
+					pointTopic[i - 3] = pierwszy.MSG[i];
 				}
 				printf("%s", topic);
 				//printf("%s", *pointTopic);
@@ -216,5 +215,6 @@ main(int argc, char** argv)
 			}
 		}
 		close(connfd);			/* parent closes connected socket */
+		free(pointTopic);
 	}
 }
