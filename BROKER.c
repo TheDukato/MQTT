@@ -93,7 +93,7 @@ main(int argc, char** argv)
 		char				keywordSub[4] = "sub";
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
-		char				topic[LENTOPIC]="";
+		char				topic[LENTOPIC];
 		char				message[MAXLINE];// = "";
 		int					lenmsg = 0;
 		struct DB {
