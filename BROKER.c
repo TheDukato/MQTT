@@ -96,19 +96,21 @@ main(int argc, char** argv)
 		char				topic[LENTOPIC] = "";
 		char				message[MAXLINE];// = "";
 		int					lenmsg = 0;
+		/*BUFOROWANIE
 		struct DB {
 			int				primKey;
 			char			topic[LENTOPIC];
 			char			storedMessage[MAXLINE];
 			//struct DB*		wsk;
 		};
+		struct DB*			baza;
+		baza->primKey = 0;
+		*/
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char MSG[MAXLINE];
 		};
 		char				MSG[MAXLINE];
-		struct DB*			baza;
-		baza->primKey = 0;
 		struct subscribers	pierwszy;
 		bzero(pierwszy.IP, sizeof(pierwszy.IP));
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
@@ -178,7 +180,8 @@ main(int argc, char** argv)
 				}
 				//Uzupelnienie bazy o widomosc do tematu
 				printf("\nSending message: X%sX", message);
-				/*
+				
+				/*BUFOROWANIE
 				* 1.Sprawdzenie czy istniej ju¿ taki temat a jesli nie to powiekszyc pamiec
 				* 2.dopisac do bazy
 				*/
@@ -187,12 +190,14 @@ main(int argc, char** argv)
 					printf("\nReserves memory for new topic");
 					baza = (struct DB*)realloc(baza, (baza->primKey + 1) * sizeof(*baza));
 				}*/
+				/*
 				printf("\nWriting data to buffor");
 				//baza->topic = topic;
 				//baza->storedMessage = message;
 				strcat(baza->topic, topic);
 				strcat(baza->storedMessage, message);
 				printf("\n\nSaved data \nTopic: %s\nMessage: %s", baza->topic, baza->storedMessage);
+				*/
 				printf("\n");
 				exit(0);
 			}
