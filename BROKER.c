@@ -182,10 +182,11 @@ main(int argc, char** argv)
 				* 1.Sprawdzenie czy istniej ju¿ taki temat a jesli nie to powiekszyc pamiec
 				* 2.dopisac do bazy
 				*/
-				if (strcmp(&(baza->topic[0]), &(topic[0])) != 0) {
+				baza = (struct DB*)malloc(sizeof(*baza));
+				/*if (strcmp(&(baza->topic[0]), &(topic[0])) != 0) {
 					printf("\nReserves memory for new topic");
 					baza = (struct DB*)realloc(baza, (baza->primKey + 1) * sizeof(*baza));
-				}
+				}*/
 				printf("\nWriting data to buffor");
 				//baza->topic = topic;
 				//baza->storedMessage = message;
