@@ -188,7 +188,7 @@ main(int argc, char** argv)
 				}
 				//Uzupelnienie bazy o widomosc do tematu
 				printf("\nSending message: X%sX", message);
-				printf("\nSending message : X % sX", *pointMessage);
+				printf("\nSending message : X%sX", *pointMessage);
 				
 				/*BUFOROWANIE
 				* 1.Sprawdzenie czy istniej ju¿ taki temat a jesli nie to powiekszyc pamiec
