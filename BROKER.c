@@ -94,12 +94,12 @@ main(int argc, char** argv)
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
 		char				topic[LENTOPIC] = "";
-		char*				pointTopic =(char *) malloc(LENTOPIC * sizeof(char));
+		//char*				pointTopic =(char *) malloc(LENTOPIC * sizeof(char));
 		char				message[MAXLINE];// = "";
-		//char*				pointMessage;
+		char*				pointMessage = (char*) malloc(MAXLINE * sizeof(char));
 		int					lenmsg = 0;
+		/*
 		//BUFOROWANIE
-//		pointMessage = malloc(MAXLINE);
 		struct DB {
 			int				primKey;
 			char			topic[LENTOPIC];
@@ -108,7 +108,7 @@ main(int argc, char** argv)
 		};
 		struct DB*			baza;
 		//baza->primKey = 0;
-		
+		*/
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char MSG[MAXLINE];
@@ -168,11 +168,11 @@ main(int argc, char** argv)
 				for (int i = 3; i < (LENTOPIC + 2); i++) {
 					topic[i - 3] = pierwszy.MSG[i];
 					//(*pointTopic[i - 3]) = pierwszy.MSG[i];
-					pointTopic[i] = pierwszy.MSG[i];
+					//pointTopic[i] = pierwszy.MSG[i];
 				}
 				//pointTopic = pierwszy.MSG;
 				printf("%s", topic);
-				printf("%s", *pointTopic);
+				//printf("%s", *pointTopic);
 				//Wypisanie odebranej wiadomosci do znaku '0' lub MAXLINE przez co znamy 
 				//dlugosc efektywnej wiadomoœci
 				for (lenmsg = (LENTOPIC + 2); lenmsg < MAXLINE; lenmsg++) {
@@ -184,11 +184,11 @@ main(int argc, char** argv)
 					if (pierwszy.MSG[i] == '0')
 						break;
 					message[i - 6] = pierwszy.MSG[i];
-//					pointMessage[i - 6] = pierwszy.MSG[i];
+					pointMessage[i] = pierwszy.MSG[i];
 				}
 				//Uzupelnienie bazy o widomosc do tematu
 				printf("\nSending message: X%sX", message);
-//				printf("\nSending message : X % sX", *pointMessage);
+				printf("\nSending message : X % sX", *pointMessage);
 				
 				/*BUFOROWANIE
 				* 1.Sprawdzenie czy istniej ju¿ taki temat a jesli nie to powiekszyc pamiec
@@ -212,6 +212,6 @@ main(int argc, char** argv)
 			}
 		}
 		close(connfd);			/* parent closes connected socket */
-		free(pointTopic);
+		free(pointMessage);
 	}
 }
