@@ -96,7 +96,7 @@ main(int argc, char** argv)
 		char				topic[LENTOPIC] = "";
 		char				message[MAXLINE];// = "";
 		int					lenmsg = 0;
-		/*BUFOROWANIE
+		BUFOROWANIE
 		struct DB {
 			int				primKey;
 			char			topic[LENTOPIC];
@@ -105,7 +105,7 @@ main(int argc, char** argv)
 		};
 		struct DB*			baza;
 		baza->primKey = 0;
-		*/
+		
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char MSG[MAXLINE];
@@ -190,52 +190,18 @@ main(int argc, char** argv)
 					printf("\nReserves memory for new topic");
 					baza = (struct DB*)realloc(baza, (baza->primKey + 1) * sizeof(*baza));
 				}*/
-				/*
+				
 				printf("\nWriting data to buffor");
 				//baza->topic = topic;
 				//baza->storedMessage = message;
 				strcat(baza->topic, topic);
 				strcat(baza->storedMessage, message);
 				printf("\n\nSaved data \nTopic: %s\nMessage: %s", baza->topic, baza->storedMessage);
-				*/
+				
 				printf("\n");
 				exit(0);
 			}
-
-
-			/*
-			printf(" in topic: ");
-			for (int i = 3; i < 30; i++) {
-				printf("%c", pierwszy.TOPIC[i]);
-				//if (pierwszy.TOPIC[i] == "\0") {///////////////////////////POROWNAIE STRING / CHAR
-				//	break;
-				//}
-			}*/
-///////			Operating Publisher
-			/*if ((n = read(connfd, MSG, MAXLINE)) > 0) {
-				printf("Odbieram...\n");
-				MSG[n] = 0;
-				if (fputs(MSG, stdout) == EOF) {
-					fprintf(stderr, "fputs error : %s\n", strerror(errno));
-				}
-				//break;//do usuniecia
-			}*/
-
-//////
-//////			Handling Subscriber
-			/*
-			printf("\n");
-			send_time(connfd);
-			send_time(connfd);
-			sleep(2);
-			send_time(connfd);
-			sleep(5);
-			send_time(connfd);
-
-			exit(0);*/
-//////
 		}
 		close(connfd);			/* parent closes connected socket */
-		/////////////////////////////
 	}
 }
