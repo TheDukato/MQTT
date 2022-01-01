@@ -155,32 +155,18 @@ main(int argc, char** argv)
 				}
 				//Wypisanie odebranej wiadomosci do znaku '0' lub MAXLINE przez co znamy 
 				//dlugosc efektywnej wiadomoœci
-				printf("\nSending message: ");
 				for (lenmsg = (LENTOPIC + 2); lenmsg < MAXLINE; lenmsg++) {
 					if (pierwszy.MSG[lenmsg] == '0')
 						break;
 					//printf("%c", pierwszy.MSG[lenmsg]);
 				}
+				//Zapisanie urzytecznej wiadomosci do zmiennej message
 				for (int i = (LENTOPIC + 2); i < lenmsg; i++) {
 					if (pierwszy.MSG[i] == '0')
 						break;
 					message[i - 6] = pierwszy.MSG[i];
 				}
-				/* 111111111111111
-				//dynamiczna alokacja pamieci na efektywna czesc wiadomosci
-				//i wpisanie jej do message2send
-				printf("\nlenmsg: %i", lenmsg);
-				message2send = malloc(lenmsg * sizeof(*message2send));
-				printf("\nLength: %i", sizeof(message2send));
-				for (int i = (LENTOPIC + 2); i < MAXLINE; i++) {
-					if (pierwszy.MSG[i] == '0')
-						break;
-					message2send[i] = pierwszy.MSG[i];
-				}
-				printf("%s", message2send);
-				free (message2send);
-				*/
-				printf("\nX%sX", message);
+				printf("\nSending message: %s", message);
 				
 				
 
