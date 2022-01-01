@@ -94,9 +94,9 @@ main(int argc, char** argv)
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
 		char				topic[LENTOPIC] = "";
-		char*				pointTopic;
+		//char*				pointTopic;
 		char				message[MAXLINE];// = "";
-		char*				pointMessage;
+		//char*				pointMessage;
 		int					lenmsg = 0;
 		//BUFOROWANIE
 		struct DB {
@@ -175,7 +175,7 @@ main(int argc, char** argv)
 //					pointTopic[i - 3] = pierwszy.MSG[i];
 				}
 				printf("%s", topic);
-				printf("%s", *pointTopic);
+				//printf("%s", *pointTopic);
 				//Wypisanie odebranej wiadomosci do znaku '0' lub MAXLINE przez co znamy 
 				//dlugosc efektywnej wiadomoœci
 				for (lenmsg = (LENTOPIC + 2); lenmsg < MAXLINE; lenmsg++) {
