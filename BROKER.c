@@ -174,7 +174,7 @@ main(int argc, char** argv)
 					message[i - 6] = pierwszy.MSG[i];
 				}
 				//Uzupelnienie bazy o widomosc do tematu
-				printf("\nSending message: %s", message);
+				printf("\nSending message: X%sX", message);
 				/*
 				* 1.Sprawdzenie czy istniej ju¿ taki temat a jesli nie to powiekszyc pamiec
 				* 2.dopisac do bazy
