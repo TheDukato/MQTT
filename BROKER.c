@@ -118,8 +118,8 @@ main(int argc, char** argv)
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
 
 		//Zmienne przechowywujace dane dla innych procesów
-		pointMessage = malloc(MAXLINE);
-		pointTopic = malloc(LENTOPIC);
+//		pointMessage = malloc(MAXLINE);
+//		pointTopic = malloc(LENTOPIC);
 
 
 		if ((childpid = fork()) == 0) {	/* child process */
@@ -172,7 +172,7 @@ main(int argc, char** argv)
 					//printf("%c", pierwszy.MSG[i]);
 					topic[i - 3] = pierwszy.MSG[i];
 					//(*pointTopic[i - 3]) = pierwszy.MSG[i];
-					pointTopic[i - 3] = pierwszy.MSG[i];
+//					pointTopic[i - 3] = pierwszy.MSG[i];
 				}
 				printf("%s", topic);
 				printf("%s", *pointTopic);
@@ -188,11 +188,11 @@ main(int argc, char** argv)
 					if (pierwszy.MSG[i] == '0')
 						break;
 					message[i - 6] = pierwszy.MSG[i];
-					pointMessage[i - 6] = pierwszy.MSG[i];
+//					pointMessage[i - 6] = pierwszy.MSG[i];
 				}
 				//Uzupelnienie bazy o widomosc do tematu
 				printf("\nSending message: X%sX", message);
-				printf("\nSending message : X % sX", *pointMessage);
+//				printf("\nSending message : X % sX", *pointMessage);
 				
 				/*BUFOROWANIE
 				* 1.Sprawdzenie czy istniej ju¿ taki temat a jesli nie to powiekszyc pamiec
