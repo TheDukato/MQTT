@@ -154,7 +154,7 @@ main(int argc, char** argv)
 				sleep(5);
 				send_time(connfd);
 
-				snprintf(buff, sizeof(buff), "MSG:%s", message );
+				snprintf(buff, sizeof(buff), "MSG:");
 				if (write(connfd, buff, strlen(buff)) < 0)
 					fprintf(stderr, "write error : %s\n", strerror(errno));
 				//close(connfd);
