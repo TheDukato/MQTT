@@ -194,8 +194,8 @@ main(int argc, char** argv)
 				
 				//baza->topic = topic;
 				//baza->storedMessage = message;
-				/*strcat(baza->topic, topic);
-				strcat(baza->storedMessage, message);*/
+				strcat(baza->topic, topic);
+				strcat(baza->storedMessage, message);
 				printf("\n\nSaved data \nTopic: %s\nMessage: %s", baza->topic, baza->storedMessage);
 				
 				printf("\n");
