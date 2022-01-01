@@ -180,7 +180,7 @@ main(int argc, char** argv)
 					if (pierwszy.MSG[i] == '0')
 						break;
 					message[i]= pierwszy.MSG[i];
-					printf("%c", message[i]);
+					//printf("%c", message[i]);
 				}
 				printf("\nX%sX", message);
 				
