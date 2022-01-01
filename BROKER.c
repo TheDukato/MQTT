@@ -168,7 +168,7 @@ main(int argc, char** argv)
 				for (int i = 3; i < (LENTOPIC + 2); i++) {
 					topic[i - 3] = pierwszy.MSG[i];
 					//(*pointTopic[i - 3]) = pierwszy.MSG[i];
-					*pointTopic[i - 3] = pierwszy.MSG[i];
+					pointTopic[i - 3] = pierwszy.MSG[i];
 				}
 				printf("%s", topic);
 				printf("%s", *pointTopic);
