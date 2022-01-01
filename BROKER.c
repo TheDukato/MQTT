@@ -143,18 +143,15 @@ main(int argc, char** argv)
 				for (int i = 3; i < (LENTOPIC+3); i++) {
 					printf("%c", pierwszy.MSG[i]);
 				}
+				snprintf(buff, sizeof(buff), "MSG:");
 				printf("\n");
 				//Zapis adresu do tabeli Subscribers || 
 				//Odczytanie buffora w formacie (temat;;wiadomoœæ)
 				//DO NAPISANIA
 				send_time(connfd);
-				send_time(connfd);
 				sleep(2);
 				send_time(connfd);
-				sleep(5);
-				send_time(connfd);
-
-				snprintf(buff, sizeof(buff), "MSG:");
+				sleep(2);
 				if (write(connfd, buff, strlen(buff)) < 0)
 					fprintf(stderr, "write error : %s\n", strerror(errno));
 				//close(connfd);
