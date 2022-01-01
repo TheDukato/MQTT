@@ -97,8 +97,10 @@ main(int argc, char** argv)
 		char				message[MAXLINE];// = "";
 		int					lenmsg = 0;
 		struct DB {
+			int				primKey;
 			char			topic[LENTOPIC];
 			char			storedMessage[MAXLINE];
+			//struct DB*		wsk;
 		};
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
@@ -106,6 +108,7 @@ main(int argc, char** argv)
 		};
 		char				MSG[MAXLINE];
 		struct DB*			baza;
+		baza->primKey = 0;
 		struct subscribers	pierwszy;
 		bzero(pierwszy.IP, sizeof(pierwszy.IP));
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
@@ -179,7 +182,16 @@ main(int argc, char** argv)
 				* 1.Sprawdzenie czy istniej ju¿ taki temat a jesli nie to powiekszyc pamiec
 				* 2.dopisac do bazy
 				*/
-				//if (strcmp(&(baza->topic),)
+				if (strcmp(&(baza->topic), &(topic)) != 0) {
+					printf("\nReserves memory for new topic");
+					baza = (struct DB*) realloc(baza,(baza->primKey+1) * sizeof(*baza))
+				}
+				printf("\nWriting data to buffor");
+				//baza->topic = topic;
+				//baza->storedMessage = message;
+				strcat(baza->topic, topic);
+				strcat(baza->message, message);
+				printf("\n\nSaved data \nTopic: %s\nMessage: %s", baza->topic, baza->message);
 				printf("\n");
 				exit(0);
 			}
