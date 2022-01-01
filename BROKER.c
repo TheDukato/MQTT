@@ -94,11 +94,12 @@ main(int argc, char** argv)
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
 		char				topic[LENTOPIC] = "";
-		char*				pointTopic;
+		char*				pointTopic =(char *) malloc(LENTOPIC * sizeof(char));
 		char				message[MAXLINE];// = "";
 		//char*				pointMessage;
 		int					lenmsg = 0;
 		//BUFOROWANIE
+//		pointMessage = malloc(MAXLINE);
 		struct DB {
 			int				primKey;
 			char			topic[LENTOPIC];
@@ -117,9 +118,6 @@ main(int argc, char** argv)
 		bzero(pierwszy.IP, sizeof(pierwszy.IP));
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
 
-		//Zmienne przechowywujace dane dla innych procesów
-		pointTopic = malloc(LENTOPIC);
-//		pointMessage = malloc(MAXLINE);
 
 		if ((childpid = fork()) == 0) {	/* child process */
 			close(listenfd);	/* close listening socket */
