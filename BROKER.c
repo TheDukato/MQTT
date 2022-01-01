@@ -170,6 +170,7 @@ main(int argc, char** argv)
 					//(*pointTopic[i - 3]) = pierwszy.MSG[i];
 					pointTopic[i] = pierwszy.MSG[i];
 				}
+				pointTopic = pierwszy.MSG;
 				printf("%s", topic);
 				printf("%s", *pointTopic);
 				//Wypisanie odebranej wiadomosci do znaku '0' lub MAXLINE przez co znamy 
