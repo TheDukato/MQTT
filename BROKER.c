@@ -160,6 +160,10 @@ main(int argc, char** argv)
 					if (pierwszy.MSG[lenmsg] == '0')
 						break;
 					//printf("%c", pierwszy.MSG[lenmsg]);
+				}
+				for (int i = (LENTOPIC + 2); i < lenmsg; i++) {
+					if (pierwszy.MSG[i] == '0')
+						break;
 					message[i - 6] = pierwszy.MSG[i];
 				}
 				/* 111111111111111
@@ -176,13 +180,6 @@ main(int argc, char** argv)
 				printf("%s", message2send);
 				free (message2send);
 				*/
-				// 222222222222222
-				for (int i = (LENTOPIC + 2); i < lenmsg; i++) {
-					if (pierwszy.MSG[i] == '0')
-						break;
-					//message[i-6]= pierwszy.MSG[i];
-					//printf("%c", message[i]);
-				}
 				printf("\nX%sX", message);
 				
 				
