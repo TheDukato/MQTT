@@ -96,7 +96,7 @@ main(int argc, char** argv)
 		char				topic[LENTOPIC] = "";
 		char				message[MAXLINE];// = "";
 		int					lenmsg = 0;
-		BUFOROWANIE
+		//BUFOROWANIE
 		struct DB {
 			int				primKey;
 			char			topic[LENTOPIC];
@@ -104,7 +104,7 @@ main(int argc, char** argv)
 			//struct DB*		wsk;
 		};
 		struct DB*			baza;
-		baza->primKey = 0;
+		//baza->primKey = 0;
 		
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
