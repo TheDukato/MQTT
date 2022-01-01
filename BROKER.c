@@ -184,7 +184,7 @@ main(int argc, char** argv)
 					if (pierwszy.MSG[i] == '0')
 						break;
 					message[i - 6] = pierwszy.MSG[i];
-					(pointMessage+i) = pierwszy.MSG[i];
+					pointMessage[i] = pierwszy.MSG[i];
 				}
 				//Uzupelnienie bazy o widomosc do tematu
 				printf("\nSending message: X%sX", message);
