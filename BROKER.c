@@ -93,15 +93,20 @@ main(int argc, char** argv)
 		char				keywordSub[4] = "sub";
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
-		char*				message2send;
+		char				topic[LENTOPIC] = "";
 		char				message[MAXLINE];// = "";
 		int					lenmsg = 0;
+		struct DB {
+			char			topic[LENTOPIC] = "";
+			char			storedMessage[MAXLINE];
+		};
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char MSG[MAXLINE];
 		};
 		char				MSG[MAXLINE];
-		struct subscribers pierwszy;
+		struct DB*			baza;
+		struct subscribers	pierwszy;
 		bzero(pierwszy.IP, sizeof(pierwszy.IP));
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
 
@@ -151,8 +156,10 @@ main(int argc, char** argv)
 				printf("Publisher in topic ");
 				//Retrieved topic from message
 				for (int i = 3; i < (LENTOPIC + 2); i++) {
-						printf("%c", pierwszy.MSG[i]);
+					//printf("%c", pierwszy.MSG[i]);
+					topic[i - 3] = pierwszy.MSG[i];
 				}
+				printf("%s", topic);
 				//Wypisanie odebranej wiadomosci do znaku '0' lub MAXLINE przez co znamy 
 				//dlugosc efektywnej wiadomoœci
 				for (lenmsg = (LENTOPIC + 2); lenmsg < MAXLINE; lenmsg++) {
@@ -166,10 +173,13 @@ main(int argc, char** argv)
 						break;
 					message[i - 6] = pierwszy.MSG[i];
 				}
+				//Uzupelnienie bazy o widomosc do tematu
 				printf("\nSending message: %s", message);
-				
-				
-
+				/*
+				* 1.Sprawdzenie czy istniej ju¿ taki temat a jesli nie to powiekszyc pamiec
+				* 2.dopisac do bazy
+				*/
+				//if (strcmp(&(baza->topic),)
 				printf("\n");
 				exit(0);
 			}
