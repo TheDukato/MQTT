@@ -181,23 +181,7 @@ main(int argc, char** argv)
 				//Uzupelnienie bazy o widomosc do tematu
 				printf("\nSending message: X%sX", message);
 				printf("\nWriting data to buffor");
-				/*BUFOROWANIE
-				* 1.Sprawdzenie czy istniej ju¿ taki temat a jesli nie to powiekszyc pamiec
-				* 2.dopisac do bazy
-				*/
-				//baza = (struct DB*) malloc(sizeof(struct baza));
-				/*if (strcmp(&(baza->topic[0]), &(topic[0])) != 0) {
-					printf("\nReserves memory for new topic");
-					baza = (struct DB*)realloc(baza, (baza->primKey + 1) * sizeof(*baza));
-				}*/
-				
-				
-				//baza->topic = topic;
-				//baza->storedMessage = message;
-				strcat(baza->topic, topic);
-				strcat(baza->storedMessage, message);
-				printf("\n\nSaved data \nTopic: %s\nMessage: %s", baza->topic, baza->storedMessage);
-				
+
 				printf("\n");
 				exit(0);
 			}
