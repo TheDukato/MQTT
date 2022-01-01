@@ -159,7 +159,8 @@ main(int argc, char** argv)
 				for (lenmsg = (LENTOPIC + 2); lenmsg < MAXLINE; lenmsg++) {
 					if (pierwszy.MSG[lenmsg] == '0')
 						break;
-					printf("%c", pierwszy.MSG[lenmsg]);
+					//printf("%c", pierwszy.MSG[lenmsg]);
+					message[i - 6] = pierwszy.MSG[i];
 				}
 				/* 111111111111111
 				//dynamiczna alokacja pamieci na efektywna czesc wiadomosci
@@ -179,7 +180,7 @@ main(int argc, char** argv)
 				for (int i = (LENTOPIC + 2); i < lenmsg; i++) {
 					if (pierwszy.MSG[i] == '0')
 						break;
-					message[i-6]= pierwszy.MSG[i];
+					//message[i-6]= pierwszy.MSG[i];
 					//printf("%c", message[i]);
 				}
 				printf("\nX%sX", message);
