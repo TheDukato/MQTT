@@ -168,19 +168,17 @@ main(int argc, char** argv)
 				printf("Publisher in topic ");
 				//Retrieved topic from message
 				for (int i = 3; i < (LENTOPIC + 2); i++) {
-					//printf("%c", pierwszy.MSG[i]);
 					topic[i - 3] = pierwszy.MSG[i];
 					//(*pointTopic[i - 3]) = pierwszy.MSG[i];
-					pointTopic[i - 3] = pierwszy.MSG[i];
+					(*pointTopic[i - 3]) = pierwszy.MSG[i];
 				}
 				printf("%s", topic);
-				//printf("%s", *pointTopic);
+				printf("%s", *pointTopic);
 				//Wypisanie odebranej wiadomosci do znaku '0' lub MAXLINE przez co znamy 
 				//dlugosc efektywnej wiadomoœci
 				for (lenmsg = (LENTOPIC + 2); lenmsg < MAXLINE; lenmsg++) {
 					if (pierwszy.MSG[lenmsg] == '0')
 						break;
-					//printf("%c", pierwszy.MSG[lenmsg]);
 				}
 				//Zapisanie urzytecznej wiadomosci do zmiennej message
 				for (int i = (LENTOPIC + 2); i < lenmsg; i++) {
