@@ -176,7 +176,7 @@ main(int argc, char** argv)
 				free (message2send);
 				*/
 				// 222222222222222
-				for (int i = (LENTOPIC + 2); i < lenmsg; i++) {
+				for (int i = (LENTOPIC + 5); i < lenmsg; i++) {
 					if (pierwszy.MSG[i] == '0')
 						break;
 					message[i]= pierwszy.MSG[i];
