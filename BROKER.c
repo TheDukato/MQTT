@@ -184,7 +184,7 @@ doit(void* arg)
 	close(connfd);			/* parent closes connected socket */
 	//free(pointMessage);
 	//pthread_detach(pthread_self());
-	pthread_exit();
+	pthread_exit(NULL);
 	//return(NULL);
 }
 
