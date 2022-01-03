@@ -62,7 +62,7 @@ doit(void* arg)
 	char				topic[LENTOPIC] = "";
 	//char*				pointTopic =(char *) malloc(LENTOPIC * sizeof(char));
 	char				message[MAXLINE];// = "";
-	char* pointMessage = (char*)malloc(MAXLINE * sizeof(char));
+	//char* pointMessage = (char*)malloc(MAXLINE * sizeof(char));
 	int					lenmsg = 0;
 	char				buff[MAXLINE];
 	/*
@@ -154,11 +154,11 @@ doit(void* arg)
 			if (pierwszy.MSG[i] == '0')
 				break;
 			message[i - 6] = pierwszy.MSG[i];
-			pointMessage[i] = pierwszy.MSG[i];
+			//pointMessage[i] = pierwszy.MSG[i];
 		}
 		//Uzupelnienie bazy o widomosc do tematu
 		printf("\nSending message: X%sX", message);
-		printf("\nSending message : X%sX", *pointMessage);
+		//printf("\nSending message : X%sX", *pointMessage);
 
 		/*BUFOROWANIE
 		* 1.Sprawdzenie czy istniej ju¿ taki temat a jesli nie to powiekszyc pamiec
@@ -182,7 +182,7 @@ doit(void* arg)
 	}
 
 	close(connfd);			/* parent closes connected socket */
-	free(pointMessage);
+	//free(pointMessage);
 	pthread_detach(pthread_self());
 	return(NULL);
 }
