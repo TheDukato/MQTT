@@ -90,7 +90,7 @@ doit(void* arg)
 	connfd = *((int*)arg);
 	free(arg);
 
-	pthread_detach(pthread_self());
+	
 
 	printf("Connection from %s as ", pierwszy.IP);
 	/*
@@ -183,6 +183,7 @@ doit(void* arg)
 
 	close(connfd);			/* parent closes connected socket */
 	free(pointMessage);
+	pthread_detach(pthread_self());
 	return(NULL);
 }
 
