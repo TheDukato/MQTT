@@ -50,7 +50,7 @@ rcv_msg(int sockfd) {
 }
 
 
-static void*
+void
 doit(void* arg)
 {
 	struct sockaddr_in6	servaddr, cliaddr;
@@ -184,7 +184,6 @@ doit(void* arg)
 	close(connfd);			/* parent closes connected socket */
 	//free(pointMessage);
 	pthread_detach(pthread_self());
-	return(NULL);
 }
 
 int
