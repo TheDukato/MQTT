@@ -12,6 +12,7 @@
 #include        <stdlib.h>
 #include        <string.h>
 #include        <unistd.h>
+#include 		<pthread.h>
 
 
 
@@ -52,6 +53,7 @@ rcv_msg(int sockfd) {
 static void*
 doit(void* arg)
 {
+	struct sockaddr_in6	servaddr, cliaddr;
 	int					n;
 	char				line[4] = "";
 	char				keywordSub[4] = "sub";
@@ -62,6 +64,7 @@ doit(void* arg)
 	char				message[MAXLINE];// = "";
 	char* pointMessage = (char*)malloc(MAXLINE * sizeof(char));
 	int					lenmsg = 0;
+	char				buff[MAXLINE];
 	/*
 	//BUFOROWANIE
 	struct DB {
@@ -191,6 +194,7 @@ main(int argc, char** argv)
 	char				buff[MAXLINE], str[INET6_ADDRSTRLEN + 1];
 	struct sockaddr_in6	servaddr, cliaddr;
 	pid_t				childpid;
+	pthread_t			tid;
 
 	if ((listenfd = socket(AF_INET6, SOCK_STREAM, 0)) < 0) {
 		fprintf(stderr, "socket error : %s\n", strerror(errno));
