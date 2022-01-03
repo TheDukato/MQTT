@@ -88,7 +88,7 @@ doit(void* arg)
 	int		connfd;
 
 	connfd = *((int*)arg);
-	free(arg);
+	//free(arg);
 
 	
 
