@@ -262,12 +262,12 @@ main(int argc, char** argv)
 
 		//clilen = sizeof(cliaddr);
 		//connfd = malloc(sizeof(int));
-		for (;;) {
+		//for (;;) {
 			int ret;
 			if (ret = pthread_create(&tid, NULL, &doit, &connfd) != 0) {
 				errno = ret;
 				perror("pthread_create() error");
 			}
-		}
+		//}
 	}
 }
