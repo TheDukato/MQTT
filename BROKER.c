@@ -94,7 +94,7 @@ doit(void* arg)
 
 	
 
-	printf("Connection from %s as ", pierwszy.IP);
+	//printf("Connection from %s as ", pierwszy.IP);
 	/*
 	* opis dotyczy dziwnego dzialania ponizszego if'a wpisujemy
 	*		sizeof(pierwszy.MSG) to jest inaczej odbieram.... i dwie wiadomosci
@@ -269,14 +269,29 @@ main(int argc, char** argv)
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
 
 
+		struct subscribers {
+			char IP[INET6_ADDRSTRLEN + 1];
+			char MSG[MAXLINE];
+		};
+		char				MSG[MAXLINE];
+		struct subscribers	pierwszy;
+		bzero(pierwszy.IP, sizeof(pierwszy.IP));
+		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
+
+		int		connfd;
+
+		connfd = *((int*)arg);
+		//free(arg);
+
+
+
+		printf("Connection from %s as ", pierwszy.IP);
 		//clilen = sizeof(cliaddr);
 		//connfd = malloc(sizeof(int));
-		//for (;;) {
 			int ret;
 			if (ret = pthread_create(&tid, NULL, &doit, &connfd) != 0) {
 				errno = ret;
 				perror("pthread_create() error");
 			}
-		//}
 	}
 }
