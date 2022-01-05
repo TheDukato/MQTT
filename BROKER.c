@@ -61,6 +61,7 @@ doit(void* arg)
 	char				keywordPub[4] = "pub";
 	char				fun[4] = "";
 	char				topic[LENTOPIC] = "";
+	char				topicsub[LENTOPIC] = "";
 	//char*				pointTopic =(char *) malloc(LENTOPIC * sizeof(char));
 	char				message[MAXLINE];// = "";
 	//char* pointMessage = (char*)malloc(MAXLINE * sizeof(char));
@@ -117,10 +118,12 @@ doit(void* arg)
 
 		for (int i = 3; i < (LENTOPIC + 3); i++) {
 			printf("%c", pierwszy.MSG[i]);
+			topicsub[i - 3] = pierwszy.MSG[i];
 		}
-		printf("\n%s\n", message);
-		snprintf(buff, sizeof(buff), "MSG: %s\r\n", message);
-		printf("\n");
+		if (0 == (strcmp($(topic), &(topicsub)))) {
+			printf("\n%s\n", message);
+			snprintf(buff, sizeof(buff), "MSG: %s\r\n", message);
+		}
 		//Zapis adresu do tabeli Subscribers || 
 		//Odczytanie buffora w formacie (temat;;wiadomoœæ)
 		//DO NAPISANIA
