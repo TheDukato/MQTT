@@ -257,7 +257,7 @@ main(int argc, char** argv)
 		struct subscribers	pierwszy;
 		bzero(pierwszy.IP, sizeof(pierwszy.IP));
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
-		printf("Connection from %s as ", pierwszy.IP);
+		printf("\nConnection from %s as ", pierwszy.IP);
 
 		//clilen = sizeof(cliaddr);
 		//connfd = malloc(sizeof(int));
