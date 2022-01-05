@@ -123,7 +123,7 @@ doit(void* arg)
 		printf("%s", topicsub);
 		//printf("topicsub: %s\ntopic: %s\n%d", topicsub,topic, strcmp(&(topic[0]), &(topicsub[0])));
 		//if (0 == (strcmp(&(topic[0]), &(topicsub[0])))) {
-			printf("\n%s\n", message);
+			printf("\nsub: %s", message);
 			snprintf(buff, sizeof(buff), "MSG: %s\r\n", message);
 		//}
 		//else {
