@@ -247,7 +247,7 @@ main(int argc, char** argv)
 		char				fun[4]="";
 		char				topic[LENTOPIC];// = "";
 		//char*				pointTopic =(char *) malloc(LENTOPIC * sizeof(char));
-		char				message[MAXLINE];// = "";
+		//char				message[MAXLINE];// = "";
 		char*				pointMessage = (char*) malloc(MAXLINE * sizeof(char));
 		int					lenmsg = 0;
 		/*
