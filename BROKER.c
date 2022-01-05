@@ -93,7 +93,7 @@ doit(void* arg)
 
 	
 
-	printf("Connection from %s as ", pierwszy.IP);
+	//printf("Connection from %s as ", pierwszy.IP);
 	/*
 	* opis dotyczy dziwnego dzialania ponizszego if'a wpisujemy
 	*		sizeof(pierwszy.MSG) to jest inaczej odbieram.... i dwie wiadomosci
@@ -259,7 +259,7 @@ main(int argc, char** argv)
 		struct subscribers	pierwszy;
 		bzero(pierwszy.IP, sizeof(pierwszy.IP));
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
-
+		printf("Connection from %s as ", pierwszy.IP);
 
 		//clilen = sizeof(cliaddr);
 		//connfd = malloc(sizeof(int));
