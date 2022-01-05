@@ -61,7 +61,7 @@ doit(void* arg)
 	char				keywordPub[4] = "pub";
 	char				fun[4] = "";
 	char				topic[LENTOPIC];// = "";
-	char				topicsub[LENTOPIC] = "";
+	char				topicsub[LENTOPIC];// = "";
 	//char*				pointTopic =(char *) malloc(LENTOPIC * sizeof(char));
 	char				message[MAXLINE];// = "";
 	//char* pointMessage = (char*)malloc(MAXLINE * sizeof(char));
