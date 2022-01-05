@@ -118,8 +118,9 @@ doit(void* arg)
 
 		for (int i = 3; i < (LENTOPIC + 3); i++) {
 			printf("%c", pierwszy.MSG[i]);
-//			topicsub[i - 3] = pierwszy.MSG[i];
+			topicsub[i - 3] = pierwszy.MSG[i];
 		}
+		printf("\n%s\n%s",topic,topicsub);
 //		if (0 == (strcmp(&(topic[0]), &(topicsub[0])))) {
 //			printf("\nsub: %s", message);
 //			snprintf(buff, sizeof(buff), "MSG: %s\r\n", message);
