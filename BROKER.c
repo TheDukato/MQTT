@@ -269,23 +269,13 @@ main(int argc, char** argv)
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
 
 
-		struct subscribers {
-			char IP[INET6_ADDRSTRLEN + 1];
-			char MSG[MAXLINE];
-		};
-		char				MSG[MAXLINE];
-		struct subscribers	pierwszy;
-		bzero(pierwszy.IP, sizeof(pierwszy.IP));
-		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
-
-		int		connfd;
-
-		connfd = *((int*)arg);
 		//free(arg);
 
 
 
 		printf("Connection from %s as ", pierwszy.IP);
+
+
 		//clilen = sizeof(cliaddr);
 		//connfd = malloc(sizeof(int));
 			int ret;
