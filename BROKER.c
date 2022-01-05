@@ -178,14 +178,15 @@ doit(void* arg)
 		printf("\n\nSaved data \nTopic: %s\nMessage: %s", baza->topic, baza->storedMessage);
 		*/
 		printf("\n");
-		exit(0);
+		//exit(0);
+		
 	}
 
 	close(connfd);			/* parent closes connected socket */
 	//free(pointMessage);
 	//pthread_detach(pthread_self());
 	pthread_exit(NULL);
-	//return(NULL);
+	return(NULL);
 }
 
 int
