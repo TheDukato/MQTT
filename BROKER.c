@@ -245,22 +245,10 @@ main(int argc, char** argv)
 		char				keywordSub[4] = "sub";
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
-		char				topic[LENTOPIC];// = "";
-		//char*				pointTopic =(char *) malloc(LENTOPIC * sizeof(char));
+		//char				topic[LENTOPIC];// = "";
 		//char				message[MAXLINE];// = "";
-		char*				pointMessage = (char*) malloc(MAXLINE * sizeof(char));
+
 		int					lenmsg = 0;
-		/*
-		//BUFOROWANIE
-		struct DB {
-			int				primKey;
-			char			topic[LENTOPIC];
-			char			storedMessage[MAXLINE];
-			//struct DB*		wsk;
-		};
-		struct DB*			baza;
-		//baza->primKey = 0;
-		*/
 		struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char MSG[MAXLINE];
