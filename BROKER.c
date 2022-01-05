@@ -35,7 +35,7 @@ send_time(int sockfd)
 		fprintf(stderr, "write error : %s\n", strerror(errno));
 	//close(connfd);
 }
-
+/*
 void
 rcv_msg(int sockfd) {
 	int					n;
@@ -43,12 +43,12 @@ rcv_msg(int sockfd) {
 	//for (; ; ) {
 		if ((n = read(sockfd, line, MAXLINE)) < 0)
 			perror("read() error");
-		line[n] = 0;	/* null terminate */
+		line[n] = 0;	
 		printf("%s (%d bytes)\n", line, n);
 		fflush(stdout);
 	//}
 }
-
+*/
 
 static void*
 doit(void* arg)
@@ -169,8 +169,8 @@ main(int argc, char** argv)
 			fprintf(stderr, "accept error : %s\n", strerror(errno));
 			continue;
 		}
-		////////////////////////////
 		int					n, ret;
+		int					lenmsg = 0;
 		char				line[4]="";
 		char				keywordSub[4] = "sub";
 		char				keywordPub[4] = "pub";
@@ -178,20 +178,9 @@ main(int argc, char** argv)
 		//char				topic[LENTOPIC];// = "";
 		//char				message[MAXLINE];// = "";
 		char IP[INET6_ADDRSTRLEN + 1];
-
-		int					lenmsg = 0;
-		/*struct subscribers {
-			char IP[INET6_ADDRSTRLEN + 1];
-			char MSG[MAXLINE];
-		};
-		char				MSG[MAXLINE];
-		struct subscribers	pierwszy;
-		bzero(pierwszy.IP, sizeof(pierwszy.IP));
-		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));*/
 		bzero(IP, sizeof(IP));
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, IP, sizeof(IP));
 		printf("\nConnection from %s as ", IP);
-
 		if (ret = pthread_create(&tid, NULL, &doit, &connfd) != 0) {
 			errno = ret;
 			perror("pthread_create() error");
