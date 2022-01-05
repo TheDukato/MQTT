@@ -124,6 +124,10 @@ doit(void* arg)
 			printf("\n%s\n", message);
 			snprintf(buff, sizeof(buff), "MSG: %s\r\n", message);
 		}
+		else {
+			snprintf(buff, sizeof(buff), "Empty buff\r\n");
+		}
+		printf("\n");
 		//Zapis adresu do tabeli Subscribers || 
 		//Odczytanie buffora w formacie (temat;;wiadomoœæ)
 		//DO NAPISANIA
