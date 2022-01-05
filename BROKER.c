@@ -53,15 +53,14 @@ rcv_msg(int sockfd) {
 static void*
 doit(void* arg)
 {
-	//pthread_detach(pthread_self());//niezale¿ny process 
+	pthread_detach(pthread_self());//iezale¿ny process
 	struct sockaddr_in6	servaddr, cliaddr;
 	int					n;
 	char				line[4] = "";
 	char				keywordSub[4] = "sub";
 	char				keywordPub[4] = "pub";
 	char				fun[4] = "";
-	char				topic[LENTOPIC];// = "";
-	char				topicsub[LENTOPIC];// = "";
+	char				topic[LENTOPIC] = "";
 	//char*				pointTopic =(char *) malloc(LENTOPIC * sizeof(char));
 	char				message[MAXLINE];// = "";
 	//char* pointMessage = (char*)malloc(MAXLINE * sizeof(char));
@@ -94,7 +93,7 @@ doit(void* arg)
 
 	
 
-	//printf("Connection from %s as ", pierwszy.IP);
+	printf("Connection from %s as ", pierwszy.IP);
 	/*
 	* opis dotyczy dziwnego dzialania ponizszego if'a wpisujemy
 	*		sizeof(pierwszy.MSG) to jest inaczej odbieram.... i dwie wiadomosci
@@ -117,18 +116,10 @@ doit(void* arg)
 		//Retrieved topic from message
 
 		for (int i = 3; i < (LENTOPIC + 3); i++) {
-			//printf("%c", pierwszy.MSG[i]);
-			topicsub[i - 3] = pierwszy.MSG[i];
+			printf("%c", pierwszy.MSG[i]);
 		}
-		printf("%s", topicsub);
-		//printf("topicsub: %s\ntopic: %s\n%d", topicsub,topic, strcmp(&(topic[0]), &(topicsub[0])));
-		//if (0 == (strcmp(&(topic[0]), &(topicsub[0])))) {
-			printf("\nsub: %s", message);
-			snprintf(buff, sizeof(buff), "MSG: %s\r\n", message);
-		//}
-		//else {
-		//	snprintf(buff, sizeof(buff), "Empty buff\r\n");
-		//}
+		printf("\n%s\n", message);
+		snprintf(buff, sizeof(buff), "MSG: %s\r\n", message);
 		printf("\n");
 		//Zapis adresu do tabeli Subscribers || 
 		//Odczytanie buffora w formacie (temat;;wiadomoœæ)
@@ -245,7 +236,6 @@ main(int argc, char** argv)
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
 		char				topic[LENTOPIC] = "";
-		char				topicsub[LENTOPIC] = "";
 		//char*				pointTopic =(char *) malloc(LENTOPIC * sizeof(char));
 		char				message[MAXLINE];// = "";
 		char*				pointMessage = (char*) malloc(MAXLINE * sizeof(char));
@@ -271,19 +261,14 @@ main(int argc, char** argv)
 		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
 
 
-		//free(arg);
-
-
-
-		printf("Connection from %s as ", pierwszy.IP);
-
-
 		//clilen = sizeof(cliaddr);
 		//connfd = malloc(sizeof(int));
+		//for (;;) {
 			int ret;
 			if (ret = pthread_create(&tid, NULL, &doit, &connfd) != 0) {
 				errno = ret;
 				perror("pthread_create() error");
 			}
+		//}
 	}
 }
