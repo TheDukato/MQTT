@@ -53,7 +53,7 @@ rcv_msg(int sockfd) {
 static void*
 doit(void* arg)
 {
-	pthread_detach(pthread_self());//iezale¿ny process 
+	//pthread_detach(pthread_self());//niezale¿ny process 
 	struct sockaddr_in6	servaddr, cliaddr;
 	int					n;
 	char				line[4] = "";
