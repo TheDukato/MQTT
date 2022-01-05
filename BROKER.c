@@ -120,7 +120,7 @@ doit(void* arg)
 			printf("%c", pierwszy.MSG[i]);
 			topicsub[i - 3] = pierwszy.MSG[i];
 		}
-		printf("\n%s\n%s",topic,topicsub);
+		printf("\ntopic: %s\ntopicsub: %s",topic,topicsub);
 //		if (0 == (strcmp(&(topic[0]), &(topicsub[0])))) {
 //			printf("\nsub: %s", message);
 //			snprintf(buff, sizeof(buff), "MSG: %s\r\n", message);
