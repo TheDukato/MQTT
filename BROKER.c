@@ -170,33 +170,31 @@ main(int argc, char** argv)
 			continue;
 		}
 		////////////////////////////
-		int					n;
+		int					n, ret;
 		char				line[4]="";
 		char				keywordSub[4] = "sub";
 		char				keywordPub[4] = "pub";
 		char				fun[4]="";
 		//char				topic[LENTOPIC];// = "";
 		//char				message[MAXLINE];// = "";
+		char IP[INET6_ADDRSTRLEN + 1];
 
 		int					lenmsg = 0;
-		struct subscribers {
+		/*struct subscribers {
 			char IP[INET6_ADDRSTRLEN + 1];
 			char MSG[MAXLINE];
 		};
 		char				MSG[MAXLINE];
 		struct subscribers	pierwszy;
 		bzero(pierwszy.IP, sizeof(pierwszy.IP));
-		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
-		printf("\nConnection from %s as ", pierwszy.IP);
+		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));*/
+		bzero(IP, sizeof(IP));
+		inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, IP, sizeof(IP));
+		printf("\nConnection from %s as ", IP);
 
-		//clilen = sizeof(cliaddr);
-		//connfd = malloc(sizeof(int));
-		//for (;;) {
-			int ret;
-			if (ret = pthread_create(&tid, NULL, &doit, &connfd) != 0) {
-				errno = ret;
-				perror("pthread_create() error");
-			}
-		//}
+		if (ret = pthread_create(&tid, NULL, &doit, &connfd) != 0) {
+			errno = ret;
+			perror("pthread_create() error");
+		}
 	}
 }
