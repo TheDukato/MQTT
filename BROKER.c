@@ -62,22 +62,9 @@ doit(void* arg)
 	char				fun[4] = "";
 	char				topic[LENTOPIC];// = "";
 	char				topicsub[LENTOPIC];// = "";
-	//char*				pointTopic =(char *) malloc(LENTOPIC * sizeof(char));
 	char				message[MAXLINE];// = "";
-	//char* pointMessage = (char*)malloc(MAXLINE * sizeof(char));
 	int					lenmsg = 0;
 	char				buff[MAXLINE];
-	/*
-	//BUFOROWANIE
-	struct DB {
-		int				primKey;
-		char			topic[LENTOPIC];
-		char			storedMessage[MAXLINE];
-		//struct DB*		wsk;
-	};
-	struct DB*			baza;
-	//baza->primKey = 0;
-	*/
 	struct subscribers {
 		char IP[INET6_ADDRSTRLEN + 1];
 		char MSG[MAXLINE];
@@ -88,34 +75,19 @@ doit(void* arg)
 	inet_ntop(AF_INET6, (struct sockaddr*)&cliaddr.sin6_addr, pierwszy.IP, sizeof(pierwszy.IP));
 
 	int		connfd;
-
 	connfd = *((int*)arg);
-	//free(arg);
 
-	
-
-	//printf("Connection from %s as ", pierwszy.IP);
-	/*
-	* opis dotyczy dziwnego dzialania ponizszego if'a wpisujemy
-	*		sizeof(pierwszy.MSG) to jest inaczej odbieram.... i dwie wiadomosci
-	*		MAXLINE to dwa razy (odbieram.... i wiadomosci)
-	*/
 	if ((n = read(connfd, pierwszy.MSG, sizeof(pierwszy.MSG))) < 0)
 		perror("read() error");
 	pierwszy.MSG[n] = 0;	/* Enter sign of end of line */
-
 	//Retrieved functionality from message (publisher or subscriber)
-
 	for (int i = 0; i < 3; i++) {
 		fun[i] = pierwszy.MSG[i];
 	}
-
 	//Connection from SUBSCRIBER
 	if (0 == (strcmp(&(fun[0]), &(keywordSub[0])))) {
 		printf("Subscriber in topic ");
-
 		//Retrieved topic from message
-
 		for (int i = 3; i < (LENTOPIC + 3); i++) {
 			printf("%c", pierwszy.MSG[i]);
 			topicsub[i - 3] = pierwszy.MSG[i];
@@ -128,19 +100,10 @@ doit(void* arg)
 		else {
 			snprintf(buff, sizeof(buff), "Empty buff\r\n");
 		}
-		//printf("\n%s\n", message);
-		//snprintf(buff, sizeof(buff), "MSG: %s\r\n", message);
-		//printf("\n");
-		//Zapis adresu do tabeli Subscribers || 
-		//Odczytanie buffora w formacie (temat;;wiadomoœæ)
-		//DO NAPISANIA
 		send_time(connfd);
 		sleep(2);
 		if (write(connfd, buff, strlen(buff)) < 0)
 			fprintf(stderr, "write error : %s\n", strerror(errno));
-		//close(connfd);
-
-		//exit(0);
 	}
 	//Connection from PUBLISHER
 	if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {
@@ -148,54 +111,21 @@ doit(void* arg)
 		//Retrieved topic from message
 		for (int i = 3; i < (LENTOPIC + 2); i++) {
 			topic[i - 3] = pierwszy.MSG[i];
-			//(*pointTopic[i - 3]) = pierwszy.MSG[i];
-			//pointTopic[i] = pierwszy.MSG[i];
 		}
-		//pointTopic = pierwszy.MSG;
 		printf("%s", topic);
-		//printf("%s", *pointTopic);
-		//Wypisanie odebranej wiadomosci do znaku '0' lub MAXLINE przez co znamy 
-		//dlugosc efektywnej wiadomoœci
 		for (lenmsg = (LENTOPIC + 2); lenmsg < MAXLINE; lenmsg++) {
 			if (pierwszy.MSG[lenmsg] == '0')
 				break;
 		}
-		//Zapisanie urzytecznej wiadomosci do zmiennej message
+		//Save useable part of messege to variable message
 		for (int i = (LENTOPIC + 2); i < lenmsg; i++) {
 			if (pierwszy.MSG[i] == '0')
 				break;
 			message[i - 6] = pierwszy.MSG[i];
-			//pointMessage[i] = pierwszy.MSG[i];
 		}
-		//Uzupelnienie bazy o widomosc do tematu
-		printf("\nSending message: X%sX", message);
-		//printf("\nSending message : X%sX", *pointMessage);
-
-		/*BUFOROWANIE
-		* 1.Sprawdzenie czy istniej ju¿ taki temat a jesli nie to powiekszyc pamiec
-		* 2.dopisac do bazy
-		*/
-		//baza = (struct DB*) malloc(sizeof(struct baza));
-		/*if (strcmp(&(baza->topic[0]), &(topic[0])) != 0) {
-			printf("\nReserves memory for new topic");
-			baza = (struct DB*)realloc(baza, (baza->primKey + 1) * sizeof(*baza));
-		}*/
-		/*
-		printf("\nWriting data to buffor");
-		//baza->topic = topic;
-		//baza->storedMessage = message;
-		strcat(baza->topic, topic);
-		strcat(baza->storedMessage, message);
-		printf("\n\nSaved data \nTopic: %s\nMessage: %s", baza->topic, baza->storedMessage);
-		*/
-		printf("\n");
-		//exit(0);
-		
+		printf("\nSending message: X%sX\n", message);
 	}
-
 	close(connfd);			/* parent closes connected socket */
-	//free(pointMessage);
-	//pthread_detach(pthread_self());
 	pthread_exit(NULL);
 }
 
