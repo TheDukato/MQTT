@@ -53,6 +53,7 @@ rcv_msg(int sockfd) {
 static void*
 doit(void* arg)
 {
+	pthread_detach(pthread_self());//iezale¿ny process 
 	struct sockaddr_in6	servaddr, cliaddr;
 	int					n;
 	char				line[4] = "";
@@ -129,7 +130,7 @@ doit(void* arg)
 			fprintf(stderr, "write error : %s\n", strerror(errno));
 		//close(connfd);
 
-		exit(0);
+		//exit(0);
 	}
 	//Connection from PUBLISHER
 	if (0 == (strcmp(&(fun[0]), &(keywordPub[0])))) {
@@ -186,7 +187,6 @@ doit(void* arg)
 	//free(pointMessage);
 	//pthread_detach(pthread_self());
 	pthread_exit(NULL);
-	return(NULL);
 }
 
 int
