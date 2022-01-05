@@ -117,17 +117,17 @@ doit(void* arg)
 
 		for (int i = 3; i < (LENTOPIC + 3); i++) {
 			printf("%c", pierwszy.MSG[i]);
-//			topicsub[i - 3] = pierwszy.MSG[i];
+			topicsub[i - 3] = pierwszy.MSG[i];
 		}
-//		if (0 == (strcmp(&(topic[0]), &(topicsub[0])))) {
-//			printf("\nsub: %s", message);
-//			snprintf(buff, sizeof(buff), "MSG: %s\r\n", message);
-//		}
-//		else {
-//			snprintf(buff, sizeof(buff), "Empty buff\r\n");
-//		}
-		printf("\n%s\n", message);
-		snprintf(buff, sizeof(buff), "MSG: %s\r\n", message);
+		if (0 == (strcmp(&(topic[0]), &(topicsub[0])))) {
+			printf("\nsub: %s", message);
+			snprintf(buff, sizeof(buff), "MSG: %s\r\n", message);
+		}
+		else {
+			snprintf(buff, sizeof(buff), "Empty buff\r\n");
+		}
+//		printf("\n%s\n", message);
+//		snprintf(buff, sizeof(buff), "MSG: %s\r\n", message);
 		printf("\n");
 		//Zapis adresu do tabeli Subscribers || 
 		//Odczytanie buffora w formacie (temat;;wiadomoœæ)
