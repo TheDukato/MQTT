@@ -86,7 +86,7 @@ main(int argc, char** argv)
 				if (fputs(recvline, stdout) == EOF) {
 					fprintf(stderr, "fputs error : %s\n", strerror(errno));
 				}
-				break;//do usuniecia
+				//break;//do usuniecia
 			}
 		}
 		break;
