@@ -43,6 +43,8 @@ main(int argc, char** argv)
 	int					sockfd, n;
 	struct sockaddr_in6	servaddr;
 	int err;
+	char				recvline[MAXLINE + 1];
+	int choose1;
 
 	if (argc != 2) {
 		fprintf(stderr, "ERROR: usage: a.out <IPaddress>  \n");
@@ -67,15 +69,11 @@ main(int argc, char** argv)
 		fprintf(stderr, "connect error : %s \n", strerror(errno));
 		return 1;
 	}
-	//////////////////////////////////////////////////////////
 
-	char				recvline[MAXLINE + 1];
-	int choose1;
-
-	printf("Who am i?\n1.Rcv\n2.Rcv\n3.Subscriber\n4.Publisher\n5.Rcv\nChoose number: ");
+	printf("Who am i?\n1.Subscriber\n2.Publisher\nChoose number: ");
 	scanf("%d", &choose1);
 	switch (choose1) {
-	case 3:
+	case 1:
 		send_sub(sockfd);//Sending function(subscrber / publisher and topic)
 		//Waiting for message
 		printf("\nCzekam na dane\n");
@@ -90,27 +88,13 @@ main(int argc, char** argv)
 			}
 		}
 		break;
-	case 4 :
+	case 2 :
 		send_pub(sockfd);
-		break;
-	case 5 :
-		printf("Czekam na dane\n");
-		for (;;) {
-				if ((n = read(sockfd, recvline, MAXLINE)) > 0) {
-				printf("Odbieram...\n");
-				recvline[n] = 0;	/* null terminate */
-				if (fputs(recvline, stdout) == EOF) {
-					fprintf(stderr, "fputs error : %s\n", strerror(errno));
-				}
-				break;//do usuniecia
-			}
-		}
 		break;
 	default :
 		break;
 
 	}
-	/////////////////////////////////////////////////////////////
 	if (n < 0)
 		fprintf(stderr, "read error : %s\n", strerror(errno));
 
